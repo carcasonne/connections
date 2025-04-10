@@ -1,0 +1,23 @@
+<header class="banner">
+    <div class="timefall"></div>
+    <div class="strand-x"></div>
+    <h1>
+        {% if section %}
+            {{ section.title }}
+        {% elif page %}
+            {{ page.title }}
+        {% else %}
+            {{ config.extra.porter_id }}
+        {% endif %}
+    </h1>
+    <div class="subtitle">
+        {% if section and section.description %}
+        {{ section.description }}
+        {% elif page and page.description %}
+        {{ page.description }}
+        {% else %}
+        {{ config.description }}
+        {% endif %}
+    </div>
+    <div class="bb-status">BB unit status: synchronized</div>
+</header>

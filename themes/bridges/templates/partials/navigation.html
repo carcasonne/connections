@@ -1,0 +1,14 @@
+<nav class="bridges-nav">
+    <div class="nav-header">
+      <div class="bridge-link">// BRIDGES NETWORK TERMINAL //</div>
+      <div class="chiral-status">CHIRAL DENSITY: NOMINAL</div>
+    </div>
+    <ul>
+      {% for item in config.extra.menu %}
+        <li><a href="{{ item.url | safe }}">{{ item.name }}</a></li>
+      {% endfor %}
+    </ul>
+    <div class="timestamp">
+      <span>Last uplink: <span id="current-date"></span></span>
+    </div>
+  </nav>

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block content %}
+<section class="section">
+    <h2>{{ section.title }}</h2>
+
+    {% if section.content %}
+    <div class="text-content">
+        {{ section.content | safe }}
+    </div>
+    {% endif %}
+
+    {% if section.pages %}
+    {% if section.extra and section.extra.display_as == "deliveries" %}
+    <div class="deliveries-grid">
+        {% for page in section.pages %}
+        <div class="delivery-item">
+            <div class="delivery-title">{{ page.title }}</div>
+            <div class="delivery-desc">{{ page.description }}</div>
+            <a href="{{ page.permalink | safe }}" aria-label="View details for {{ page.title }}">
+                <span class="sr-only">View details</span>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="porter-logs">
+        {% for page in section.pages %}
+        <article class="log-entry">
+            <div class="log-date">{{ page.extra.log_date | default(value="DAY UNKNOWN") }}</div>
+            <h3 class="log-title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h3>
+            <p class="log-excerpt">{{ page.description }}</p>
+            <div class="log-status">Connection level: {{ page.extra.connection_level | default(value="Data corrupted")
+                }}</div>
+        </article>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endif %}
+</section>
+{% endblock content %}
