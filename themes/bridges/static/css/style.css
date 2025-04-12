@@ -5,39 +5,39 @@
     font-weight: 300;
     font-style: normal;
     font-display: swap;
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'Bridges CD Mono';
     src: url('/fonts/BO CD Mono Medium.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'Bridges Mils';
     src: url('/fonts/EX Mils Med.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'Bridges Mils';
     src: url('/fonts/EX Mils Med Oblique.otf') format('opentype');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'Bridges PS Neon';
     src: url('/fonts/EX PS Medium Neon.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-  }
+}
 
 
 /* Death Stranding Core Variables */
@@ -592,55 +592,418 @@ blockquote {
 h1 {
     font-family: var(--font-display);
     letter-spacing: 0.08em;
-  }
-  
-  /* Terminal-style elements with the mono font */
-  .bridges-id, 
-  .bridge-link, 
-  .chiral-status, 
-  .log-date, 
-  .log-status, 
-  .timestamp,
-  .bb-status {
+}
+
+/* Terminal-style elements with the mono font */
+.bridges-id,
+.bridge-link,
+.chiral-status,
+.log-date,
+.log-status,
+.timestamp,
+.bb-status {
     font-family: var(--font-mono);
-  }
-  
-  /* Enhance the bridges loader with authentic fonts */
-  .bridges-loader .bridges-logo {
+}
+
+/* Enhance the bridges loader with authentic fonts */
+.bridges-loader .bridges-logo {
     font-family: var(--font-display);
     letter-spacing: 0.4em;
-  }
-  
-  .scan-text {
+}
+
+.scan-text {
     font-family: var(--font-mono);
     letter-spacing: 0.15em;
-  }
-  
-  .scan-info {
+}
+
+.scan-info {
     font-family: var(--font-mono);
     letter-spacing: 0.1em;
-  }
-  
-  /* Navigation with terminal font */
-  .bridges-nav a {
+}
+
+/* Navigation with terminal font */
+.bridges-nav a {
     font-family: var(--font-mono);
     letter-spacing: 0.1em;
-  }
-  
-  /* Banner subtitle with authentic style */
-  .subtitle {
+}
+
+/* Banner subtitle with authentic style */
+.subtitle {
     font-family: var(--font-mono);
     letter-spacing: 0.15em;
-  }
-  
-  /* Delivery items */
-  .delivery-title {
+}
+
+/* Delivery items */
+.delivery-title {
     font-family: var(--font-display);
     letter-spacing: 0.08em;
-  }
-  
-  /* Quote blocks with the standard font but italic style */
-  blockquote {
+}
+
+/* Quote blocks with the standard font but italic style */
+blockquote {
     font-family: var(--font-sans);
     font-style: italic;
-  }
+}
+
+
+/* Death Stranding Enhanced UI Elements
+   Add these to your existing style.css file */
+
+/* Global UI Enhancements */
+body {
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(110, 187, 195, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(110, 187, 195, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Enhanced Banner */
+.banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, rgba(110, 187, 195, 0.15), transparent 70%);
+    pointer-events: none;
+}
+
+.banner h1 {
+    position: relative;
+    z-index: 2;
+}
+
+.banner h1::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    width: 40px;
+    height: 40px;
+    border-top: 2px solid var(--timefall-blue);
+    border-left: 2px solid var(--timefall-blue);
+    opacity: 0.5;
+}
+
+.banner h1::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--timefall-blue);
+    border-right: 2px solid var(--timefall-blue);
+    opacity: 0.5;
+}
+
+.subtitle {
+    text-shadow: 0 0 10px rgba(110, 187, 195, 0.5);
+}
+
+/* Enhanced Navigation */
+.bridges-nav {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(110, 187, 195, 0.05);
+}
+
+.bridges-nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--timefall-blue), transparent);
+    opacity: 0.4;
+}
+
+.bridge-link {
+    text-shadow: 0 0 8px rgba(110, 187, 195, 0.7);
+}
+
+.chiral-status {
+    position: relative;
+}
+
+.chiral-status::before {
+    content: "•";
+    color: var(--timefall-blue);
+    margin-right: 5px;
+    animation: pulse 2s infinite;
+}
+
+/* Enhanced Cards */
+.cufflink-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.cufflink-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--timefall-blue);
+    border-left: 2px solid var(--timefall-blue);
+    opacity: 0.5;
+}
+
+.cufflink-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--timefall-blue);
+    border-right: 2px solid var(--timefall-blue);
+    opacity: 0.5;
+}
+
+.card-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--timefall-blue), transparent);
+    opacity: 0.5;
+}
+
+/* Enhanced Deliveries */
+.delivery-item {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.delivery-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid var(--timefall-blue);
+    border-left: 2px solid var(--timefall-blue);
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.delivery-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    border-bottom: 2px solid var(--timefall-blue);
+    border-right: 2px solid var(--timefall-blue);
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.delivery-item:hover::before,
+.delivery-item:hover::after {
+    opacity: 0.8;
+}
+
+.delivery-title {
+    text-shadow: 0 0 10px rgba(110, 187, 195, 0.3);
+}
+
+/* Enhanced Porter Logs */
+.log-entry {
+    position: relative;
+    overflow: hidden;
+}
+
+.log-entry::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--timefall-blue), transparent);
+    opacity: 0.3;
+}
+
+.log-title {
+    position: relative;
+    display: inline-block;
+}
+
+.log-title::before {
+    content: ">";
+    color: var(--timefall-blue);
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.log-entry:hover .log-title::before {
+    opacity: 1;
+}
+
+.log-date {
+    position: relative;
+    padding-left: 12px;
+}
+
+.log-date::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 1px;
+    background-color: var(--timefall-blue);
+}
+
+.log-status {
+    position: relative;
+}
+
+.log-status::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--timefall-blue);
+    border-right: 1px solid var(--timefall-blue);
+    transform: translateY(-50%) rotate(45deg);
+    opacity: 0.7;
+}
+
+/* Enhanced Section Headers */
+h2 {
+    position: relative;
+    display: inline-block;
+}
+
+h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 3px;
+    height: 70%;
+    background-color: var(--chiral-gold);
+    opacity: 0.7;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(to right, var(--chiral-gold), transparent);
+}
+
+/* Enhanced Content */
+blockquote {
+    position: relative;
+    overflow: hidden;
+}
+
+blockquote::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(61, 84, 122, 0.1), transparent);
+    z-index: -1;
+}
+
+.fragile-stamp {
+    position: relative;
+}
+
+.fragile-stamp::before {
+    content: "!";
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--timefall-blue);
+    font-weight: bold;
+}
+
+/* Enhanced animations */
+@keyframes data-pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Add a subtle "glitch" effect for certain UI elements */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.bridges-id:hover,
+.bridge-link:hover {
+    animation: glitch 0.2s ease-in-out;
+}

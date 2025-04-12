@@ -19,10 +19,10 @@ enable_theme_switcher = true
 
 # Menu items
 menu = [
-    { name = "mission", url = "#about" },
+    { name = "mission", url = "/" },
     { name = "deliveries", url = "/deliveries" },
     { name = "porter logs", url = "/logs" },
-    { name = "connect", url = "#contact" }
+    { name = "guestbook", url = "/guestbook" }
 ]
 
 # Network links in footer

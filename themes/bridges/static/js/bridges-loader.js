@@ -29,7 +29,7 @@ function createBridgesLoader() {
             </div>
             
             <div class="info-display">DIST: 1.5M</div>
-            <div class="info-display-bottom">SIGNAL STRENGTH: 92%</div>
+            <div class="info-display-bottom" id="signal-strength">SIGNAL STRENGTH: 92%</div>
             
             <div class="scan-text" id="scan-text">BEGINNING SCAN</div>
             <div class="scan-info" id="scan-info">INITIALIZING VERIFICATION PROTOCOL</div>
@@ -60,6 +60,41 @@ function createBridgesLoader() {
     const scanProgress = document.getElementById('scan-progress');
     const weaponNotice = document.getElementById('weapon-notice');
     const cargoStatus = document.getElementById('cargo-status');
+    const signalStrength = document.getElementById('signal-strength');
+
+    // Initialize the fluctuating signal strength
+    let baseSignalValue = 92;
+    let signalInterval;
+
+    function fluctuateSignal() {
+        // Create a random fluctuation between -3 and +2
+        const fluctuation = Math.floor(Math.random() * 6) - 3;
+        const newValue = baseSignalValue + fluctuation;
+
+        // Keep the value between 87% and 96% for realism
+        const clampedValue = Math.max(87, Math.min(96, newValue));
+
+        // Update the display
+        signalStrength.textContent = `SIGNAL STRENGTH: ${clampedValue}%`;
+
+        // Slightly change the color based on signal strength
+        if (clampedValue < 90) {
+            signalStrength.style.color = 'rgba(110, 187, 195, 0.7)';
+        } else {
+            signalStrength.style.color = 'rgba(110, 187, 195, 0.9)';
+        }
+
+        // Add slight "glitching" effect on very low values
+        if (clampedValue <= 88) {
+            signalStrength.style.textShadow = '0 0 5px rgba(110, 187, 195, 0.8)';
+            setTimeout(() => {
+                signalStrength.style.textShadow = 'none';
+            }, 100);
+        }
+    }
+
+    // Start the signal fluctuation effect
+    signalInterval = setInterval(fluctuateSignal, 200);
 
     // Get user name from config or use default
     let userName = "SAM PORTER BRIDGES";
@@ -93,6 +128,8 @@ function createBridgesLoader() {
             // End of sequence - hide loader with fade effect
             setTimeout(() => {
                 loaderContainer.style.opacity = '0';
+                // Clear the signal fluctuation interval when we're done
+                clearInterval(signalInterval);
                 setTimeout(() => {
                     loaderContainer.style.display = 'none';
                     document.body.classList.remove('is-loading');
