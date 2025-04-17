@@ -1,26 +1,15 @@
 <footer id="contact">
-    <div class="content-grid">
-        <div class="text-content">
-            <h2>Connect</h2>
-            <p>{{ config.extra.footer_text }}</p>
-            <p class="bridges-id">{{ config.extra.contact_email }}</p>
-        </div>
-        <div class="cufflink-card">
-            <div class="card-header">NETWORK LINKS</div>
-            <div class="card-content">
-                <ul style="list-style: none;">
-                    {% for link in config.extra.network_links %}
-                    <li><a href="{{ link.url | safe }}">{{ link.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+    <div class="folk-decorative-border"></div>
+    <div class="folk-quote">
+        "How many roads must a man walk down, before you call him a man?"
     </div>
-    <p
-        style="margin-top: 2rem; text-align: center; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
-        {{ config.extra.footer_notice }}
-    </p>
-    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
-        Established in the <span class="highlight">Bridges Central Network</span> — {{ config.extra.establishment_day }}
-    </p>
+    <div class="footer-content">
+        <p style="margin-top: 2rem; text-align: center; font-size: 0.9rem; color: var(--text-secondary); font-family: var(--font-display-oblique);">
+            {{ config.extra.footer_notice | default(value="Thoughts flowing like a rolling stone") }}
+        </p>
+        <p style="text-align: center; font-size: 0.9rem; color: var(--text-secondary); font-family: var(--font-display-oblique);">
+            <span class="highlight">Highway 61</span> — {{ config.extra.establishment_day | default(value="Revisited") }}
+        </p>
+    </div>
+    <div class="folk-icon-small"></div>
 </footer>

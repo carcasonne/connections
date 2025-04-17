@@ -1,34 +1,17 @@
 # Theme metadata
 name = "bridges"
-description = "A Death Stranding inspired theme for Zola"
+description = "Some theme"
 license = "MIT"
 homepage = "https://github.com/yourusername/zola-bridges-theme"
 min_version = "0.14.0"
 
-# Example config for your site when using this theme
 [extra]
-# Site specific information
-porter_id = "DS-01729"
-tagline = "Porter. Connector. Legend."
-bio = "Dedicated to traversing the broken landscape, carrying hope from knot to knot in a fractured world."
-contact_email = "your.email@example.com"
-footer_text = "The chiral network is expanding. Your strand could strengthen the whole infrastructure. Join us."
-footer_notice = "This terminal operates under United Cities of America protocols and respects all Porter Privacy directives."
-establishment_day = "Day 27 After Reconnection"
-enable_theme_switcher = true
+
 
 # Menu items
 menu = [
-    { name = "mission", url = "/" },
-    { name = "deliveries", url = "/deliveries" },
-    { name = "porter logs", url = "/logs" },
-    { name = "guestbook", url = "/guestbook" }
-]
-
-# Network links in footer
-network_links = [
-    { name = "Github", url = "https://github.com/yourusername" },
-    { name = "Twitter", url = "https://twitter.com/yourusername" },
-    { name = "Portfolio", url = "/portfolio" },
-    { name = "Resume", url = "/resume" }
+    { name = "Me", url = "/" },
+    { name = "Reviews", url = "/Reviews" },
+    { name = "Articles", url = "/articles" },
+    { name = "Guestbook", url = "/guestbook" }
 ]

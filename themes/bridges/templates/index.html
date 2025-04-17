@@ -2,58 +2,9 @@
 
 {% block content %}
 <section id="about" class="section">
-    <h2>Mission Brief</h2>
-    <div class="content-grid">
-        <div class="text-content">
-            {{ section.content | safe }}
-            <div class="fragile-stamp">Handle with care. Contents are fragile, just like the world around us.</div>
-        </div>
-        <div class="cufflink-card">
-            <div class="card-header">
-                <span class="bridges-id">PORTER ID: {{ config.extra.porter_id }}</span>
-            </div>
-            <div class="card-content">
-                <h3>{{ config.extra.tagline }}</h3>
-                <p>{{ config.extra.bio }}</p>
-            </div>
-        </div>
-    </div>
+
+    <h2>Articles</h2>
+
 </section>
 
-{% if section.pages %}
-<section id="deliveries" class="section">
-    <h2>Active Deliveries</h2>
-    <div class="deliveries-grid">
-        {% for page in section.pages %}
-        <div class="delivery-item">
-            <div class="delivery-title">{{ page.title }}</div>
-            <div class="delivery-desc">{{ page.description }}</div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
-
-{% if section.subsections %}
-<section id="logs" class="section">
-    <h2>Porter Logs</h2>
-
-    <div class="porter-logs">
-        {% for subsection_path in section.subsections %}
-        {% set subsection = get_section(path=subsection_path) %}
-        {% if subsection.path is starting_with("logs") %}
-        {% for page in subsection.pages | slice(end=4) %}
-        <article class="log-entry">
-            <div class="log-date">{{ page.extra.log_date }}</div>
-            <h3 class="log-title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h3>
-            <p class="log-excerpt">{{ page.description }}</p>
-            <div class="log-status">Connection level: {{ page.extra.connection_level | default(value="Data corrupted")
-                }}</div>
-        </article>
-        {% endfor %}
-        {% endif %}
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
 {% endblock content %}
