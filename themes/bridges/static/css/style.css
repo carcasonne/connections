@@ -1,55 +1,3 @@
-/* Font setup */
-@font-face {
-  font-family: 'BO CD Mono Light';
-  src: url('/fonts/BO CD Mono Light.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'BO CD Mono Medium';
-  src: url('/fonts/BO CD Mono Medium.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'EX Mils Med';
-  src: url('/fonts/EX Mils Med.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'EX Mils Med Oblique';
-  src: url('/fonts/EX Mils Med Oblique.otf') format('opentype');
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'EX PS Medium Neon';
-  src: url('/fonts/EX PS Medium Neon.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Light cyberpunk color palette */
-:root {
-  --bg-primary: #f0ece3;       /* Warm off-white background */
-  --bg-secondary: #dfd7c7;     /* Slightly darker warm background */
-  --text-primary: #2a2926;     /* Very dark gray text, almost black */
-  --text-muted: #6a645c;       /* Desaturated medium brown-gray */
-  --accent-primary: #6f5c45;   /* Earthy brown (Dylan-inspired) */
-  --accent-secondary: #486b6f; /* Muted teal (subtle tech accent) */
-  --accent-highlight: #af4319; /* Rust highlight (Dylan album cover inspired) */
-  --border-color: #d1c6b2;     /* Light warm border */
-  
-  --font-main: 'EX Mils Med', sans-serif;
-  --font-mono: 'BO CD Mono Medium', monospace;
-  --font-light: 'BO CD Mono Light', monospace;
-}
-
 /* Base styles */
 html, body {
   background-color: var(--bg-primary);
@@ -60,310 +8,76 @@ html, body {
   padding: 0;
 }
 
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 1rem;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: normal;
+  text-align: center;
+  color: hsl(30.2, 49.8%, 50%);
 }
 
-/* Navigation */
-.nav-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 2rem;
+h1 {
+  font-size: x-large;
 }
 
-.nav-nameplate {
+/* Full-page layout */
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  line-height: 1.6;
+}
+
+.page-wrapper {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
-.nav-nameplate p {
-  color: var(--accent-highlight);
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-}
-
-.nav-container ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-container li {
-  margin-left: 1.5rem;
-}
-
-.nav-container a {
-  color: var(--text-primary);
-  text-decoration: none;
-  font-family: var(--font-mono);
-  transition: color 0.2s ease;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-}
-
-.nav-container a:hover {
-  color: var(--accent-primary);
-}
-
-.timestamp {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-/* Banner */
-.banner {
-  padding: 2rem 0;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.banner-content {
-  text-align: left;
-}
-
-.banner h1 {
-  font-family: var(--font-mono);
-  font-size: 1.8rem;
-  margin: 0 0 0.5rem 0;
-  letter-spacing: 1px;
-  color: var(--text-primary);
-}
-
-.banner-description {
-  font-family: var(--font-light);
-  color: var(--text-muted);
-  font-size: 1rem;
-  margin: 0;
+.container {
+  flex: 1;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-left: 300px;
 }
 
 /* Main content */
 .main {
-  min-height: calc(100vh - 200px);
+  width: 100%;
 }
 
+/* Ensure content area doesn't constrain column layout */
 .section {
-  margin-bottom: 3rem;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-mono);
-  color: var(--text-primary);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-weight: normal;
-}
-
-h2 {
-  font-size: 1.5rem;
-  position: relative;
-  display: inline-block;
-}
-
-h2::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
   width: 100%;
-  height: 1px;
-  background-color: var(--accent-primary);
+  overflow: visible;
 }
 
-a {
-  color: var(--accent-primary);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
+/* Remove the ribbon from layout */
+.page-wrapper::before {
+  display: none;
 }
-
-a:hover {
-  border-bottom: 1px solid var(--accent-primary);
-}
-
-/* Porter Logs (Blog entries) */
-.porter-logs {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.log-entry {
-  background-color: var(--bg-secondary);
-  padding: 1.5rem;
-  border-left: 2px solid var(--accent-primary);
-}
-
-.log-date {
-  font-family: var(--font-mono);
-  color: var(--accent-secondary);
-  font-size: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.log-title {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-}
-
-.log-title a {
-  color: var(--text-primary);
-  text-decoration: none;
-  border-bottom: none;
-}
-
-.log-title a:hover {
-  color: var(--accent-primary);
-}
-
-.log-excerpt {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.log-status {
-  margin-top: 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-/* Content grid for pages with cards */
-.content-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
-}
-
-.text-content {
-  line-height: 1.8;
-}
-
-/* Card styling */
-.cufflink-card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-}
-
-.card-header {
-  background-color: var(--accent-primary);
-  padding: 0.75rem 1rem;
-  font-family: var(--font-mono);
-  color: white;
-  font-size: 0.8rem;
-}
-
-.card-content {
-  padding: 1.5rem;
-  color: var(--text-primary);
-  font-size: 0.9rem;
-}
-
-/* Footer */
-footer {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.highlight {
-  color: var(--accent-highlight);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .nav-container ul {
-    margin-top: 1rem;
-    flex-direction: column;
-  }
-  
-  .nav-container li {
-    margin-left: 0;
-    margin-top: 0.5rem;
-  }
-  
-  .timestamp {
-    margin-top: 1rem;
-  }
-}
-
-/* Deliveries grid */
-.deliveries-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.delivery-item {
-  background-color: var(--bg-secondary);
-  padding: 1.5rem;
-  border-left: 2px solid var(--accent-highlight);
-  position: relative;
-}
-
-.delivery-title {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
-}
-
-.delivery-desc {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-.delivery-item a {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Add these styles to your existing CSS */
 
 /* Layout wrapper to position ribbon and content */
-.page-wrapper {
-  display: flex;
-  min-height: 100vh;
-  position: relative;
-}
 
-/* Use a pseudo-element for the ribbon */
-.page-wrapper::before {
-  content: "";
-  width: 80px;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0px;
-  background-image: url('/images/ribbon-image.png');
-  background-size: auto 80px; /* Size based on original image width */
+/* This is the 'film roll' ribbon to the left */
+body::before {
+  content: "dsadsa";
+  width: 100px;
+  height: 110%;
+  position: absolute;
+  top: -40px;
+  left: 120px;
+  /* background-image: url('/images/ribbon-image.png'); */
+  background-size: auto 100px;
   background-position: left top;
   background-repeat: repeat-y;
-  z-index: 1;v
+  z-index: 1;
 }

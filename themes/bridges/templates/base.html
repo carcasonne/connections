@@ -6,26 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/themes/tolkien.css">
     {% block extra_head %}{% endblock extra_head %}
 </head>
 
 <body>
     <div class="page-wrapper">
-        <!-- Vertical ribbon -->
-        <div class="vertical-ribbon"></div>
-        
         <div class="container">
-            {% include "partials/navigation.html" %}
-
-            {% block banner %}
-            {% include "partials/header.html" %}
-            {% endblock banner %}
-
             <main class="main">
                 {% block content %}{% endblock content %}
             </main>
-
-            {% include "partials/footer.html" %}
         </div>
     </div>
 
