@@ -2,9 +2,39 @@
 
 {% block content %}
 <section id="about" class="section">
+    <h1>{{ config.title }}</h1>
 
-    <h2>Articles</h2>
+    {% if config.description %}
+    <div class="site-description">
+        {{ config.description }}
+    </div>
+    {% endif %}
 
+    <h2>Sections</h2>
+    {% if section.subsections %}
+    <ul class="section-list">
+        {% for s in section.subsections %}
+        {% set section_path = s %}
+        {% set section_title = s | split(pat="/") | last | capitalize %}
+        <li><a href="{{ get_url(path=section_path) }}">{{ section_title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="no-sections">No sections found.</p>
+    {% endif %}
+
+    {% if section.pages %}
+    <h2>Recent Articles</h2>
+    <ul class="article-list">
+        {% for page in section.pages %}
+        <li>
+            <a href="{{ page.permalink }}">{{ page.title }}</a>
+            {% if page.extra.log_date %}
+            <span class="log-date">({{ page.extra.log_date }})</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </section>
-
 {% endblock content %}
