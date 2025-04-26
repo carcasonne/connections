@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/themes/tolkien.css">
+    <link rel="stylesheet" href="/css/themes/lainchan.css">
     {% block extra_head %}{% endblock extra_head %}
 </head>
 
 <body>
     <div class="page-wrapper">
+        {% include "partials/navigation.html" %}
         <div class="container">
             <main class="main">
                 {% block content %}{% endblock content %}

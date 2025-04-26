@@ -1,0 +1,68 @@
+/* Font setup */
+@font-face {
+  font-family: 'BO CD Mono Light';
+  src: url('/fonts/BO CD Mono Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BO CD Mono Medium';
+  src: url('/fonts/BO CD Mono Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'EX Mils Med';
+  src: url('/fonts/EX Mils Med.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'EX Mils Med Oblique';
+  src: url('/fonts/EX Mils Med Oblique.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'EX PS Medium Neon';
+  src: url('/fonts/EX PS Medium Neon.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fondamento';
+  src: url('/fonts/Fondamento-Regular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraCode';
+  src: url('/fonts/MonaSpace/MonaspaceArgon-Regular.woff') format('woff');
+  font-feature-setting:'cv06','cv14','cv16','cv27','cv29','cv31','cv32','ss01','ss02','ss04','ss06','ss07','ss09'!important;
+}
+
+:root {
+  --bg-primary: #110909;       /* Deep charcoal, like shadows in Mordor */
+  --bg-secondary: #252221;     /* Slightly lighter dark, like ancient stone in Moria */
+  --text-primary: hsl(180 33% 70%);     /* Warm off-white, like parchment of ancient manuscripts */
+  --text-muted: #a18f7c;       /* Muted tan, reminiscent of aged leather in Rivendell */
+  --accent-primary: hsl(30.2, 49.8%, 50%);   /* Golden hue, like the One Ring */
+  --accent-secondary: #607e5f; /* Forest green, evoking the woods of Lothlorien */
+  --accent-highlight: hsl(340 33% 10%); /* Fiery orange-red, like Mount Doom's lava */
+  --accent-highlight-text: hsl(160 50% 85%);
+  --border-color: #3c3530;     /* Dark warm brown, like ancient wooden elements */
+  
+  --font-main: 'FiraCode', sans-serif;
+  --font-mono: 'FiraCode', monospace;
+  --font-light: 'FiraCode', monospace;
+
+  /* Sizing Stuff*/
+  --width-sidebar: 240px;
+  --medium: 2rem;
+}

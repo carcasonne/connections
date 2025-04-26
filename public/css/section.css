@@ -1,0 +1,68 @@
+/* Section styles */
+.section-description {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.section-pages {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.section-page {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Divider between pages */
+.page-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 4rem 0 0 0;
+    width: 100%;
+}
+
+/* Ensure each article gets proper spacing */
+.section-page .article-header {
+    margin-bottom: 32px;
+}
+
+/* Empty section message */
+.no-pages {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Section title styling */
+#section-overview h1 {
+    margin-bottom: 1.5rem;
+    font-size: xx-large;
+}
+
+/* Index page styles */
+.section-list, 
+.article-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.section-list li,
+.article-list li {
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.site-description {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+.log-date {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}

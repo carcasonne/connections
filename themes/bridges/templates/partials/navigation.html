@@ -1,14 +1,17 @@
 <nav class="nav-container">
-  <div class="nav-nameplate">
-    <p>"The times they are a-changin'"</p>
-    <p>Shelter from the storm</p>
-  </div>
-  <ul>
-    {% for item in config.extra.menu %}
-      <li><a href="{{ item.url | safe }}">{{ item.name }}</a></li>
+
+  <a href="{{ get_url(path="/") }}">Home</a>
+  {% set root = get_section(path="_index.md") %}
+  {% if root.subsections %}
+    {% for subsection_path in root.subsections %}
+      {% set subsection = get_section(path=subsection_path) %}
+      <a href="{{ subsection.permalink }}">{{ subsection.title }}</a>
     {% endfor %}
-  </ul>
-  <div class="timestamp">
-    <span>Musings from <span id="current-date"></span></span>
+  {% endif %}
+
+  <div>
+    <img src="/images/frieren.jpg">
+    <img src="/images/proxy-image.gif">
   </div>
+
 </nav>

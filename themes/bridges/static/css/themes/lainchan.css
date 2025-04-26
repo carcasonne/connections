@@ -1,0 +1,32 @@
+:root {
+    --bg-primary: #0b0f14;
+    /* Deep blue-black, CRT darkness */
+    --bg-secondary: #1a1e26;
+    /* Slightly lighter, synthetic dusk */
+
+    --text-primary: #d0d0ff;
+    /* Pale violet, softly glowing */
+    --text-muted: #8888aa;
+    /* Desaturated violet-gray */
+
+    --accent-primary: #c94f7c;
+    /* Pinky-magenta glitch tone */
+    --accent-secondary: #5ee3d2;
+    /* Cyber-teal, like phosphorescent dataflow */
+    --accent-highlight: #2a004f;
+    /* Deep violet, eerie depth */
+    --accent-highlight-text: #baf8ff;
+    /* Neon ice blue for contrast */
+
+    --border-color: #333848;
+    /* Cold steel with low contrast */
+
+    /* Fonts */
+    --font-main: 'FiraCode', monospace;
+    --font-mono: 'FiraCode', monospace;
+    --font-light: 'BO CD Mono Light', monospace;
+
+    /* Sizing */
+    --width-sidebar: 240px;
+    --medium: 2rem;
+}
