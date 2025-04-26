@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/css/page.css">
+<link rel="stylesheet" href="/css/section.css">
+{% endblock extra_head %}
+
+{% block content %}
+<section id="section-overview" class="section">
+    <h1>{{ section.title }}</h1>
+    
+    {% if section.description %}
+    <div class="section-description">
+        {{ section.description }}
+    </div>
+    {% endif %}
+    
+    {% if section.content %}
+    <div class="section-content">
+        {{ section.content | safe }}
+    </div>
+    {% endif %}
+    
+    {% if section.pages %}
+    <div class="section-pages">
+        {% for page in section.pages | sort(attribute="date") | reverse %}
+        <article class="section-page">
+            <div class="article-header">
+                <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+                
+                <div class="article-meta">
+                    {% if page.extra.log_date %}
+                    <span class="log-date">{{ page.extra.log_date }}</span>
+                    {% endif %}
+                    
+                    {% if page.extra.author %}
+                    <span class="article-author">by {{ page.extra.author }}</span>
+                    {% endif %}
+                    
+                    {% if page.extra.connection_level %}
+                    <span class="log-status">Connection level: {{ page.extra.connection_level }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Content in multi-column layout -->
+            <div class="multi-column">
+                {{ page.content | safe }}
+            </div>
+
+            {% if page.extra.show_card %}
+            <div class="cufflink-card">
+                <div class="card-header">
+                    <span class="bridges-id">{{ page.extra.card_header | default(value="PORTER NOTES") }}</span>
+                </div>
+                <div class="card-content">
+                    {{ page.extra.card_content | markdown | safe }}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if not loop.last %}
+            <div class="page-divider"></div>
+            {% endif %}
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-pages">
+        <p>No entries found in this section.</p>
+    </div>
+    {% endif %}
+</section>
+{% endblock content %}

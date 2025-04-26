@@ -4,6 +4,7 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-main);
+  font-size: var(--font-size);
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -16,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-mono);
+  font-family: var(--font-header);
   color: var(--text-secondary);
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -101,12 +102,11 @@ body::before {
 
 /* SIDEBAR NAVIGATION */
 .nav-container {
-  /* position: absolute; */
   left: 0;
   top: 0;
   width: var(--width-sidebar);
+  border-right: 1px solid var(--bg-secondary);
   height: 100vh;
-  border: 1px solid var(--bg-secondary);
 
   display: flex;
   flex-direction: column;
@@ -115,15 +115,12 @@ body::before {
   position: sticky;
 }
 
-/* .nav-container > * {
-  border: 1px solid var(--bg-secondary);
-} */
-
 .nav-container a {
   border-bottom: 1px solid var(--bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   text-decoration: none;
   padding: 10px 0 10px 0;
   width: 100%;
@@ -139,4 +136,68 @@ body::before {
   display: block;
   max-width: 100%;
   object-fit: fill;
+}
+
+.nav-container .nav-local-index {
+  font-size: calc(var(--font-size) - 2px);
+  color: var(--text-secondary);
+  width: 100%;
+  margin: 5px 0 5px 0;
+
+  &:where(:hover) {
+    background-color: var(--accent-highlight);
+    color: var(--accent-highlight-text);
+  }
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+
+.nav-container .nav-local-index a {
+  padding: 1px;
+}
+
+.nav-container .nav-local-index p {
+  text-align: center;
+}
+
+/* TABLES */
+.table-container {
+  display: flex;
+  flex-direction: row;
+}
+
+table {
+  width: 100%;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: var(--font-size);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+thead {
+  background-color: var(--accent-highlight);
+  color: var(--accent-highlight-text);
+}
+
+th, td {
+  border: 1px solid var(--border-color);
+  padding: 2px 8px;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+tbody tr {
+  transition: background-color 0.3s;
+}
+
+tbody tr:hover {
+  background-color: var(--accent-highlight);
+  color: var(--accent-highlight-text);
 }

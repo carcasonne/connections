@@ -2,14 +2,11 @@
     margin-bottom: 32px;
 }
 
-/* Simple 4-column layout with natural flow */
 .multi-column {
-    /* Core multi-column properties */
     column-count: 4;
     column-gap: 2rem;
     column-rule: 1px solid var(--border-color);
 
-    /* Content styling */
     text-align: justify;
     line-height: 1.5;
 }
@@ -17,15 +14,10 @@
 /* Image handling for columns */
 .multi-column img {
     max-width: 100%;
-    /* Ensures images don't exceed column width */
     height: auto;
-    /* Maintains aspect ratio */
     display: block;
-    /* Makes images block elements */
     margin: 1rem 0;
-    /* Adds some vertical spacing */
     break-inside: avoid;
-    /* Prevents images from breaking across columns */
 }
 
 /* Prevent elements from breaking across columns */
@@ -44,10 +36,10 @@
 }
 
 
-p {
+.multi-column p {
     text-justify: inter-character !important;
-    text-align: justify !important;
-    margin: var(--m) 0 !important;
+    text-align: justify;
+    margin: var(--medium) 0 !important;
     word-break: break-word !important;
     hyphens: auto !important;
     orphans: 2 !important;
@@ -56,14 +48,13 @@ p {
     text-wrap: wrap !important;
     word-wrap: break-word !important;
     hyphenate-character: '\2010' !important;
-    :not(#t, nav, .f)~
+    transition: opacity 0.3s ease;
 
     &:where(:hover, :active, :focus) {
         background: var(--accent-highlight) !important;
         color: var(--accent-highlight-text) !important;
     }
 
-    font-size: 14px;
 }
 
 /* Responsive column counts */

@@ -1,7 +1,7 @@
 +++
 title = "Reviews"
 sort_by = "date"
-template = "section.html"
+template = "stack-section.html"
 page_template = "page.html"
 +++
 

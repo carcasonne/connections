@@ -6,8 +6,6 @@ homepage = "https://github.com/yourusername/zola-bridges-theme"
 min_version = "0.14.0"
 
 [extra]
-
-
 # Menu items
 menu = [
     { name = "Me", url = "/" },

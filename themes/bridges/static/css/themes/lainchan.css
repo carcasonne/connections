@@ -1,32 +1,33 @@
+@font-face {
+    font-family: 'font';
+    src: url('/fonts/MonaSpace/MonaspaceArgon-Regular.woff') format('woff');
+    font-feature-setting:'cv06','cv14','cv16','cv27','cv29','cv31','cv32','ss01','ss02','ss04','ss06','ss07','ss09'!important;
+}
+
+@font-face {
+    font-family: 'font-secondary';
+    src: url('/fonts/BO CD Mono Light.otf') format('opentype');
+}
+
 :root {
-    --bg-primary: #0b0f14;
-    /* Deep blue-black, CRT darkness */
-    --bg-secondary: #1a1e26;
-    /* Slightly lighter, synthetic dusk */
-
-    --text-primary: #d0d0ff;
-    /* Pale violet, softly glowing */
-    --text-muted: #8888aa;
-    /* Desaturated violet-gray */
-
-    --accent-primary: #c94f7c;
-    /* Pinky-magenta glitch tone */
-    --accent-secondary: #5ee3d2;
-    /* Cyber-teal, like phosphorescent dataflow */
-    --accent-highlight: #2a004f;
-    /* Deep violet, eerie depth */
-    --accent-highlight-text: #baf8ff;
-    /* Neon ice blue for contrast */
-
-    --border-color: #333848;
-    /* Cold steel with low contrast */
+    --bg-primary: #0b0f12;
+    --bg-secondary: #131a1a;
+    
+    --text-primary: #c7e6d7;
+    --text-muted: #7a8a94;
+    
+    --accent-primary: #ff6699;
+    --accent-secondary: #40a088;
+    --accent-highlight: #18635d21;
+    --accent-highlight-text: #e8f5f0;
+    
+    --border-color: #283535;
 
     /* Fonts */
-    --font-main: 'FiraCode', monospace;
-    --font-mono: 'FiraCode', monospace;
-    --font-light: 'BO CD Mono Light', monospace;
-
+    --font-main: 'font';
+    --font-header: 'font-secondary';
     /* Sizing */
+    --font-size: 14px;
     --width-sidebar: 240px;
     --medium: 2rem;
 }

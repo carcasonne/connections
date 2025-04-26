@@ -1,0 +1,19 @@
++++
+   title = "Store Nordiske Krig"
+   date = 2022-04-01
+   [extra]
+   author = " Dan H. Andersen"
+   language = "Danish"
+   status = "Read"
+   rating = "Best retelling of the war possible"
++++
+
+Virkelig fantastisk gengivelse af en virkelig forfærdelig krig. Krigen endte katastrofalt for ja, titusindvis af svenskere måtte lade livet i russisk vinternød, men endnu værre forspildte Danmark sin sidste mulighed for at drive Skåne tilbage til hjemlige folde. 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce facilisis elit dolor, at interdum nunc porttitor in. Phasellus ut sem magna. Praesent commodo felis a condimentum ornare. Pellentesque id nunc volutpat, placerat orci id, luctus dui. Integer ac ipsum vitae orci lobortis facilisis ut id augue. Phasellus vulputate, justo non efficitur posuere, sapien quam pellentesque sapien, fermentum porta neque neque id diam. Nulla accumsan diam laoreet ligula auctor, nec maximus est dignissim. Ut tincidunt enim pellentesque, laoreet purus vitae, dignissim nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse sagittis ex laoreet, eleifend lacus id, viverra arcu. Nunc sed risus venenatis, blandit mi at, pretium felis. Nam eu tellus sit amet leo egestas viverra a sed elit. Nulla scelerisque erat commodo efficitur porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+Cras efficitur nisl a dictum dictum. Duis at justo eget odio volutpat accumsan tristique non massa. Integer erat sem, laoreet tempor lorem quis, mollis interdum metus. Cras ac dui pellentesque, gravida velit vel, vestibulum turpis. Morbi leo quam, tempus at porttitor a, mattis vel leo. Donec pretium ex sed dolor rutrum, sit amet convallis neque ultricies. Nulla ac tempus justo. Nunc suscipit tortor eget metus rutrum fringilla. Nullam mollis tortor ex, quis consectetur elit accumsan sed. Pellentesque vitae enim augue. Morbi tincidunt elit non metus auctor, blandit tristique odio rutrum. Suspendisse consequat non turpis id luctus. Nam tincidunt vulputate nisl eu laoreet. Cras faucibus dui at sem euismod posuere. Nunc sit amet blandit odio.
+
+In vitae est blandit, condimentum ante sit amet, suscipit dolor. Nulla libero tortor, convallis a sapien sit amet, dapibus sodales orci. Proin condimentum, tortor ac suscipit blandit, mi diam fermentum mi, non facilisis arcu purus eu dolor. Aenean eget magna pretium, sollicitudin diam a, fermentum nibh. Vestibulum lobortis eu metus imperdiet congue. In eget dolor felis. Fusce vitae viverra ipsum, ut tristique quam. Sed ut est sit amet nibh facilisis fringilla ac in neque. Aenean non odio dolor. In auctor leo mauris, nec tincidunt purus tempus sit amet. Ut vel enim sem. Quisque porttitor velit nunc, ac lacinia leo tincidunt quis. Cras sollicitudin sagittis enim sed malesuada. Integer iaculis purus a diam aliquet pharetra. Proin sollicitudin tellus nec ligula ultricies blandit. Sed ex est, suscipit eu dapibus at, venenatis eget nulla.
+
+Vivamus id arcu tincidunt, aliquam odio ac, porttitor justo. Vestibulum non euismod leo. Suspendisse id hendrerit sapien, sit amet blandit orci. Phasellus sagittis placerat porttitor. Donec sapien diam, posuere ac finibus finibus, elementum ac velit. Etiam vehicula erat eu cursus laoreet. In nec nisl et ipsum consectetur iaculis. Donec vitae ipsum lectus. Sed hendrerit odio enim, vel hendrerit mauris suscipit ut. Proin ornare mi tempus dolor viverra commodo. Vestibulum massa urna, commodo vel tristique in, elementum eget elit. Proin velit ante, dignissim quis risus ut, dictum porttitor libero. Quisque vel feugiat erat. Curabitur venenatis purus nec ligula accumsan tincidunt. Nam efficitur tellus ac mauris consectetur, id consectetur leo euismod. Nulla sed finibus leo, eu cursus odio.
