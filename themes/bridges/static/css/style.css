@@ -104,7 +104,8 @@ body::before {
 .nav-container {
   left: 0;
   top: 0;
-  width: var(--width-sidebar);
+  min-width: var(--width-sidebar);
+  max-width: var(--width-sidebar);
   border-right: 1px solid var(--bg-secondary);
   height: 100vh;
 
@@ -113,6 +114,8 @@ body::before {
   align-items: center;
 
   position: sticky;
+  z-index: 10;
+  background-color: var(--bg-primary);
 }
 
 .nav-container a {

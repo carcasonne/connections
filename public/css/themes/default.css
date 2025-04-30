@@ -1,0 +1,65 @@
+/* Font setup */
+@font-face {
+  font-family: 'BO CD Mono Light';
+  src: url('/fonts/BO CD Mono Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BO CD Mono Medium';
+  src: url('/fonts/BO CD Mono Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'EX Mils Med';
+  src: url('/fonts/EX Mils Med.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'EX Mils Med Oblique';
+  src: url('/fonts/EX Mils Med Oblique.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'EX PS Medium Neon';
+  src: url('/fonts/EX PS Medium Neon.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fondamento';
+  src: url('/fonts/Fondamento-Regular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraCode';
+  src: url('/fonts/FiraCode-VariableFont_wght.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Default Theme */
+:root {
+    --bg-primary: #f0ece3;       /* Warm off-white background */
+    --bg-secondary: #dfd7c7;     /* Slightly darker warm background */
+    --text-primary: #2a2926;     /* Very dark gray text, almost black */
+    --text-muted: #6a645c;       /* Desaturated medium brown-gray */
+    --accent-primary: #6f5c45;   /* Earthy brown (Dylan-inspired) */
+    --accent-secondary: #486b6f; /* Muted teal (subtle tech accent) */
+    --accent-highlight: #af4319; /* Rust highlight (Dylan album cover inspired) */
+    --border-color: #d1c6b2;     /* Light warm border */
+    
+    --font-main: 'EX Mils Med', sans-serif;
+    --font-mono: 'BO CD Mono Medium', monospace;
+    --font-light: 'BO CD Mono Light', monospace;
+  }
