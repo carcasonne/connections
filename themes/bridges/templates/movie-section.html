@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/css/section.css">
+<style>
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.movie-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.2s;
+}
+
+.movie-card:hover {
+    transform: scale(1.02);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.movie-title {
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    font-size: 1.1em;
+}
+
+.movie-meta {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    margin-bottom: 0.25rem;
+}
+
+.stars {
+    color: var(--accent-primary);
+    font-size: 1.1em;
+    margin: 0.2rem 0;
+}
+</style>
+{% endblock extra_head %}
+
+{% block content %}
+<section id="section-overview" class="section">
+
+    {% if section.content %}
+    <div class="section-content">
+        <h1>{{ section.title }}</h1>
+        {{ section.content | safe }}
+    </div>
+    {% endif %}
+
+    {% if section.pages %}
+    <div class="movie-grid">
+        {% for page in section.pages | sort(attribute="date") | reverse %}
+        <div class="movie-card">
+            <a href="{{ page.permalink }}">
+                <img src="{{ page.extra.poster }}" alt="Poster for {{ page.title }}">
+            </a>
+            <div class="movie-title">{{ page.title }}</div>
+            
+            {% if page.extra.year %} 
+                <div class="movie-meta">{{ page.extra.year }} </div>
+            {% endif %}
+
+            {% if page.extra.director %}
+            <div class="movie-meta">{{ page.extra.director }}</div>
+            {% endif %}
+
+            {% if page.extra.genre %}
+            <div class="movie-meta">{{ page.extra.genre }}</div>
+            {% endif %}            
+
+            {% if page.extra.rating %}
+            <div class="stars">
+                {% for i in range(end=page.extra.rating) %}★{% endfor %}
+                {% for i in range(start=page.extra.rating, end=5) %}☆{% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+{% endblock content %}

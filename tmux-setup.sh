@@ -9,7 +9,7 @@ tmux has-session -t $SESSION_NAME 2>/dev/null
 # If the session doesn't exist, create it
 if [ $? != 0 ]; then
     # Create a new session with the first window running Navidrome
-    tmux new-session -d -s $SESSION_NAME -n "git"
+    tmux new-session -d -s $SESSION_NAME
 
     # Create a new window for Zola
     tmux new-window -t $SESSION_NAME:1 -n "zola"

@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/themes/lainchan.css">
+    
+<link rel="stylesheet" href="/css/section.css">
+<style>
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.movie-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.2s;
+}
+
+.movie-card:hover {
+    transform: scale(1.02);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.movie-title {
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    font-size: 1.1em;
+}
+
+.movie-meta {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    margin-bottom: 0.25rem;
+}
+
+.stars {
+    color: var(--accent-primary);
+    font-size: 1.1em;
+    margin: 0.2rem 0;
+}
+</style>
+
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <nav class="nav-container">
+
+  <a href="https://example.com/ ">Home</a>
+  
+  
+    
+      
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;books&#x2F;">Books</a>
+    
+      
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;images&#x2F;">Images</a>
+    
+      
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;">Movies</a>
+    
+      
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;notes&#x2F;">Notes</a>
+    
+      
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;samlinger&#x2F;">Samlinger</a>
+    
+  
+
+  
+  <div class="nav-local-index">
+    <p>local index</p>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;true-detective-season-1&#x2F;" class="nav-article">True Detective (season 1)</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-batman-2022&#x2F;" class="nav-article">The Batman</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;inception-2010&#x2F;" class="nav-article">Inception</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;becoming-led-zeppelin-2025&#x2F;" class="nav-article">Becoming Led Zeppelin</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-girl-with-the-needle-2024&#x2F;" class="nav-article">The Girl with the Needle</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;a-complete-unknown-2024&#x2F;" class="nav-article">A Complete Unknown</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;blue-velvet-1986&#x2F;" class="nav-article">Blue Velvet</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;wallace-gromit-vengeance-most-fowl-2024&#x2F;" class="nav-article">Wallace &amp; Gromit: Vengeance Most Fowl</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;alien-romulus-2024&#x2F;" class="nav-article">Alien: Romulus</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;mare-of-easttown-2021&#x2F;" class="nav-article">Mare of Easttown</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;megalopolis-2024-2024&#x2F;" class="nav-article">Megalopolis</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;watchmen-2009&#x2F;" class="nav-article">Watchmen</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;veronica-2017-1-2017&#x2F;" class="nav-article">Veronica</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;underworld-evolution-2006&#x2F;" class="nav-article">Underworld: Evolution</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;underworld-2003-2003&#x2F;" class="nav-article">Underworld</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-wolf-of-wall-street-2013&#x2F;" class="nav-article">The Wolf of Wall Street</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-usual-suspects-1995&#x2F;" class="nav-article">The Usual Suspects</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-truman-show-1998&#x2F;" class="nav-article">The Truman Show</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-shining-1980&#x2F;" class="nav-article">The Shining</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-ninth-gate-1999&#x2F;" class="nav-article">The Ninth Gate</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-nightmare-before-christmas-1993&#x2F;" class="nav-article">The Nightmare Before Christmas</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-lord-of-the-rings-the-two-towers-2002&#x2F;" class="nav-article">The Lord of the Rings: The Two Towers</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-lord-of-the-rings-the-return-of-the-king-2003&#x2F;" class="nav-article">The Lord of the Rings: The Return of the King</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-lord-of-the-rings-the-fellowship-of-the-ring-2001&#x2F;" class="nav-article">The Lord of the Rings: The Fellowship of the Ring</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-highwaymen-2019&#x2F;" class="nav-article">The Highwaymen</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-hateful-eight-2015&#x2F;" class="nav-article">The Hateful Eight</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-good-the-bad-and-the-ugly-1966&#x2F;" class="nav-article">The Good, the Bad and the Ugly</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-exorcist-iii-1990&#x2F;" class="nav-article">The Exorcist III</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-exorcist-1973&#x2F;" class="nav-article">The Exorcist</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-dark-knight-2008&#x2F;" class="nav-article">The Dark Knight</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-cabin-in-the-woods-2011&#x2F;" class="nav-article">The Cabin in the Woods</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-boondock-saints-1999&#x2F;" class="nav-article">The Boondock Saints</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-big-short-2015&#x2F;" class="nav-article">The Big Short</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-babysitter-2017-2017&#x2F;" class="nav-article">The Babysitter</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;star-wars-the-rise-of-skywalker-2019&#x2F;" class="nav-article">Star Wars: The Rise of Skywalker</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;skyfall-2012&#x2F;" class="nav-article">Skyfall</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;se7en-1995&#x2F;" class="nav-article">Se7en</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;scary-movie-2000-2000&#x2F;" class="nav-article">Scary Movie</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;saw-x-2023&#x2F;" class="nav-article">Saw X</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;robin-hood-2010-2010&#x2F;" class="nav-article">Robin Hood</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;reservoir-dogs-1992&#x2F;" class="nav-article">Reservoir Dogs</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;raiders-of-the-lost-ark-1981&#x2F;" class="nav-article">Raiders of the Lost Ark</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;puss-in-boots-the-last-wish-2022&#x2F;" class="nav-article">Puss in Boots: The Last Wish</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;pusher-ii-2004&#x2F;" class="nav-article">Pusher II</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;pulp-fiction-1994&#x2F;" class="nav-article">Pulp Fiction</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;poor-things-2023-2023&#x2F;" class="nav-article">Poor Things</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;parasite-2019-2019&#x2F;" class="nav-article">Parasite</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;oppenheimer-2023-2023&#x2F;" class="nav-article">Oppenheimer</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;once-upon-a-time-in-the-west-1968&#x2F;" class="nav-article">Once Upon a Time in the West</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;once-upon-a-time-in-hollywood-2019&#x2F;" class="nav-article">Once Upon a Time... in Hollywood</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;nosferatu-2024-2024&#x2F;" class="nav-article">Nosferatu</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;no-time-to-die-2021-2021&#x2F;" class="nav-article">No Time to Die</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;no-country-for-old-men-2007&#x2F;" class="nav-article">No Country for Old Men</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;monty-python-and-the-holy-grail-1975&#x2F;" class="nav-article">Monty Python and the Holy Grail</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;moneyball-2011&#x2F;" class="nav-article">Moneyball</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;killers-of-the-flower-moon-2023&#x2F;" class="nav-article">Killers of the Flower Moon</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;kill-bill-vol-2-2004&#x2F;" class="nav-article">Kill Bill: Vol. 2</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;kill-bill-vol-1-2003&#x2F;" class="nav-article">Kill Bill: Vol. 1</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;jujutsu-kaisen-2020&#x2F;" class="nav-article">Jujutsu Kaisen</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;joker-2019-2019&#x2F;" class="nav-article">Joker</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;indiana-jones-and-the-temple-of-doom-1984&#x2F;" class="nav-article">Indiana Jones and the Temple of Doom</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;indiana-jones-and-the-last-crusade-1989&#x2F;" class="nav-article">Indiana Jones and the Last Crusade</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;indiana-jones-and-the-dial-of-destiny-2023&#x2F;" class="nav-article">Indiana Jones and the Dial of Destiny</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;heat-1995-1995&#x2F;" class="nav-article">Heat</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;halloween-1978-1978&#x2F;" class="nav-article">Halloween</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;good-bye-lenin-2003&#x2F;" class="nav-article">Good Bye, Lenin!</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;gonjiam-haunted-asylum-2018&#x2F;" class="nav-article">Gonjiam: Haunted Asylum</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;gods-of-egypt-2016&#x2F;" class="nav-article">Gods of Egypt</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;gladiator-ii-2024&#x2F;" class="nav-article">Gladiator II</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;furiosa-a-mad-max-saga-2024&#x2F;" class="nav-article">Furiosa: A Mad Max Saga</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;frieren-beyond-journeys-end-2023&#x2F;" class="nav-article">Frieren: Beyond Journey&#x27;s End</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;for-a-few-dollars-more-1965&#x2F;" class="nav-article">For a Few Dollars More</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;five-nights-at-freddys-2023&#x2F;" class="nav-article">Five Nights at Freddy&#x27;s</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;fight-club-1999&#x2F;" class="nav-article">Fight Club</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;dune-part-two-2024&#x2F;" class="nav-article">Dune: Part Two</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;dune-2021-2021&#x2F;" class="nav-article">Dune</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;downsizing-2017&#x2F;" class="nav-article">Downsizing</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;cube-1997&#x2F;" class="nav-article">Cube</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;coraline-2009&#x2F;" class="nav-article">Coraline</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;collateral-2004&#x2F;" class="nav-article">Collateral</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;chungking-express-1994&#x2F;" class="nav-article">Chungking Express</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;chicken-run-2000&#x2F;" class="nav-article">Chicken Run</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;chainsaw-man-2022-2022&#x2F;" class="nav-article">Chainsaw Man</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;casino-royale-2006-2006&#x2F;" class="nav-article">Casino Royale</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;blade-runner-2049-2017&#x2F;" class="nav-article">Blade Runner 2049</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;black-swan-2010&#x2F;" class="nav-article">Black Swan</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;basic-instinct-1992&#x2F;" class="nav-article">Basic Instinct</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;barbie-2023&#x2F;" class="nav-article">Barbie</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;band-of-brothers-2001&#x2F;" class="nav-article">Band of Brothers</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;back-to-the-future-1985&#x2F;" class="nav-article">Back to the Future</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;another-round-2020&#x2F;" class="nav-article">Another Round</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;alien-1979&#x2F;" class="nav-article">Alien</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;a-royal-affair-2012&#x2F;" class="nav-article">A Royal Affair</a>
+    
+      <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;a-fistful-of-dollars-1964&#x2F;" class="nav-article">A Fistful of Dollars</a>
+    
+  </div>
+  
+
+  <div>
+    <!-- <img src="/images/frieren.jpg">
+    <img src="/images/frierenreaction.jpg"> -->
+    <img src="/images/lowry.png" style="padding-bottom: 10px">
+    <img src="/images/proxy-image.gif">
+  </div>
+
+</nav>
+        <div class="container">
+            <main class="main">
+                
+<section id="section-overview" class="section">
+
+    
+
+    
+    <div class="movie-grid">
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;true-detective-season-1&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;true-detective-season-1.jpg" alt="Poster for True Detective (season 1)">
+            </a>
+            <div class="movie-title">True Detective (season 1)</div>
+            
+             
+                <div class="movie-meta">2014 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-batman-2022&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-batman.png" alt="Poster for The Batman">
+            </a>
+            <div class="movie-title">The Batman</div>
+            
+             
+                <div class="movie-meta">2022 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;inception-2010&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;inception.png" alt="Poster for Inception">
+            </a>
+            <div class="movie-title">Inception</div>
+            
+             
+                <div class="movie-meta">2010 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;becoming-led-zeppelin-2025&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;becoming-led-zeppelin.png" alt="Poster for Becoming Led Zeppelin">
+            </a>
+            <div class="movie-title">Becoming Led Zeppelin</div>
+            
+             
+                <div class="movie-meta">2025 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-girl-with-the-needle-2024&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-girl-with-the-needle.png" alt="Poster for The Girl with the Needle">
+            </a>
+            <div class="movie-title">The Girl with the Needle</div>
+            
+             
+                <div class="movie-meta">2024 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;a-complete-unknown-2024&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;a-complete-unknown.png" alt="Poster for A Complete Unknown">
+            </a>
+            <div class="movie-title">A Complete Unknown</div>
+            
+             
+                <div class="movie-meta">2024 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;blue-velvet-1986&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;blue-velvet.png" alt="Poster for Blue Velvet">
+            </a>
+            <div class="movie-title">Blue Velvet</div>
+            
+             
+                <div class="movie-meta">1986 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;wallace-gromit-vengeance-most-fowl-2024&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;wallace-gromit-vengeance-most-fowl.png" alt="Poster for Wallace &amp; Gromit: Vengeance Most Fowl">
+            </a>
+            <div class="movie-title">Wallace &amp; Gromit: Vengeance Most Fowl</div>
+            
+             
+                <div class="movie-meta">2024 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;alien-romulus-2024&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;alien-romulus.png" alt="Poster for Alien: Romulus">
+            </a>
+            <div class="movie-title">Alien: Romulus</div>
+            
+             
+                <div class="movie-meta">2024 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;mare-of-easttown-2021&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;mare-of-easttown.png" alt="Poster for Mare of Easttown">
+            </a>
+            <div class="movie-title">Mare of Easttown</div>
+            
+             
+                <div class="movie-meta">2021 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;megalopolis-2024-2024&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;megalopolis-2024.png" alt="Poster for Megalopolis">
+            </a>
+            <div class="movie-title">Megalopolis</div>
+            
+             
+                <div class="movie-meta">2024 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;watchmen-2009&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;watchmen.png" alt="Poster for Watchmen">
+            </a>
+            <div class="movie-title">Watchmen</div>
+            
+             
+                <div class="movie-meta">2009 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;veronica-2017-1-2017&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;veronica-2017-1.png" alt="Poster for Veronica">
+            </a>
+            <div class="movie-title">Veronica</div>
+            
+             
+                <div class="movie-meta">2017 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★
+                ☆☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;underworld-evolution-2006&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;underworld-evolution.png" alt="Poster for Underworld: Evolution">
+            </a>
+            <div class="movie-title">Underworld: Evolution</div>
+            
+             
+                <div class="movie-meta">2006 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;underworld-2003-2003&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;underworld-2003.png" alt="Poster for Underworld">
+            </a>
+            <div class="movie-title">Underworld</div>
+            
+             
+                <div class="movie-meta">2003 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-wolf-of-wall-street-2013&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-wolf-of-wall-street.png" alt="Poster for The Wolf of Wall Street">
+            </a>
+            <div class="movie-title">The Wolf of Wall Street</div>
+            
+             
+                <div class="movie-meta">2013 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-usual-suspects-1995&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-usual-suspects.png" alt="Poster for The Usual Suspects">
+            </a>
+            <div class="movie-title">The Usual Suspects</div>
+            
+             
+                <div class="movie-meta">1995 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-truman-show-1998&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-truman-show.png" alt="Poster for The Truman Show">
+            </a>
+            <div class="movie-title">The Truman Show</div>
+            
+             
+                <div class="movie-meta">1998 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-shining-1980&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-shining.png" alt="Poster for The Shining">
+            </a>
+            <div class="movie-title">The Shining</div>
+            
+             
+                <div class="movie-meta">1980 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-ninth-gate-1999&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-ninth-gate.png" alt="Poster for The Ninth Gate">
+            </a>
+            <div class="movie-title">The Ninth Gate</div>
+            
+             
+                <div class="movie-meta">1999 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-nightmare-before-christmas-1993&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-nightmare-before-christmas.png" alt="Poster for The Nightmare Before Christmas">
+            </a>
+            <div class="movie-title">The Nightmare Before Christmas</div>
+            
+             
+                <div class="movie-meta">1993 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-lord-of-the-rings-the-two-towers-2002&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-lord-of-the-rings-the-two-towers.png" alt="Poster for The Lord of the Rings: The Two Towers">
+            </a>
+            <div class="movie-title">The Lord of the Rings: The Two Towers</div>
+            
+             
+                <div class="movie-meta">2002 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-lord-of-the-rings-the-return-of-the-king-2003&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-lord-of-the-rings-the-return-of-the-king.png" alt="Poster for The Lord of the Rings: The Return of the King">
+            </a>
+            <div class="movie-title">The Lord of the Rings: The Return of the King</div>
+            
+             
+                <div class="movie-meta">2003 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-lord-of-the-rings-the-fellowship-of-the-ring-2001&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-lord-of-the-rings-the-fellowship-of-the-ring.png" alt="Poster for The Lord of the Rings: The Fellowship of the Ring">
+            </a>
+            <div class="movie-title">The Lord of the Rings: The Fellowship of the Ring</div>
+            
+             
+                <div class="movie-meta">2001 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-highwaymen-2019&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-highwaymen.png" alt="Poster for The Highwaymen">
+            </a>
+            <div class="movie-title">The Highwaymen</div>
+            
+             
+                <div class="movie-meta">2019 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-hateful-eight-2015&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-hateful-eight.png" alt="Poster for The Hateful Eight">
+            </a>
+            <div class="movie-title">The Hateful Eight</div>
+            
+             
+                <div class="movie-meta">2015 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-good-the-bad-and-the-ugly-1966&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-good-the-bad-and-the-ugly.png" alt="Poster for The Good, the Bad and the Ugly">
+            </a>
+            <div class="movie-title">The Good, the Bad and the Ugly</div>
+            
+             
+                <div class="movie-meta">1966 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-exorcist-iii-1990&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-exorcist-iii.png" alt="Poster for The Exorcist III">
+            </a>
+            <div class="movie-title">The Exorcist III</div>
+            
+             
+                <div class="movie-meta">1990 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-exorcist-1973&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-exorcist.png" alt="Poster for The Exorcist">
+            </a>
+            <div class="movie-title">The Exorcist</div>
+            
+             
+                <div class="movie-meta">1973 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-dark-knight-2008&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-dark-knight.png" alt="Poster for The Dark Knight">
+            </a>
+            <div class="movie-title">The Dark Knight</div>
+            
+             
+                <div class="movie-meta">2008 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-cabin-in-the-woods-2011&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-cabin-in-the-woods.png" alt="Poster for The Cabin in the Woods">
+            </a>
+            <div class="movie-title">The Cabin in the Woods</div>
+            
+             
+                <div class="movie-meta">2011 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-boondock-saints-1999&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-boondock-saints.png" alt="Poster for The Boondock Saints">
+            </a>
+            <div class="movie-title">The Boondock Saints</div>
+            
+             
+                <div class="movie-meta">1999 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-big-short-2015&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-big-short.png" alt="Poster for The Big Short">
+            </a>
+            <div class="movie-title">The Big Short</div>
+            
+             
+                <div class="movie-meta">2015 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;the-babysitter-2017-2017&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;the-babysitter-2017.png" alt="Poster for The Babysitter">
+            </a>
+            <div class="movie-title">The Babysitter</div>
+            
+             
+                <div class="movie-meta">2017 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★
+                ☆☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;star-wars-the-rise-of-skywalker-2019&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;star-wars-the-rise-of-skywalker.png" alt="Poster for Star Wars: The Rise of Skywalker">
+            </a>
+            <div class="movie-title">Star Wars: The Rise of Skywalker</div>
+            
+             
+                <div class="movie-meta">2019 </div>
+            
+
+            
+
+                        
+
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;skyfall-2012&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;skyfall.png" alt="Poster for Skyfall">
+            </a>
+            <div class="movie-title">Skyfall</div>
+            
+             
+                <div class="movie-meta">2012 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;se7en-1995&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;se7en.png" alt="Poster for Se7en">
+            </a>
+            <div class="movie-title">Se7en</div>
+            
+             
+                <div class="movie-meta">1995 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;scary-movie-2000-2000&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;scary-movie-2000.png" alt="Poster for Scary Movie">
+            </a>
+            <div class="movie-title">Scary Movie</div>
+            
+             
+                <div class="movie-meta">2000 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;saw-x-2023&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;saw-x.png" alt="Poster for Saw X">
+            </a>
+            <div class="movie-title">Saw X</div>
+            
+             
+                <div class="movie-meta">2023 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;robin-hood-2010-2010&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;robin-hood-2010.png" alt="Poster for Robin Hood">
+            </a>
+            <div class="movie-title">Robin Hood</div>
+            
+             
+                <div class="movie-meta">2010 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★
+                ☆☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;reservoir-dogs-1992&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;reservoir-dogs.png" alt="Poster for Reservoir Dogs">
+            </a>
+            <div class="movie-title">Reservoir Dogs</div>
+            
+             
+                <div class="movie-meta">1992 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;raiders-of-the-lost-ark-1981&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;raiders-of-the-lost-ark.png" alt="Poster for Raiders of the Lost Ark">
+            </a>
+            <div class="movie-title">Raiders of the Lost Ark</div>
+            
+             
+                <div class="movie-meta">1981 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;puss-in-boots-the-last-wish-2022&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;puss-in-boots-the-last-wish.png" alt="Poster for Puss in Boots: The Last Wish">
+            </a>
+            <div class="movie-title">Puss in Boots: The Last Wish</div>
+            
+             
+                <div class="movie-meta">2022 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;pusher-ii-2004&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;pusher-ii.png" alt="Poster for Pusher II">
+            </a>
+            <div class="movie-title">Pusher II</div>
+            
+             
+                <div class="movie-meta">2004 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;pulp-fiction-1994&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;pulp-fiction.png" alt="Poster for Pulp Fiction">
+            </a>
+            <div class="movie-title">Pulp Fiction</div>
+            
+             
+                <div class="movie-meta">1994 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;poor-things-2023-2023&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;poor-things-2023.png" alt="Poster for Poor Things">
+            </a>
+            <div class="movie-title">Poor Things</div>
+            
+             
+                <div class="movie-meta">2023 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;parasite-2019-2019&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;parasite-2019.png" alt="Poster for Parasite">
+            </a>
+            <div class="movie-title">Parasite</div>
+            
+             
+                <div class="movie-meta">2019 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;oppenheimer-2023-2023&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;oppenheimer-2023.png" alt="Poster for Oppenheimer">
+            </a>
+            <div class="movie-title">Oppenheimer</div>
+            
+             
+                <div class="movie-meta">2023 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;once-upon-a-time-in-the-west-1968&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;once-upon-a-time-in-the-west.png" alt="Poster for Once Upon a Time in the West">
+            </a>
+            <div class="movie-title">Once Upon a Time in the West</div>
+            
+             
+                <div class="movie-meta">1968 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;once-upon-a-time-in-hollywood-2019&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;once-upon-a-time-in-hollywood.png" alt="Poster for Once Upon a Time... in Hollywood">
+            </a>
+            <div class="movie-title">Once Upon a Time... in Hollywood</div>
+            
+             
+                <div class="movie-meta">2019 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;nosferatu-2024-2024&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;nosferatu-2024.png" alt="Poster for Nosferatu">
+            </a>
+            <div class="movie-title">Nosferatu</div>
+            
+             
+                <div class="movie-meta">2024 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;no-time-to-die-2021-2021&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;no-time-to-die-2021.png" alt="Poster for No Time to Die">
+            </a>
+            <div class="movie-title">No Time to Die</div>
+            
+             
+                <div class="movie-meta">2021 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;no-country-for-old-men-2007&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;no-country-for-old-men.png" alt="Poster for No Country for Old Men">
+            </a>
+            <div class="movie-title">No Country for Old Men</div>
+            
+             
+                <div class="movie-meta">2007 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;monty-python-and-the-holy-grail-1975&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;monty-python-and-the-holy-grail.png" alt="Poster for Monty Python and the Holy Grail">
+            </a>
+            <div class="movie-title">Monty Python and the Holy Grail</div>
+            
+             
+                <div class="movie-meta">1975 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;moneyball-2011&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;moneyball.png" alt="Poster for Moneyball">
+            </a>
+            <div class="movie-title">Moneyball</div>
+            
+             
+                <div class="movie-meta">2011 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;killers-of-the-flower-moon-2023&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;killers-of-the-flower-moon.png" alt="Poster for Killers of the Flower Moon">
+            </a>
+            <div class="movie-title">Killers of the Flower Moon</div>
+            
+             
+                <div class="movie-meta">2023 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;kill-bill-vol-2-2004&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;kill-bill-vol-2.png" alt="Poster for Kill Bill: Vol. 2">
+            </a>
+            <div class="movie-title">Kill Bill: Vol. 2</div>
+            
+             
+                <div class="movie-meta">2004 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;kill-bill-vol-1-2003&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;kill-bill-vol-1.png" alt="Poster for Kill Bill: Vol. 1">
+            </a>
+            <div class="movie-title">Kill Bill: Vol. 1</div>
+            
+             
+                <div class="movie-meta">2003 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;jujutsu-kaisen-2020&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;jujutsu-kaisen.png" alt="Poster for Jujutsu Kaisen">
+            </a>
+            <div class="movie-title">Jujutsu Kaisen</div>
+            
+             
+                <div class="movie-meta">2020 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;joker-2019-2019&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;joker-2019.png" alt="Poster for Joker">
+            </a>
+            <div class="movie-title">Joker</div>
+            
+             
+                <div class="movie-meta">2019 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;indiana-jones-and-the-temple-of-doom-1984&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;indiana-jones-and-the-temple-of-doom.png" alt="Poster for Indiana Jones and the Temple of Doom">
+            </a>
+            <div class="movie-title">Indiana Jones and the Temple of Doom</div>
+            
+             
+                <div class="movie-meta">1984 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;indiana-jones-and-the-last-crusade-1989&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;indiana-jones-and-the-last-crusade.png" alt="Poster for Indiana Jones and the Last Crusade">
+            </a>
+            <div class="movie-title">Indiana Jones and the Last Crusade</div>
+            
+             
+                <div class="movie-meta">1989 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;indiana-jones-and-the-dial-of-destiny-2023&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;indiana-jones-and-the-dial-of-destiny.png" alt="Poster for Indiana Jones and the Dial of Destiny">
+            </a>
+            <div class="movie-title">Indiana Jones and the Dial of Destiny</div>
+            
+             
+                <div class="movie-meta">2023 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★
+                ☆☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;heat-1995-1995&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;heat-1995.png" alt="Poster for Heat">
+            </a>
+            <div class="movie-title">Heat</div>
+            
+             
+                <div class="movie-meta">1995 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;halloween-1978-1978&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;halloween-1978.png" alt="Poster for Halloween">
+            </a>
+            <div class="movie-title">Halloween</div>
+            
+             
+                <div class="movie-meta">1978 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;good-bye-lenin-2003&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;good-bye-lenin.png" alt="Poster for Good Bye, Lenin!">
+            </a>
+            <div class="movie-title">Good Bye, Lenin!</div>
+            
+             
+                <div class="movie-meta">2003 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;gonjiam-haunted-asylum-2018&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;gonjiam-haunted-asylum.png" alt="Poster for Gonjiam: Haunted Asylum">
+            </a>
+            <div class="movie-title">Gonjiam: Haunted Asylum</div>
+            
+             
+                <div class="movie-meta">2018 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;gods-of-egypt-2016&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;gods-of-egypt.png" alt="Poster for Gods of Egypt">
+            </a>
+            <div class="movie-title">Gods of Egypt</div>
+            
+             
+                <div class="movie-meta">2016 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;gladiator-ii-2024&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;gladiator-ii.png" alt="Poster for Gladiator II">
+            </a>
+            <div class="movie-title">Gladiator II</div>
+            
+             
+                <div class="movie-meta">2024 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;furiosa-a-mad-max-saga-2024&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;furiosa-a-mad-max-saga.png" alt="Poster for Furiosa: A Mad Max Saga">
+            </a>
+            <div class="movie-title">Furiosa: A Mad Max Saga</div>
+            
+             
+                <div class="movie-meta">2024 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;frieren-beyond-journeys-end-2023&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;frieren-beyond-journeys-end.png" alt="Poster for Frieren: Beyond Journey&#x27;s End">
+            </a>
+            <div class="movie-title">Frieren: Beyond Journey&#x27;s End</div>
+            
+             
+                <div class="movie-meta">2023 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;for-a-few-dollars-more-1965&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;for-a-few-dollars-more.png" alt="Poster for For a Few Dollars More">
+            </a>
+            <div class="movie-title">For a Few Dollars More</div>
+            
+             
+                <div class="movie-meta">1965 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;five-nights-at-freddys-2023&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;five-nights-at-freddys.png" alt="Poster for Five Nights at Freddy&#x27;s">
+            </a>
+            <div class="movie-title">Five Nights at Freddy&#x27;s</div>
+            
+             
+                <div class="movie-meta">2023 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★
+                ☆☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;fight-club-1999&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;fight-club.png" alt="Poster for Fight Club">
+            </a>
+            <div class="movie-title">Fight Club</div>
+            
+             
+                <div class="movie-meta">1999 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;dune-part-two-2024&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;dune-part-two.png" alt="Poster for Dune: Part Two">
+            </a>
+            <div class="movie-title">Dune: Part Two</div>
+            
+             
+                <div class="movie-meta">2024 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;dune-2021-2021&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;dune-2021.png" alt="Poster for Dune">
+            </a>
+            <div class="movie-title">Dune</div>
+            
+             
+                <div class="movie-meta">2021 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;downsizing-2017&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;downsizing.png" alt="Poster for Downsizing">
+            </a>
+            <div class="movie-title">Downsizing</div>
+            
+             
+                <div class="movie-meta">2017 </div>
+            
+
+            
+
+                        
+
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;cube-1997&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;cube.png" alt="Poster for Cube">
+            </a>
+            <div class="movie-title">Cube</div>
+            
+             
+                <div class="movie-meta">1997 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;coraline-2009&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;coraline.png" alt="Poster for Coraline">
+            </a>
+            <div class="movie-title">Coraline</div>
+            
+             
+                <div class="movie-meta">2009 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;collateral-2004&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;collateral.png" alt="Poster for Collateral">
+            </a>
+            <div class="movie-title">Collateral</div>
+            
+             
+                <div class="movie-meta">2004 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;chungking-express-1994&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;chungking-express.png" alt="Poster for Chungking Express">
+            </a>
+            <div class="movie-title">Chungking Express</div>
+            
+             
+                <div class="movie-meta">1994 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;chicken-run-2000&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;chicken-run.png" alt="Poster for Chicken Run">
+            </a>
+            <div class="movie-title">Chicken Run</div>
+            
+             
+                <div class="movie-meta">2000 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;chainsaw-man-2022-2022&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;chainsaw-man-2022.png" alt="Poster for Chainsaw Man">
+            </a>
+            <div class="movie-title">Chainsaw Man</div>
+            
+             
+                <div class="movie-meta">2022 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;casino-royale-2006-2006&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;casino-royale-2006.png" alt="Poster for Casino Royale">
+            </a>
+            <div class="movie-title">Casino Royale</div>
+            
+             
+                <div class="movie-meta">2006 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;blade-runner-2049-2017&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;blade-runner-2049.png" alt="Poster for Blade Runner 2049">
+            </a>
+            <div class="movie-title">Blade Runner 2049</div>
+            
+             
+                <div class="movie-meta">2017 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;black-swan-2010&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;black-swan.png" alt="Poster for Black Swan">
+            </a>
+            <div class="movie-title">Black Swan</div>
+            
+             
+                <div class="movie-meta">2010 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;basic-instinct-1992&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;basic-instinct.png" alt="Poster for Basic Instinct">
+            </a>
+            <div class="movie-title">Basic Instinct</div>
+            
+             
+                <div class="movie-meta">1992 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;barbie-2023&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;barbie.png" alt="Poster for Barbie">
+            </a>
+            <div class="movie-title">Barbie</div>
+            
+             
+                <div class="movie-meta">2023 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;band-of-brothers-2001&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;band-of-brothers.png" alt="Poster for Band of Brothers">
+            </a>
+            <div class="movie-title">Band of Brothers</div>
+            
+             
+                <div class="movie-meta">2001 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★★
+                
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;back-to-the-future-1985&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;back-to-the-future.png" alt="Poster for Back to the Future">
+            </a>
+            <div class="movie-title">Back to the Future</div>
+            
+             
+                <div class="movie-meta">1985 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★
+                ☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;another-round-2020&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;another-round.png" alt="Poster for Another Round">
+            </a>
+            <div class="movie-title">Another Round</div>
+            
+             
+                <div class="movie-meta">2020 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;alien-1979&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;alien.png" alt="Poster for Alien">
+            </a>
+            <div class="movie-title">Alien</div>
+            
+             
+                <div class="movie-meta">1979 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;a-royal-affair-2012&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;a-royal-affair.png" alt="Poster for A Royal Affair">
+            </a>
+            <div class="movie-title">A Royal Affair</div>
+            
+             
+                <div class="movie-meta">2012 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★
+                ☆☆☆
+            </div>
+            
+        </div>
+        
+        <div class="movie-card">
+            <a href="https:&#x2F;&#x2F;example.com&#x2F;movies&#x2F;a-fistful-of-dollars-1964&#x2F;">
+                <img src="&#x2F;images&#x2F;movies&#x2F;a-fistful-of-dollars.png" alt="Poster for A Fistful of Dollars">
+            </a>
+            <div class="movie-title">A Fistful of Dollars</div>
+            
+             
+                <div class="movie-meta">1964 </div>
+            
+
+            
+
+                        
+
+            
+            <div class="stars">
+                ★★★★
+                ☆
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</section>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+    
+</body>
+
+</html>
