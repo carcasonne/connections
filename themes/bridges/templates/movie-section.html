@@ -5,52 +5,130 @@
 {% block extra_head %}
 <link rel="stylesheet" href="/css/section.css">
 <style>
-.movie-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 2rem;
-    padding: 2rem 0;
-}
+    :root {
+        --card-width: 180px;
+        --pin-size: 12px;
+    }
 
-.movie-card {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    overflow: hidden;
-    text-align: center;
-    padding: 1rem;
-    transition: transform 0.2s;
-}
+    /* Freestyle layout */
+    .movie-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 3rem 1rem;
+        gap: 1rem;
+        /* fallback small gap */
+        position: relative;
+    }
 
-.movie-card:hover {
-    transform: scale(1.02);
-}
+    /* Movie card base */
+    .movie-card {
+        --rotation: 0deg;
+        width: var(--card-width);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.4);
+        padding: 0.5rem 0.5rem 1.2rem;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        position: relative;
+        overflow: visible;
+        transform: rotate(var(--rotation)) translate(var(--tx, 0), var(--ty, 0));
+        transform-origin: center;
+        transition: transform 0.3s ease;
+        margin: var(--margin-block, 1rem) var(--margin-inline, 0.5rem);
+        z-index: 1;
+    }
 
-.movie-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-}
+    /* Hover: keep the rotation and movement */
+    .movie-card:hover {
+        transform: rotate(var(--rotation)) translate(var(--tx, 0), var(--ty, 0)) scale(1.05);
+    }
 
-.movie-title {
-    font-weight: bold;
-    color: var(--text-primary);
-    margin-bottom: 0.25rem;
-    font-size: 1.1em;
-}
+    /* Polaroid pin */
+    .movie-card::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: var(--pin-size);
+        height: var(--pin-size);
+        background: var(--accent-secondary);
+        border-radius: 50%;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        z-index: 2;
+    }
 
-.movie-meta {
-    color: var(--text-muted);
-    font-size: 0.9em;
-    margin-bottom: 0.25rem;
-}
+    /* Poster image */
+    .movie-card img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        margin-bottom: 0.75rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
 
-.stars {
-    color: var(--accent-primary);
-    font-size: 1.1em;
-    margin: 0.2rem 0;
-}
+    /* Title & metadata */
+    .movie-title {
+        font-weight: bold;
+        font-size: 1em;
+        color: var(--text-header);
+        margin-bottom: 0.25rem;
+        font-family: 'Courier New', monospace;
+    }
+
+    .movie-meta {
+        font-size: 0.8em;
+        margin-bottom: 0.2rem;
+        color: var(--text-muted);
+    }
+
+    .stars {
+        color: var(--accent-secondary);
+        font-size: 1em;
+    }
+
+    /* Rotation + random offset rules (expandable) */
+    .movie-card:nth-child(3n) {
+        --rotation: -2deg;
+        --tx: -6px;
+        --ty: 4px;
+        --margin-inline: 2rem;
+    }
+
+    .movie-card:nth-child(4n) {
+        --rotation: 1.5deg;
+        --tx: 8px;
+        --ty: -4px;
+        --margin-block: 2rem;
+    }
+
+    .movie-card:nth-child(5n) {
+        --rotation: -1deg;
+        --tx: -4px;
+        --ty: 3px;
+    }
+
+    .movie-card:nth-child(6n) {
+        --rotation: 2deg;
+        --tx: 10px;
+        --ty: 6px;
+        --margin-inline: 1.5rem;
+    }
+
+    .movie-card:nth-child(7n) {
+        --rotation: 0.5deg;
+        --tx: -10px;
+        --ty: -6px;
+        --margin-block: 3rem;
+    }
 </style>
+
+
 {% endblock extra_head %}
 
 {% block content %}
@@ -71,9 +149,9 @@
                 <img src="{{ page.extra.poster }}" alt="Poster for {{ page.title }}">
             </a>
             <div class="movie-title">{{ page.title }}</div>
-            
-            {% if page.extra.year %} 
-                <div class="movie-meta">{{ page.extra.year }} </div>
+
+            {% if page.extra.year %}
+            <div class="movie-meta">{{ page.extra.year }} </div>
             {% endif %}
 
             {% if page.extra.director %}
@@ -82,7 +160,7 @@
 
             {% if page.extra.genre %}
             <div class="movie-meta">{{ page.extra.genre }}</div>
-            {% endif %}            
+            {% endif %}
 
             {% if page.extra.rating %}
             <div class="stars">
