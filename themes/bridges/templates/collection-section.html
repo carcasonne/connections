@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/css/section.css">
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const tabs = document.querySelectorAll(".terminal-tab");
+    const contents = document.querySelectorAll(".link-collection");
+    
+    // Function to activate a specific tab
+    function activateTab(index) {
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+        tabs[index].classList.add("active");
+        contents[index].classList.add("active");
+        
+        // Get the tab's slug for the URL hash
+        const tabSlug = tabs[index].getAttribute("data-slug");
+        // Update URL without refreshing the page
+        history.replaceState(null, null, `#${tabSlug}`);
+    }
+    
+    // Add click event listeners to tabs
+    tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => {
+            activateTab(index);
+        });
+    });
+    
+    // Function to handle hash change events (when user clicks back/forward buttons)
+    function handleHashChange() {
+        const hash = window.location.hash.substring(1); // Remove the # character
+        if (hash) {
+            // Find the tab with matching slug
+            let found = false;
+            tabs.forEach((tab, index) => {
+                if (tab.getAttribute("data-slug") === hash) {
+                    activateTab(index);
+                    found = true;
+                }
+            });
+            
+            // If no matching tab was found, default to first tab
+            if (!found && tabs.length > 0) {
+                activateTab(0);
+            }
+        } else if (tabs.length > 0) {
+            // No hash, activate first tab
+            activateTab(0);
+        }
+    }
+    
+    // Check hash on page load
+    handleHashChange();
+    
+    // Listen for hash changes (back/forward navigation)
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Make the tab activation function globally accessible
+    window.activateTabBySlug = function(slug) {
+        tabs.forEach((tab, index) => {
+            if (tab.getAttribute("data-slug") === slug) {
+                activateTab(index);
+                return;
+            }
+        });
+    };
+
+    // Change  all <a> elements to open on a new page
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("#content-target a").forEach(function (el) {
+        el.setAttribute("target", "_blank");
+        el.setAttribute("rel", "noopener noreferrer");
+    });
+});
+});
+</script>
+{% endblock extra_head %}
+
+{% block content %}
+<section class="terminal-container">
+    <div class="terminal-tab-header">
+        {% for page in section.pages %}
+        <div class="terminal-tab" data-slug="{{ page.slug }}">{{ page.title }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="terminal-content">
+        {% for page in section.pages %}
+        <div class="link-collection">
+            <div class="terminal-line"><span class="prompt">[{{ config.extra.terminalprompt }}]$</span> cat "{{ page.title }}.md"</div>
+            <div id="content-target" class="terminal-output">{{ page.content | safe }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

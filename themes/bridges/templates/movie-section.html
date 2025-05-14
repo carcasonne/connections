@@ -89,7 +89,7 @@
 
     .stars {
         color: var(--accent-secondary);
-        font-size: 1em;
+        font-size: 2em;
     }
 
     /* Rotation + random offset rules (expandable) */
@@ -143,7 +143,7 @@
 
     {% if section.pages %}
     <div class="movie-grid">
-        {% for page in section.pages | sort(attribute="date") | reverse %}
+        {% for page in section.pages | sort(attribute="extra.year") | sort(attribute="date") | reverse %}
         <div class="movie-card">
             <a href="{{ page.permalink }}">
                 <img src="{{ page.extra.poster }}" alt="Poster for {{ page.title }}">

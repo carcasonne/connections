@@ -13,3 +13,4 @@ menu = [
     { name = "Articles", url = "/articles" },
     { name = "Guestbook", url = "/guestbook" }
 ]
+terminalprompt = "lainon@navi"

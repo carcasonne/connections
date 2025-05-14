@@ -13,14 +13,14 @@
     </div>
     {% for page in section.pages | sort(attribute="date") | reverse %}
     <div class="terminal-line">
-        <span class="prompt">[lain@serenity]$</span> cat "{{ page.title }}.md"
+        <span class="prompt">[{{ config.extra.terminalprompt }}]$</span> cat "{{ page.title }}.md"
     </div>    
     <div class="terminal-output">
         {{ page.content | safe }}
     </div>
     {% endfor %}
     <div class="terminal-line">
-        <span class="prompt">[lain@serenity]$</span><span class="cursor"></span>
+        <span class="prompt">[{{ config.extra.terminalprompt }}]$</span><span class="cursor"></span>
     </div>    
 </section>
 {% endblock content %}

@@ -1,8 +1,6 @@
-{% if op %}
-  {% set image = resize_image(path=path, width=width, height=height, op=op) %}
-{% else %}
-  {% set columnWidth = 220 %}  {# Approximate width of a column minus padding #}
-  {% set image = resize_image(path=path, width=columnWidth, op="fit_width") %}
-{% endif %}
-
-<img src="{{ image.url }}" alt="{{ alt | default(value="") }}" class="column-image" />
+<img
+    src="{{ path }}"
+    alt="{{ alt | default(value="Image") }}"
+    {% if width %} width="{{ width }}"{% endif %}
+    {% if height %} height="{{ height }}"{% endif %}
+/>
