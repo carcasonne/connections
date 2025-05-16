@@ -71,6 +71,7 @@ body {
 /* Main content */
 .main {
   width: 100%;
+  height: 100%;
 }
 
 /* Ensure content area doesn't constrain column layout */
@@ -203,3 +204,46 @@ tbody tr:hover {
   background-color: var(--accent-highlight);
   color: var(--accent-highlight-text);
 }
+
+
+/* BLOCKQUOTE */
+
+blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    background-color: var(--accent-highlight);
+    position: relative;
+    font-family: var(--font-main);
+    color: var(--accent-highlight-text);
+    border-left: 1px solid var(--accent-secondary);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+
+blockquote::before {
+    content: '>';
+    position: absolute;
+    left: 0.5rem;
+    top: 50%; /* Position at 50% from the top */
+    transform: translateY(-50%); /* Move up by half its height */
+    color: var(--accent-secondary);
+    font-weight: bold;
+}
+
+blockquote p {
+    margin: 0.5rem 0;
+}
+
+blockquote a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-secondary);
+    text-decoration-thickness: 1px;
+}
+
+blockquote a:hover {
+    color: var(--accent-secondary);
+}
+

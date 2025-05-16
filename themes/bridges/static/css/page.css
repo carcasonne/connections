@@ -35,7 +35,7 @@
     margin-bottom: 20px;
 }
 
-
+/* Taken from https://godcock.neocities.org/  */
 .multi-column p {
     text-justify: inter-character !important;
     text-align: justify;
@@ -49,7 +49,7 @@
     word-wrap: break-word !important;
     hyphenate-character: '\2010' !important;
     transition: opacity 0.3s ease;
-
+    
     &:where(:hover, :active, :focus) {
         background: var(--accent-highlight) !important;
         color: var(--accent-highlight-text) !important;

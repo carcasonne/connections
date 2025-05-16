@@ -1,5 +1,5 @@
 +++
-title = "Samlinger"
+title = "Collections"
 sort_by = "date"
 template = "collection-section.html"
 page_template = "page.html"

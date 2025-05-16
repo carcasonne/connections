@@ -67,16 +67,109 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     };
-
-    // Change  all <a> elements to open on a new page
-    document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("#content-target a").forEach(function (el) {
-        el.setAttribute("target", "_blank");
-        el.setAttribute("rel", "noopener noreferrer");
-    });
-});
 });
 </script>
+<style>
+/* Additional styles specific to the links table */
+.links-table {
+  width: 100%;
+  margin: 0.5rem 0;
+  border-collapse: collapse;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: calc(var(--font-size) - 1px);
+  border: 1px solid var(--border-color);
+  table-layout: fixed;
+}
+
+.links-table thead {
+  background-color: var(--accent-highlight);
+  color: var(--accent-highlight-text);
+}
+
+.links-table th, .links-table td {
+  border: 1px solid var(--border-color);
+  padding: 3px 6px;
+  text-align: left;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+
+.links-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.links-table tbody tr:hover {
+  background-color: var(--accent-highlight);
+  color: var(--accent-highlight-text);
+}
+
+.links-table tbody tr:hover a {
+  color: var(--accent-highlight-text);
+}
+
+.links-table a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.links-table a:hover {
+  color: var(--accent-primary);
+  text-shadow: 0 0 4px var(--accent-primary);
+}
+
+/* Collection styling */
+.collection-header {
+  background-color: var(--bg-primary);
+  font-weight: bold;
+}
+
+.collection-header td {
+  color: var(--accent-primary);
+  font-size: 0.95em;
+  padding: 5px 6px 3px 6px;
+  border-bottom: 2px solid var(--accent-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.collection-item {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.collection-item .link-indent {
+  color: var(--accent-secondary);
+  opacity: 0.8;
+  font-family: monospace;
+}
+
+.collection-spacer {
+  height: 8px;
+  background-color: transparent;
+  border: none;
+}
+
+.collection-spacer td {
+  border: none;
+  padding: 0;
+}
+
+/* Quote styling */
+blockquote {
+  border-left: 3px solid var(--accent-secondary);
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+</style>
 {% endblock extra_head %}
 
 {% block content %}
@@ -90,8 +183,58 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="terminal-content">
         {% for page in section.pages %}
         <div class="link-collection">
-            <div class="terminal-line"><span class="prompt">[{{ config.extra.terminalprompt }}]$</span> cat "{{ page.title }}.md"</div>
-            <div id="content-target" class="terminal-output">{{ page.content | safe }}</div>
+            <div class="terminal-line" style="margin-bottom: 0.25rem;"><span class="prompt">[{{ config.extra.terminalprompt }}]$</span> cat "{{ page.title }}.md"</div>
+            <div id="content-target" class="terminal-output">
+                {% if page.content | striptags | trim %}
+                    {# First, show any content before the links - like quotes or paragraphs #}
+                    {{ page.content | safe }}
+                {% endif %}
+                
+                {% if page.extra.links %}
+                    <table class="links-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 75%;">Link</th>
+                                <th style="width: 25%;">Source</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for link in page.extra.links %}
+                                {% if link.type == "regular" %}
+                                    <tr>
+                                        <td>
+                                            <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title }}</a>
+                                        </td>
+                                        <td style="font-size: 0.9em; color: var(--text-secondary);">Forum</td>
+                                    </tr>
+                                {% elif link.type == "collection" %}
+                                    {# maybe i will add some custom stuff here #}                                    
+                                    {# Then add the header row #}
+                                    <tr class="collection-header">
+                                        <td colspan="2">{{ link.title | upper }}</td>
+                                    </tr>
+                                    
+                                    {# Then add all sublinks #}
+                                    {% for sublink in link.sublinks %}
+                                        <tr class="collection-item">
+                                            <td>
+                                                <span class="link-indent">└─ </span>
+                                                <a href="{{ sublink.url }}" target="_blank" rel="noopener noreferrer">{{ sublink.title }}</a>
+                                            </td>
+                                            <td style="font-size: 0.9em; color: var(--text-secondary);">{{ link.title }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    
+                                    {# Add a spacer row #}
+                                    <tr class="collection-spacer">
+                                        <td colspan="2" style="height: 8px; padding: 0; border: none;"></td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
         </div>
         {% endfor %}
     </div>
