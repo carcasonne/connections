@@ -1,8 +1,8 @@
 +++
 title = "Notes"
 sort_by = "date"
-template = "note-section.html"
-page_template = "note.html"
+template = "common/note-section.html"
+page_template = "common/note.html"
 +++
 
 This is a continuous stream of notes and thoughts, small and insignificant.

@@ -548,27 +548,6 @@
     font-weight: bold;
 }
 
-/* Group sublinks laid out horizontally */
-.link-subgrid {
-
-}
-
-.link-subgrid li {
-
-}
-
-.link-subgrid li:hover {
-
-}
-
-.link-subgrid li a {
-
-}
-
-.link-subgrid li a:hover {
-
-}
-
 /* Scanline animation background */
 .terminal-content::before {
     content: '';

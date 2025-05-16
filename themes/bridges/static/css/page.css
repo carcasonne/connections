@@ -57,6 +57,10 @@
 
 }
 
+.multi-column a {
+    color: var(--accent-primary);
+}
+
 /* Responsive column counts */
 @media (max-width: 1800px) {
     .multi-column {

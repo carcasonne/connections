@@ -1,0 +1,249 @@
+/* lain-theme.css - Common Lain-inspired styling for all sections */
+
+:root {
+    /* Core theme colors */
+    --wired-green: rgba(64, 160, 136, 0.9);
+    --wired-blue: rgba(0, 174, 255, 0.7);
+    --glitch-red: rgba(255, 0, 89, 0.7);
+    --data-highlight: rgba(64, 160, 136, 0.1);
+    
+    /* Effect variables */
+    --scan-line-size: 3px;
+    --grid-size: 64px;
+    --terminal-shadow: 0 0 1px var(--accent-primary);
+    --static-opacity: 0.06;
+}
+
+/* ====== BASE STYLING ====== */
+
+/* Base digital styling */
+body {
+    background-color: var(--bg-primary);
+    font-family: var(--font-main), monospace;
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Subtle scan lines effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.1) var(--scan-line-size),
+        transparent var(--scan-line-size),
+        transparent calc(var(--scan-line-size) * 2)
+    );
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+}
+
+/* Background grid pattern */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(11, 15, 18, 0.8) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(11, 15, 18, 0.8) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.15;
+}
+
+/* ====== SECTION HEADERS ====== */
+
+/* Common section header */
+.section-header {
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.section-content {
+    text-align: center;
+    position: relative;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Section title styling */
+.section-content h1 {
+    font-family: var(--font-header);
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.8rem;
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 0 0 1rem;
+    opacity: 0.9;
+}
+
+/* Layer/path indicator */
+.layer-indicator {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--wired-green);
+    opacity: 0.8;
+    margin-top: 0.5rem;
+    letter-spacing: 0.2rem;
+}
+
+/* ====== COMMON ANIMATIONS ====== */
+
+/* Terminal cursor blinking */
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Status indicator pulsing */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(64, 160, 136, 0.7); }
+    70% { box-shadow: 0 0 0 4px rgba(64, 160, 136, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(64, 160, 136, 0); }
+}
+
+/* Vertical scan effect */
+@keyframes scan-animation {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* Loading animations */
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Digital glitch effect */
+@keyframes glitch-effect {
+    0% { 
+        clip-path: inset(40% 0 61% 0);
+        transform: translate(-5px);
+    }
+    20% { 
+        clip-path: inset(92% 0 1% 0);
+        transform: translate(5px);
+    }
+    40% { 
+        clip-path: inset(43% 0 1% 0);
+        transform: translate(-5px);
+    }
+    60% { 
+        clip-path: inset(25% 0 58% 0);
+        transform: translate(5px);
+    }
+    80% { 
+        clip-path: inset(54% 0 7% 0);
+        transform: translate(-5px);
+    }
+    100% { 
+        clip-path: inset(0% 0 0% 0);
+        transform: translate(0);
+    }
+}
+
+/* ====== COMMON ELEMENTS ====== */
+
+/* Status indicator styling */
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--wired-green);
+    animation: pulse 2s infinite;
+}
+
+/* Terminal header styling */
+.terminal-header {
+    padding: 0.8rem 1rem;
+    background-color: rgba(64, 160, 136, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--accent-secondary);
+    font-family: monospace;
+}
+
+/* Rating visualization bars */
+.rating-block {
+    width: 8px;
+    height: 15px;
+    background-color: var(--accent-secondary);
+    opacity: 0.3;
+}
+
+.rating-active {
+    opacity: 0.8;
+}
+
+/* Terminal cursor */
+.terminal-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: var(--accent-secondary);
+    margin-left: 5px;
+    animation: cursor-blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+/* Scan line effect */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(64, 160, 136, 0.6);
+    opacity: 0.3;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    animation: scan-animation 2s linear infinite;
+}
+
+/* Digital interference */
+.digital-interference {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.03),
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* ====== RESPONSIVE ADJUSTMENTS ====== */
+
+@media (max-width: 768px) {
+    .section-content h1 {
+        font-size: 1.8rem;
+        letter-spacing: 0.5rem;
+    }
+    
+    .layer-indicator {
+        font-size: 0.7rem;
+        letter-spacing: 0.15rem;
+    }
+}

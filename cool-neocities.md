@@ -24,5 +24,3 @@ links = [
 
 Neocities is a website that allows users to create&host their own static websites. Small communities have grown in there, where people create websites in the same style and then link to each other. For example with banners, like the banner I have in the navigation bar.
 These are all neocities which seem pretty cool to me. Mostly ones heavy on aesthetics, but I suppose that is everything on that part of the web. Main themes here are cyberpunk, "Lain", and rustic. Lots of cool css-tricks to find.
-
-I suppose I should display all these people's banners but I am too lazy rn.

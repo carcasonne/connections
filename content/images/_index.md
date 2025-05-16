@@ -1,6 +1,6 @@
 +++
 title = "Images"
-template = "gallery.html"
+template = "laincore/gallery.html"
 sort_by = "none"
 +++
 

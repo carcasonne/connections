@@ -1,6 +1,6 @@
 +++
     title = "Movies"
     sort_by = "date"
-    template = "movie-section.html"
+    template = "laincore/movie-section.html"
     page_template = "page.html"
 +++

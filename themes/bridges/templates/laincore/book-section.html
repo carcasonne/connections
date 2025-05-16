@@ -1,0 +1,351 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/css/page.css">
+<link rel="stylesheet" href="/css/section.css">
+<link rel="stylesheet" href="/css/lain-theme.css">
+<style>
+    /* Book section styling - elegant simplicity with Lain aesthetic */
+    
+    /* Content container */
+    .multi-column {
+        position: relative;
+        padding: 1.5rem;
+        border: 1px solid var(--accent-secondary);
+        background-color: rgba(19, 26, 26, 0.5);
+        margin: 2rem auto;
+        max-width: 90%;
+        text-align: left;
+    }
+
+    .multi-column::before {
+        content: "// SYSTEM DATA";
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        background-color: var(--bg-primary);
+        padding: 0 10px;
+        font-size: 0.8rem;
+        color: var(--accent-secondary);
+        font-family: monospace;
+    }
+
+    /* Database container */
+    .book-database {
+        position: relative;
+        border: 1px solid var(--accent-secondary);
+        background-color: rgba(19, 26, 26, 0.3);
+        margin-top: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Database header */
+    .database-header {
+        padding: 0.8rem 1rem;
+        background-color: rgba(64, 160, 136, 0.15);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--accent-secondary);
+        font-family: monospace;
+    }
+
+    .database-title {
+        font-size: 0.8rem;
+        color: var(--wired-green);
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .database-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.7rem;
+        color: var(--text-muted);
+    }
+
+    /* Table styling */
+    .book-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .book-table thead {
+        background-color: rgba(19, 26, 26, 0.5);
+    }
+
+    .book-table th {
+        padding: 0.8rem 1rem;
+        text-align: left;
+        font-weight: normal;
+        font-size: 0.9rem;
+        color: var(--wired-green);
+        border-bottom: 1px solid rgba(64, 160, 136, 0.3);
+        position: relative;
+    }
+
+    /* Subtle column separators */
+    .book-table th:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 30%;
+        right: 0;
+        height: 40%;
+        width: 1px;
+        background-color: rgba(64, 160, 136, 0.2);
+    }
+
+    /* Row styling */
+    .book-table tbody tr {
+        transition: background-color 0.3s ease;
+        border-bottom: 1px solid rgba(64, 160, 136, 0.1);
+    }
+
+    .book-table tbody tr:hover {
+        background-color: rgba(64, 160, 136, 0.05);
+    }
+
+    .book-table td {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        position: relative;
+    }
+
+    /* Staggered loading effect */
+    @keyframes row-appear {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .book-table tbody tr {
+        opacity: 0;
+        animation: row-appear 0.4s ease forwards;
+    }
+
+    {% for i in range(end=50) %}
+    .book-table tbody tr:nth-child({{ i }}) {
+        animation-delay: {{ 0.03 * i }}s;
+    }
+    {% endfor %}
+
+    /* Book title styling */
+    .book-title {
+        position: relative;
+        text-decoration: none;
+        color: var(--text-primary);
+        transition: color 0.2s ease;
+        padding-left: 0.8rem;
+    }
+
+    .book-title::before {
+        content: ">";
+        position: absolute;
+        left: 0;
+        color: var(--wired-green);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .book-title:hover {
+        color: var(--accent-primary);
+    }
+
+    .book-title:hover::before {
+        opacity: 1;
+    }
+
+    /* Status indicators */
+    .book-status {
+        position: relative;
+        padding-left: 15px;
+    }
+
+    .book-status::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+
+    .status-reading::before {
+        background-color: var(--wired-blue);
+        animation: pulse 2s infinite;
+    }
+
+    .status-completed::before {
+        background-color: var(--wired-green);
+    }
+
+    .status-planned::before {
+        border: 1px solid var(--text-muted);
+        background: transparent;
+    }
+
+    .status-dropped::before {
+        background-color: var(--glitch-red);
+    }
+
+    /* Rating visualization */
+    .rating-display {
+        display: flex;
+        gap: 4px;
+    }
+
+    .rating-bar {
+        width: 6px;
+        height: 18px;
+        background-color: rgba(64, 160, 136, 0.2);
+    }
+
+    .rating-filled {
+        background-color: var(--wired-green);
+    }
+
+    /* Scan line effect */
+    .scan-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgba(64, 160, 136, 0.5);
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 5;
+        animation: scan-animation 3s linear infinite;
+    }
+
+    /* Data cursor in header */
+    .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 15px;
+        background-color: var(--wired-green);
+        margin-left: 5px;
+        animation: cursor-blink 1s step-end infinite;
+        vertical-align: middle;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .book-table {
+            display: block;
+            overflow-x: auto;
+        }
+    }
+</style>
+{% endblock extra_head %}
+
+{% block content %}
+<section id="section-overview" class="section">
+    <div class="section-header">
+        <div class="section-content">
+            <h1>{{ section.title }}</h1>
+            <div class="layer-indicator">PROTOCOL://WIRED.RECORDS/{{ section.title | upper }}/INDEX</div>
+
+            {% if section.content %}
+            <div class="multi-column">
+                {{ section.content | safe }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if section.pages %}
+    <div class="book-database">
+        <div class="database-header">
+            <div class="database-title">
+                <span class="status-indicator"></span>
+                DATABASE://{{ section.title | upper }} <span class="cursor"></span>
+            </div>
+            <div class="database-info">
+                <div class="record-count">{{ section.pages | length }} ENTRIES INDEXED</div>
+            </div>
+        </div>
+        
+        <div class="scan-line"></div>
+        
+        <table class="book-table">
+            <thead>
+                <tr>
+                    <th style="width:40%;">Title</th>
+                    <th>Language</th>
+                    <th>Author</th>
+                    <th>Rating</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for page in section.pages | sort(attribute="date") | reverse %}
+                <tr>
+                    <td>
+                        <a href="{{ page.permalink }}" class="book-title">{{ page.title }}</a>
+                    </td>
+                    <td>{{ page.extra.language }}</td>
+                    <td>{{ page.extra.author }}</td>
+                    <td>
+                        <div class="rating-display">
+                            {% if page.extra.rating %}
+                                {% for i in range(end=5) %}
+                                    <div class="rating-bar {% if i < page.extra.rating|int %}rating-filled{% endif %}"></div>
+                                {% endfor %}
+                            {% else %}
+                                <span>—</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        {% if page.extra.status %}
+                            <span class="book-status status-{{ page.extra.status | lower }}">
+                                {{ page.extra.status }}
+                            </span>
+                        {% else %}
+                            <span>—</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Subtle digital interference effect
+            function randomRowHighlight() {
+                const rows = document.querySelectorAll('.book-table tbody tr');
+                if (rows.length > 0) {
+                    const randomRow = rows[Math.floor(Math.random() * rows.length)];
+                    
+                    // Subtle highlight
+                    const originalBg = getComputedStyle(randomRow).backgroundColor;
+                    randomRow.style.backgroundColor = 'rgba(64, 160, 136, 0.1)';
+                    
+                    // Return to normal after short time
+                    setTimeout(() => {
+                        randomRow.style.backgroundColor = originalBg;
+                    }, 500);
+                    
+                    // Schedule next
+                    setTimeout(randomRowHighlight, Math.random() * 8000 + 5000);
+                }
+            }
+            
+            // Start random highlights after initial load
+            setTimeout(randomRowHighlight, 4000);
+        });
+    </script>
+</section>
+{% endblock content %}

@@ -1,7 +1,7 @@
 +++
     title = "Books"
     sort_by = "date"
-    template = "table-section.html"
+    template = "lainchill/book-section.html"
     page_template = "page.html"
 +++
 

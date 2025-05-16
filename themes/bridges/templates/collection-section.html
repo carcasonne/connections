@@ -124,6 +124,12 @@ document.addEventListener("DOMContentLoaded", function() {
   text-shadow: 0 0 4px var(--accent-primary);
 }
 
+.collection-header-link {
+    color: var(--accent-tertiary) !important;
+    display: inline !important;
+    padding-right: 64% !important;
+}
+
 /* Collection styling */
 .collection-header {
   background-color: var(--bg-primary);
@@ -139,11 +145,31 @@ document.addEventListener("DOMContentLoaded", function() {
   letter-spacing: 0.5px;
 }
 
+.subcollection-header {
+  background-color: rgba(0, 0, 0, 0.25);
+  font-weight: bold;
+}
+
+.subcollection-header td {
+  color: var(--accent-tertiary, #66b2b2);
+  font-size: 0.9em;
+  padding: 4px 6px 3px 6px;
+  border-bottom: 1px dashed var(--accent-tertiary, #66b2b2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .collection-item {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-.collection-item .link-indent {
+.subcollection-item {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.collection-item .link-indent,
+.subcollection-header .link-indent,
+.subcollection-item .link-indent {
   color: var(--accent-secondary);
   opacity: 0.8;
   font-family: monospace;
@@ -204,11 +230,26 @@ blockquote {
                                     <tr>
                                         <td>
                                             <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title }}</a>
+                                            {% if link.note %}
+                                                <span style="margin-left: 8px; color: var(--text-secondary); font-size: 0.9em; font-style: italic;">{{ link.note }}</span>
+                                            {% endif %}
                                         </td>
-                                        <td style="font-size: 0.9em; color: var(--text-secondary);">Forum</td>
+                                        <td style="font-size: 0.9em; color: var(--text-secondary);">{% if link.source %}{{ link.source }}{% else %}Link{% endif %}</td>
                                     </tr>
                                 {% elif link.type == "collection" %}
-                                    {# maybe i will add some custom stuff here #}                                    
+                                    {% if link.url %}
+                                    {# First add the main link if it has a URL #}
+                                    <tr>
+                                        <td>
+                                            <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.title }}</a>
+                                            {% if link.note %}
+                                                <span style="margin-left: 8px; color: var(--text-secondary); font-size: 0.9em; font-style: italic;">{{ link.note }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td style="font-size: 0.9em; color: var(--text-secondary);">{% if link.source %}{{ link.source }}{% else %}Forum{% endif %}</td>
+                                    </tr>
+                                    {% endif %}
+                                    
                                     {# Then add the header row #}
                                     <tr class="collection-header">
                                         <td colspan="2">{{ link.title | upper }}</td>
@@ -216,13 +257,46 @@ blockquote {
                                     
                                     {# Then add all sublinks #}
                                     {% for sublink in link.sublinks %}
-                                        <tr class="collection-item">
-                                            <td>
-                                                <span class="link-indent">└─ </span>
-                                                <a href="{{ sublink.url }}" target="_blank" rel="noopener noreferrer">{{ sublink.title }}</a>
-                                            </td>
-                                            <td style="font-size: 0.9em; color: var(--text-secondary);">{{ link.title }}</td>
-                                        </tr>
+                                        {% if sublink.type is defined and sublink.type == "collection" %}
+                                            {# This is a sub-collection #}                                            
+                                            {# Add the sub-collection header #}
+                                            <tr class="subcollection-header">
+                                                <td colspan="2">
+                                                    <span class="link-indent">└─ </span>
+                                                    {% if sublink.url %}
+                                                        <a href="{{ sublink.url }}" class="collection-header-link" target="_blank" rel="noopener noreferrer">{{ sublink.title }}</a>
+                                                    {% else %}
+                                                        {{ sublink.title | upper }}
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            
+                                            {# Add the sub-collection links #}
+                                            {% for subsublink in sublink.sublinks %}
+                                                <tr class="subcollection-item">
+                                                    <td>
+                                                        <span class="link-indent">　└─ </span>
+                                                        <a href="{{ subsublink.url }}" target="_blank" rel="noopener noreferrer">{{ subsublink.title }}</a>
+                                                        {% if subsublink.note %}
+                                                            <span style="margin-left: 8px; color: var(--text-secondary); font-size: 0.9em; font-style: italic;">{{ subsublink.note }}</span>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td style="font-size: 0.9em; color: var(--text-secondary);">{{ sublink.title }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% else %}
+                                            {# Regular sublink #}
+                                            <tr class="collection-item">
+                                                <td>
+                                                    <span class="link-indent">└─ </span>
+                                                    <a href="{{ sublink.url }}" target="_blank" rel="noopener noreferrer">{{ sublink.title }}</a>
+                                                    {% if sublink.note %}
+                                                        <span style="margin-left: 8px; color: var(--text-secondary); font-size: 0.9em; font-style: italic;">{{ sublink.note }}</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td style="font-size: 0.9em; color: var(--text-secondary);">{{ link.title }}</td>
+                                            </tr>
+                                        {% endif %}
                                     {% endfor %}
                                     
                                     {# Add a spacer row #}
