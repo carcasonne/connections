@@ -1,11 +1,245 @@
 {% extends "base.html" %}
 
+{% block title %}layer:00/ego{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/css/section.css">
+<link rel="stylesheet" href="/css/lain-theme.css">
+<style>
+    /* Center everything on screen */
+    .screen-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+        padding: 1rem;
+    }
+    
+    /* Larger terminal screen */
+    .terminal-screen {
+        width: 100%;
+        max-width: 800px;
+        min-height: 500px;
+        background-color: #0a0e14;
+        border: 1px solid rgba(64, 160, 136, 0.4);
+        padding: 0;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+        position: relative;
+    }
+    
+    /* Basic scanlines effect - subtle */
+    .scanlines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.05) 50%,
+            transparent 51%,
+            transparent 100%
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0.3;
+    }
+    
+    /* Simple terminal header */
+    .terminal-header {
+        padding: 0.3rem 0.8rem;
+        background-color: rgba(10, 14, 20, 0.9);
+        border-bottom: 1px solid rgba(64, 160, 136, 0.3);
+        display: flex;
+        justify-content: space-between;
+        font-family: monospace;
+        font-size: 0.7rem;
+        color: rgba(199, 230, 215, 0.7);
+    }
+    
+    /* Terminal content */
+    .terminal-content {
+        padding: 1.5rem;
+        font-family: monospace;
+        color: rgba(199, 230, 215, 0.85);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        min-height: 450px;
+        position: relative;
+    }
+    
+    /* Simple message */
+    .message {
+        margin-bottom: 0.7rem;
+    }
+    
+    /* Title message specific styling */
+    .title-message {
+        margin: 1.5rem 0;
+        color: rgba(64, 160, 136, 0.9);
+    }
+    
+    /* Lain specific styling */
+    .lain-message {
+        padding-left: 1.5rem;
+        position: relative;
+        display: none; /* Initially hidden, shown by JS */
+    }
+    
+    .lain-message::before {
+        content: "lain:";
+        position: absolute;
+        left: 0;
+        color: rgba(0, 174, 255, 0.9);
+    }
+    
+    /* Quote message */
+    .quote-message {
+        padding-left: 1.5rem;
+        position: relative;
+        color: rgba(199, 230, 215, 0.6);
+        font-style: italic;
+        display: none; /* Initially hidden, shown by JS */
+    }
+    
+    /* Blinking cursor */
+    .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 15px;
+        background-color: rgba(64, 160, 136, 0.8);
+        animation: cursor-blink 1s step-end infinite;
+        vertical-align: middle;
+    }
+    
+    @keyframes cursor-blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+    
+    /* Simple fade-in animation */
+    @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .fade-in {
+        animation: fade-in 2s;
+    }
+</style>
+{% endblock extra_head %}
+
 {% block content %}
+<div class="screen-container">
+    <div class="terminal-screen fade-in">
+        <div class="scanlines"></div>
+        
+        <div class="terminal-header">
+            <span>wired://connection</span>
+            <span>{{ now() | date(format="%Y.%m.%d") }}</span>
+        </div>
+        
+        <div class="terminal-content">
+            <div class="message">Connection established</div>
+            <div class="message title-message" id="title-message"></div>
+            <div class="lain-message" id="lain-message"></div>
+            <div class="quote-message" id="quote-message"></div>
+            <div class="cursor" id="cursor"></div>
+        </div>
+    </div>
+</div>
 
-<section id="about" class="section">
-    <h1>Welcome to My Page</h1>
-
-    <p>Here I Write.</p> 
-</section>
-
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Terminal elements
+        const titleElement = document.getElementById('title-message');
+        const lainElement = document.getElementById('lain-message');
+        const quoteElement = document.getElementById('quote-message');
+        const cursorElement = document.getElementById('cursor');
+        
+        // Lain messages to randomly select from
+        const lainMessages = [
+            "Why don't you come to the Wired?",
+            "Are you real?",
+            "Do you understand? It's all in your imagination.",
+            "Close the world. Open the next.",
+            "The border between the real and virtual is disappearing.",
+            "Everyone is connected.",
+            "In the Wired, I am everywhere.",
+            "You're nobody until you're talked about."
+        ];
+        
+        // Quotes to randomly select from
+        const quotes = [
+            "No matter where you go, everyone's connected.",
+            "If you aren't remembered, then you never existed.",
+            "Present day, present time."
+        ];
+        
+        // Select random messages
+        const randomLainMessage = lainMessages[Math.floor(Math.random() * lainMessages.length)];
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        
+        // Position cursor initially
+        cursorElement.style.position = 'absolute';
+        cursorElement.style.left = '0';
+        cursorElement.style.top = titleElement.offsetTop + 'px';
+        
+        // Function to type text with variable speed
+        function typeText(element, text, onComplete, minDelay = 100, maxDelay = 250) {
+            element.style.display = 'block';
+            element.textContent = '';
+            
+            // Move cursor to this element
+            cursorElement.style.position = 'static';
+            element.appendChild(cursorElement);
+            
+            let i = 0;
+            
+            function typeNextChar() {
+                if (i < text.length) {
+                    // Add next character
+                    element.textContent += text.charAt(i);
+                    i++;
+                    
+                    // Reappend cursor after adding text
+                    element.appendChild(cursorElement);
+                    
+                    // Calculate next delay
+                    const nextDelay = minDelay + Math.random() * (maxDelay - minDelay);
+                    
+                    // Schedule next character
+                    setTimeout(typeNextChar, nextDelay);
+                } else if (onComplete) {
+                    // If there's a callback, call it when typing is complete
+                    setTimeout(onComplete, 1000); // Wait a second before proceeding
+                }
+            }
+            
+            // Start typing
+            typeNextChar();
+        }
+        
+        // Sequence of typing events
+        function startSequence() {
+            // First type the title
+            setTimeout(() => {
+                typeText(titleElement, "layer:00/ego", () => {
+                    // Then type Lain's message
+                    typeText(lainElement, randomLainMessage, () => {
+                        // Finally type the quote
+                        setTimeout(() => {
+                            typeText(quoteElement, randomQuote, null, 120, 280);
+                        }, 3000); // Wait 3 seconds before showing the quote
+                    });
+                }, 80, 150); // Title types a bit faster
+            }, 2000); // Wait 2 seconds before starting
+        }
+        
+        // Start the typing sequence
+        startSequence();
+    });
+</script>
 {% endblock content %}

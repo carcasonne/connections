@@ -5,7 +5,7 @@ date = 2023-07-20
 [extra]
 artist = "Bob Dylan"
 year = 1966
-category = "2025"
+category = "timeless"
 cover = "/images/albums/bob-dylan_blonde-on-blonde.jpg"
 favorites = [
     "One of Us Must Know (Sooner or Later)",

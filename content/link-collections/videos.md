@@ -19,6 +19,20 @@ links = [
 
   { type = "collection", title = "Video Podcasts", url = "", source = "youtube", sublinks = [
     
+    { type = "collection", title = "RedLetterMedia", url = "https://www.youtube.com/@RedLetterMedia", sublinks = [
+      { title = "Star Wars: The Last Plinkett Review", url = "https://www.youtube.com/watch?v=f83D18xL7VE"},
+      { title = "Half in the Bag: The Last Last Jedi Review", url = "https://www.youtube.com/watch?v=L9hwGZFPSmw"},
+      { title = "Best of the Worst: Vampire Assassin, Hack-O-Lantern, and Cathy's Curse", url = "https://www.youtube.com/watch?v=W1QJazEHMUo"},
+      { title = "Best of the Worst: The Last Vampire on Earth", url = "https://www.youtube.com/watch?v=y43vWEPkceM"},
+      { title = "Best of the Worst: Suburban Sasquatch", url = "https://www.youtube.com/watch?v=OCmolso_LrQ"},
+      { title = "Best of the Worst: Lycan Colony", url = "https://www.youtube.com/watch?v=5nQYdtaH41k"},
+    ]},
+    
+    { type = "collection", title = "Snake & Banter", url = "https://www.youtube.com/@lastfreenationcs", sublinks = [
+      { title = "Can HooXi Save Astralis? / kyousuke's Signing Raises Question Marks - Snake & Banter 95 ft Freya", url = "https://www.youtube.com/watch?v=WR04aUdATPA"}
+    ]},
+    
+    
     { type = "collection", title = "Cold Ones", url = "https://www.youtube.com/channel/UCfbnTUxUech4P1XgYUwYuKA", sublinks = [
       { title = "DO WE STILL TALK TO...", url = "https://www.youtube.com/watch?v=vkDWHiphPz4", note = "" },
       { title = "PewDiePie", url = "https://www.youtube.com/watch?v=h-GQlkyU7p4", note = "" },

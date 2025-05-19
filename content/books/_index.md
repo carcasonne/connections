@@ -1,8 +1,10 @@
 +++
-    title = "Books"
+    title = "layer:01/books"
     sort_by = "date"
-    template = "lainchill/book-section.html"
+    template = "laincore/book-section.html"
     page_template = "page.html"
+    [extra]
+    weight = 1
 +++
 
 Here I present a list of the books and stories I have read, am reading. It serves mainly as a way of keeping myself focused and actually able to remember what books I have going. I am bad at just reading a book, I always end up reading the first quarter and then shift focus to something else, a trait I hope this log can help me in managing. Using sites like Goodreads is fine, though its social aspects are boring and seem more geared towards housewives. Reviews are rarely interesting, so I thought »why not just log it myself«. That way I also end up controlling my own data, I cope, though I actually don't care much about having my personal book logging data stored on a might-as-well-be anonymous account. The more apppealing aspect was the ability to style the website and format myself, something I am a sucker for. And when I first found [godcock's](https://godcock.neocities.org/lit) webpage through the Lainchan webring I got hit by one of those lovely strikes of inspiration which left me with no choice but to keep working until I was finished.

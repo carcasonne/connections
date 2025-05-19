@@ -7,6 +7,7 @@ links = [
   # Regular links
   { type = "regular", title = "Startpages Subreddit", url = "https://www.reddit.com/r/startpages/" },
   { type = "regular", title = "Half Life TV", url = "https://www.hltv.org/" },
+  { type = "regular", title = "dust2.dk", url = "https://www.dust2.dk/" },
   { type = "regular", title = "zzzchan", url = "https://zzzchan.xyz/index.html" },
   { type = "regular", title = "Paradox Forum", url = "https://forum.paradoxplaza.com/forum/" },
   

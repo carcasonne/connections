@@ -1,9 +1,16 @@
 <nav class="nav-container">
-  <a href="{{ get_url(path="/") }}">Home</a>
+  <a href="{{ get_url(path="/") }}">layer:00/ego</a>
   {% set root = get_section(path="_index.md") %}
   {% if root.subsections %}
-    {% for subsection_path in root.subsections | sort %}
+    {% set subsections = [] %}
+    {% for subsection_path in root.subsections %}
       {% set subsection = get_section(path=subsection_path) %}
+      <!-- Create an array of subsections -->
+      {% set_global subsections = subsections | concat(with=[subsection]) %}
+    {% endfor %}
+
+    <!-- Sort by weight -->
+    {% for subsection in subsections | sort(attribute="extra.weight") %}
       <a href="{{ subsection.permalink }}">{{ subsection.title }}</a>
     {% endfor %}
   {% endif %}
@@ -12,11 +19,11 @@
   <div class="nav-local-index">
     <p>local index</p>
     {% set use_header_navigation = false %}
-    
+
     {% if section.extra and section.extra.headerNavigation %}
       {% set use_header_navigation = true %}
     {% endif %}
-    
+
     {% for page in section.pages | sort(attribute="date") | reverse %}
       {% if use_header_navigation %}
         <a href="{{ section.permalink }}#{{ page.slug }}" class="nav-article">{{ page.title }}</a>
@@ -28,8 +35,6 @@
   {% endif %}
 
   <div>
-    <!-- <img src="/images/frieren.jpg">
-    <img src="/images/frierenreaction.jpg"> -->
     <img src="/images/lowry.png" style="padding-bottom: 10px">
     <img src="/images/proxy-image.gif">
   </div>

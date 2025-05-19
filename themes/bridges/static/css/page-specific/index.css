@@ -1,0 +1,486 @@
+/* index.css - Styling for the main index page */
+/* Section styling */
+#section-overview {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: var(--bg-primary);
+    background-image: radial-gradient(circle at 50% 50%,
+            rgba(64, 160, 136, 0.05) 0%,
+            var(--bg-primary) 80%);
+}
+
+/* Section header styling */
+.section-header {
+    margin-bottom: 2rem;
+    position: relative;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+}
+
+.section-header h1 {
+    font-family: var(--font-header);
+    font-size: 2.5rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: var(--text-header);
+    margin-bottom: 0.7rem;
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--accent-secondary);
+}
+
+.section-header h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 15px;
+    height: 1px;
+    background-color: var(--accent-secondary);
+    transform: translateY(-50%);
+}
+
+.layer-indicator {
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    color: var(--accent-secondary);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    letter-spacing: 0.05rem;
+}
+
+/* Multi-column content */
+.multi-column {
+    column-count: 3;
+    column-gap: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+    .multi-column {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .multi-column {
+        column-count: 1;
+    }
+}
+
+/* Lain interface - the main content area */
+.lain-interface {
+    margin: 3rem 0;
+    position: relative;
+    min-height: 300px;
+}
+
+/* The glitched monitor effect */
+.glitched-monitor {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(64, 160, 136, 0.3);
+}
+
+.monitor-text {
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: var(--accent-secondary);
+    text-transform: lowercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+    transform: skew(-5deg);
+}
+
+.monitor-text:nth-child(2) {
+    margin-bottom: 0;
+    animation: subtle-flicker 4s infinite;
+}
+
+@keyframes subtle-flicker {
+
+    0%,
+    95%,
+    100% {
+        opacity: 0.9;
+    }
+
+    95.5%,
+    96.5% {
+        opacity: 0.2;
+    }
+
+    97%,
+    98% {
+        opacity: 0.9;
+    }
+
+    98.5%,
+    99% {
+        opacity: 0.2;
+    }
+}
+
+.monitor-static {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.05;
+    z-index: 1;
+}
+
+/* Scattered text fragments */
+.scattered-text {
+    position: relative;
+    margin: 4rem 0;
+    height: 100px;
+}
+
+.text-fragment {
+    position: absolute;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    opacity: 0.5;
+    font-style: italic;
+    animation: fade-pulse 10s infinite alternate;
+}
+
+.f1 {
+    top: 0;
+    left: 15%;
+    transform: rotate(-2deg);
+    animation-delay: 0s;
+}
+
+.f2 {
+    top: 40px;
+    right: 20%;
+    transform: rotate(1deg);
+    animation-delay: 4s;
+}
+
+.f3 {
+    bottom: 0;
+    left: 30%;
+    transform: rotate(-1deg);
+    animation-delay: 7s;
+}
+
+@keyframes fade-pulse {
+
+    0%,
+    40%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50%,
+    90% {
+        opacity: 0.7;
+    }
+}
+
+/* Main database styling - sector grid */
+.main-database {
+    position: relative;
+    margin-top: 3rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Database header styling */
+.database-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.database-title {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    color: var(--accent-secondary);
+    letter-spacing: 0.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-secondary);
+    animation: status-pulse 2s infinite;
+}
+
+@keyframes status-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(64, 160, 136, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 4px rgba(64, 160, 136, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(64, 160, 136, 0);
+    }
+}
+
+.cursor {
+    display: inline-block;
+    width: 6px;
+    height: 15px;
+    background-color: var(--accent-secondary);
+    margin-left: 4px;
+    animation: cursor-blink 1s infinite;
+    vertical-align: middle;
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.database-info {
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.record-count {
+    padding: 0.2rem 0.5rem;
+    background: rgba(0, 174, 255, 0.1);
+    border-left: 1px solid var(--accent-primary);
+}
+
+/* Sector grid layout */
+.sector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+/* Sector node styling */
+.sector-node {
+    position: relative;
+    background-color: var(--card-bg);
+    border: 1px solid rgba(64, 160, 136, 0.3);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100px;
+}
+
+.sector-node:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), 0 0 4px var(--accent-secondary);
+    border-color: var(--accent-secondary);
+}
+
+/* Node header styling */
+.sector-node .node-header {
+    padding: 0.4rem 0.6rem;
+    background-color: rgba(64, 160, 136, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed rgba(64, 160, 136, 0.3);
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: var(--accent-secondary);
+}
+
+.sector-node .node-id {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sector-node .node-status {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-secondary);
+    animation: status-pulse 2s infinite;
+}
+
+/* Sector link styling */
+.sector-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.8rem;
+    height: calc(100% - 29px);
+}
+
+.sector-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(64, 160, 136, 0.1);
+    border: 1px solid rgba(64, 160, 136, 0.3);
+    margin-right: 1rem;
+}
+
+.sector-icon .icon {
+    font-size: 1.2rem;
+}
+
+.sector-data {
+    flex: 1;
+}
+
+.sector-title {
+    font-size: 1rem;
+    color: var(--accent-primary);
+    margin-bottom: 0.3rem;
+}
+
+.sector-description {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Digital interference effect */
+.digital-interference {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    mix-blend-mode: overlay;
+    background-color: rgba(64, 160, 136, 0.2);
+    transition: opacity 0.3s ease;
+}
+
+.sector-node:hover .digital-interference {
+    opacity: 0.2;
+}
+
+/* Console terminal styling */
+.wired-console {
+    margin-top: 3rem;
+    padding: 1rem;
+    background-color: rgba(10, 14, 20, 0.8);
+    border: 1px solid var(--border-color);
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    min-height: 150px;
+}
+
+.console-line {
+    padding: 0.2rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.console-line.output {
+    color: var(--accent-secondary);
+    opacity: 0.8;
+    padding-left: 1.5rem;
+}
+
+.prompt {
+    color: var(--accent-secondary);
+    margin-right: 0.5rem;
+}
+
+.blink-cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1em;
+    background-color: var(--accent-secondary);
+    animation: cursor-blink 1s step-start infinite;
+    vertical-align: text-bottom;
+    margin-left: 0.2rem;
+}
+
+/* Animation - subtle fade in */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-database {
+    animation: fade-in 0.5s ease forwards;
+}
+
+/* Scan line effect */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(64, 160, 136, 0.6);
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    animation: scan-animation 2s linear infinite;
+}
+
+@keyframes scan-animation {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sector-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        padding: 1.2rem;
+    }
+}
