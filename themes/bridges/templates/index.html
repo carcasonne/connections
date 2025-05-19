@@ -3,115 +3,133 @@
 {% block title %}layer:00/ego{% endblock title %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="/css/section.css">
-<link rel="stylesheet" href="/css/lain-theme.css">
 <style>
-    /* Center everything on screen */
-    .screen-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 90vh;
-        padding: 1rem;
-    }
-    
-    /* Larger terminal screen */
-    .terminal-screen {
-        width: 100%;
-        max-width: 800px;
-        min-height: 500px;
-        background-color: #0a0e14;
-        border: 1px solid rgba(64, 160, 136, 0.4);
+    /* Reset default styles to take over the entire viewport */
+    body, html {
+        margin: 0;
         padding: 0;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #000000;
+        font-family: "Courier New", monospace;
     }
     
-    /* Basic scanlines effect - subtle */
-    .scanlines {
+    /* Hide sidebar for this page only */
+    .nav-container {
+        display: none !important;
+    }
+    
+    /* Hide all normal page structure */
+    .page-wrapper, .container, .main, .section {
+        padding: 0;
+        margin: 0;
+        max-width: none;
+        width: 100%;
+        background: none;
+        box-shadow: none;
+        border: none;
+    }
+    
+    /* Full page terminal */
+    .terminal-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        color: #00aa00;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+    
+    /* CRT screen effects */
+    .crt-effects {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-            to bottom,
-            transparent 0%,
-            rgba(0, 0, 0, 0.05) 50%,
-            transparent 51%,
-            transparent 100%
-        );
-        background-size: 100% 4px;
         pointer-events: none;
-        z-index: 10;
-        opacity: 0.3;
+        z-index: 100;
     }
     
-    /* Simple terminal header */
-    .terminal-header {
-        padding: 0.3rem 0.8rem;
-        background-color: rgba(10, 14, 20, 0.9);
-        border-bottom: 1px solid rgba(64, 160, 136, 0.3);
-        display: flex;
-        justify-content: space-between;
-        font-family: monospace;
-        font-size: 0.7rem;
-        color: rgba(199, 230, 215, 0.7);
+    /* Scanlines */
+    .scanlines {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0) 51%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        background-size: 100% 4px;
+        z-index: 101;
+    }
+    
+    /* Screen curvature effect */
+    .screen-curve {
+        background: radial-gradient(
+            circle at center,
+            transparent 60%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
+        z-index: 102;
     }
     
     /* Terminal content */
     .terminal-content {
-        padding: 1.5rem;
-        font-family: monospace;
-        color: rgba(199, 230, 215, 0.85);
-        font-size: 0.9rem;
-        line-height: 1.6;
-        min-height: 450px;
-        position: relative;
-    }
-    
-    /* Simple message */
-    .message {
-        margin-bottom: 0.7rem;
-    }
-    
-    /* Title message specific styling */
-    .title-message {
-        margin: 1.5rem 0;
-        color: rgba(64, 160, 136, 0.9);
-    }
-    
-    /* Lain specific styling */
-    .lain-message {
-        padding-left: 1.5rem;
-        position: relative;
-        display: none; /* Initially hidden, shown by JS */
-    }
-    
-    .lain-message::before {
-        content: "lain:";
         position: absolute;
+        top: 0;
         left: 0;
-        color: rgba(0, 174, 255, 0.9);
+        width: calc(100% - 60px);
+        height: calc(100% - 60px);
+        padding: 30px;
+        overflow: auto;
     }
     
-    /* Quote message */
-    .quote-message {
-        padding-left: 1.5rem;
-        position: relative;
-        color: rgba(199, 230, 215, 0.6);
+    /* Terminal text */
+    .terminal-text {
+        font-family: "Courier New", monospace;
+        color: #33ff33;
+        text-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
+        white-space: pre-wrap;
+    }
+    
+    /* Different colors for different message types */
+    .system-text {
+        color: #33ff33;
+    }
+    
+    .title-text {
+        color: #ffffff;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        font-weight: bold;
+    }
+    
+    .lain-text {
+        color: #00ccff;
+        text-shadow: 0 0 5px rgba(0, 204, 255, 0.5);
+    }
+    
+    .quote-text {
+        color: #cccccc;
         font-style: italic;
-        display: none; /* Initially hidden, shown by JS */
     }
     
     /* Blinking cursor */
     .cursor {
         display: inline-block;
-        width: 8px;
-        height: 15px;
-        background-color: rgba(64, 160, 136, 0.8);
+        width: 10px;
+        height: 18px;
+        background-color: #33ff33;
         animation: cursor-blink 1s step-end infinite;
         vertical-align: middle;
+        box-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
     }
     
     @keyframes cursor-blink {
@@ -119,33 +137,111 @@
         50% { opacity: 0; }
     }
     
-    /* Simple fade-in animation */
-    @keyframes fade-in {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    /* Turn on the screen effect */
+    .turn-on {
+        animation: turn-on 1.5s;
     }
     
-    .fade-in {
-        animation: fade-in 2s;
+    @keyframes turn-on {
+        0% {
+            transform: scale(1, 0.001);
+            opacity: 0;
+        }
+        7% {
+            transform: scale(1, 0.001);
+            opacity: 1;
+        }
+        14% {
+            transform: scale(1, 0.001);
+            opacity: 1;
+        }
+        25% {
+            transform: scale(1, 0.15);
+            opacity: 1;
+        }
+        30% {
+            transform: scale(1, 0.4);
+            opacity: 1;
+        }
+        45% {
+            transform: scale(1, 0.8);
+            opacity: 1;
+        }
+        70% {
+            transform: scale(1, 1);
+            opacity: 1;
+        }
+        90% {
+            transform: scale(1, 1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1, 1);
+            opacity: 1;
+        }
+    }
+    
+    /* Old-school DOS/terminal prompt style */
+    .prompt {
+        color: #33ff33;
+        margin-right: 8px;
+    }
+    
+    /* Hide scrollbars */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Green text glow effect */
+    .glow-text {
+        text-shadow: 0 0 5px #33ff33;
+    }
+    
+    /* Navigation links in terminal style */
+    .terminal-link {
+        color: #33ff33;
+        text-decoration: none;
+        text-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
+        cursor: pointer;
+    }
+    
+    .terminal-link:hover {
+        color: #ffffff;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Command input */
+    .command-input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #33ff33;
+        font-family: "Courier New", monospace;
+        font-size: 16px;
+        text-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
+        caret-color: transparent;
+        width: calc(100% - 120px);
     }
 </style>
 {% endblock extra_head %}
 
 {% block content %}
-<div class="screen-container">
-    <div class="terminal-screen fade-in">
-        <div class="scanlines"></div>
-        
-        <div class="terminal-header">
-            <span>wired://connection</span>
-            <span>{{ now() | date(format="%Y.%m.%d") }}</span>
-        </div>
-        
-        <div class="terminal-content">
-            <div class="message">Connection established</div>
-            <div class="message title-message" id="title-message"></div>
-            <div class="lain-message" id="lain-message"></div>
-            <div class="quote-message" id="quote-message"></div>
+<div class="terminal-screen turn-on">
+    <!-- CRT effects overlay -->
+    <div class="crt-effects scanlines"></div>
+    <div class="crt-effects screen-curve"></div>
+    
+    <!-- Terminal content -->
+    <div class="terminal-content">
+        <div class="terminal-text" id="terminal-output">
+C:\WIRED> connect --protocol=layer
+Establishing connection...
+Connection established.
+</div>
+        <!-- Command line with input -->
+        <div id="command-line" style="display: none;">
+            <span class="prompt">C:\WIRED></span>
+            <input type="text" id="command-input" class="command-input" autocomplete="off" spellcheck="false">
             <div class="cursor" id="cursor"></div>
         </div>
     </div>
@@ -154,10 +250,40 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Terminal elements
-        const titleElement = document.getElementById('title-message');
-        const lainElement = document.getElementById('lain-message');
-        const quoteElement = document.getElementById('quote-message');
-        const cursorElement = document.getElementById('cursor');
+        const terminalOutput = document.getElementById('terminal-output');
+        const cursor = document.getElementById('cursor');
+        const commandLine = document.getElementById('command-line');
+        const commandInput = document.getElementById('command-input');
+        
+        // Messages to display
+        const systemMessages = [
+            {
+                text: "System ready.",
+                type: "system",
+                delay: 1500
+            },
+            {
+                text: "C:\\WIRED> identify",
+                type: "system",
+                delay: 1000
+            },
+            {
+                text: "layer:00/ego",
+                type: "title",
+                delay: 1500
+            },
+            {
+                text: "Type 'help' for available commands.",
+                type: "system",
+                delay: 1000
+            },
+            {
+                text: "C:\\WIRED> ",
+                type: "system",
+                delay: 800,
+                showInput: true
+            }
+        ];
         
         // Lain messages to randomly select from
         const lainMessages = [
@@ -177,35 +303,102 @@
             "If you aren't remembered, then you never existed.",
             "Present day, present time."
         ];
+
+        // Navigation data from Zola
+        const navLinks = [
+            {% set root = get_section(path="_index.md") %}
+            {% if root.subsections %}
+                {% set subsections = [] %}
+                {% for subsection_path in root.subsections %}
+                    {% set subsection = get_section(path=subsection_path) %}
+                    {% set_global subsections = subsections | concat(with=[subsection]) %}
+                {% endfor %}
+                
+                {% for subsection in subsections | sort(attribute="extra.weight") %}
+                    {
+                        title: "{{ subsection.title }}",
+                        url: "{{ subsection.permalink }}"
+                    },
+                {% endfor %}
+            {% endif %}
+        ];
         
         // Select random messages
         const randomLainMessage = lainMessages[Math.floor(Math.random() * lainMessages.length)];
         const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
         
-        // Position cursor initially
-        cursorElement.style.position = 'absolute';
-        cursorElement.style.left = '0';
-        cursorElement.style.top = titleElement.offsetTop + 'px';
+        // Available commands
+        const commands = {
+            'help': () => {
+                typeText("Available commands:", "system", () => {
+                    typeText("  help    - Show available commands", "system", () => {
+                        typeText("  ls -a   - List all available layers", "system", () => {
+                            typeText("  clear   - Clear terminal screen", "system", () => {
+                                typeText("  exit    - Return to layer:00/ego", "system", () => {
+                                    showCommandLine();
+                                });
+                            });
+                        });
+                    });
+                });
+            },
+            'ls -a': () => {
+                typeText("Available layers:", "system", () => {
+                    if (navLinks.length > 0) {
+                        // Slight delay before showing layers
+                        setTimeout(() => {
+                            let output = "";
+                            navLinks.forEach((link, index) => {
+                                output += `<a href="${link.url}" class="terminal-link">layer:${index.toString().padStart(2, '0')}/${link.title}</a>\n`;
+                            });
+                            
+                            terminalOutput.innerHTML = terminalOutput.innerHTML + 
+                                `<span class="system-text">${output}</span>`;
+                            
+                            showCommandLine();
+                        }, 500);
+                    } else {
+                        typeText("No layers found.", "system", () => {
+                            showCommandLine();
+                        });
+                    }
+                });
+            },
+            'clear': () => {
+                terminalOutput.innerHTML = "";
+                showCommandLine();
+            },
+            'exit': () => {
+                typeText("Returning to layer:00/ego...", "system", () => {
+                    window.location.reload();
+                });
+            }
+        };
         
         // Function to type text with variable speed
-        function typeText(element, text, onComplete, minDelay = 100, maxDelay = 250) {
-            element.style.display = 'block';
-            element.textContent = '';
-            
-            // Move cursor to this element
-            cursorElement.style.position = 'static';
-            element.appendChild(cursorElement);
-            
+        function typeText(text, type, onComplete, minDelay = 40, maxDelay = 120) {
             let i = 0;
+            
+            // Add newline if the terminal output already has content
+            if (terminalOutput.innerHTML.slice(-1) !== "\n" && terminalOutput.innerHTML.length > 0) {
+                terminalOutput.innerHTML += "\n";
+            }
+            
+            // Prepare the line with the proper class
+            const lineStart = terminalOutput.innerHTML;
             
             function typeNextChar() {
                 if (i < text.length) {
                     // Add next character
-                    element.textContent += text.charAt(i);
+                    terminalOutput.innerHTML = lineStart + 
+                        `<span class="${type}-text">` + 
+                        text.substring(0, i + 1) + 
+                        '</span>';
+                    
                     i++;
                     
-                    // Reappend cursor after adding text
-                    element.appendChild(cursorElement);
+                    // Auto-scroll to bottom
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
                     
                     // Calculate next delay
                     const nextDelay = minDelay + Math.random() * (maxDelay - minDelay);
@@ -214,7 +407,7 @@
                     setTimeout(typeNextChar, nextDelay);
                 } else if (onComplete) {
                     // If there's a callback, call it when typing is complete
-                    setTimeout(onComplete, 1000); // Wait a second before proceeding
+                    setTimeout(onComplete, 500);
                 }
             }
             
@@ -222,24 +415,90 @@
             typeNextChar();
         }
         
-        // Sequence of typing events
-        function startSequence() {
-            // First type the title
-            setTimeout(() => {
-                typeText(titleElement, "layer:00/ego", () => {
-                    // Then type Lain's message
-                    typeText(lainElement, randomLainMessage, () => {
-                        // Finally type the quote
-                        setTimeout(() => {
-                            typeText(quoteElement, randomQuote, null, 120, 280);
-                        }, 3000); // Wait 3 seconds before showing the quote
-                    });
-                }, 80, 150); // Title types a bit faster
-            }, 2000); // Wait 2 seconds before starting
+        // Function to show the command line
+        function showCommandLine() {
+            commandLine.style.display = 'flex';
+            commandLine.style.alignItems = 'center';
+            commandInput.focus();
         }
         
-        // Start the typing sequence
-        startSequence();
+        // Function to hide the command line
+        function hideCommandLine() {
+            commandLine.style.display = 'none';
+        }
+        
+        // Function to display all system messages in sequence
+        function displaySystemMessages(index = 0) {
+            if (index < systemMessages.length) {
+                const message = systemMessages[index];
+                
+                setTimeout(() => {
+                    typeText(message.text, message.type, () => {
+                        if (message.showInput) {
+                            showCommandLine();
+                        }
+                        displaySystemMessages(index + 1);
+                    }, 50, 100);
+                }, message.delay);
+            } else {
+                // After system messages, show Lain's message
+                setTimeout(() => {
+                    // Lain's message input sequence
+                    typeText("INCOMING MESSAGE", "system", () => {
+                        setTimeout(() => {
+                            typeText("lain: " + randomLainMessage, "lain", () => {
+                                // After Lain's message, show a quote
+                                setTimeout(() => {
+                                    typeText("\"" + randomQuote + "\"", "quote", () => {
+                                        // Show command line after all messages
+                                        showCommandLine();
+                                    }, 70, 150);
+                                }, 3000);
+                            }, 70, 170);
+                        }, 1000);
+                    });
+                }, 2000);
+            }
+        }
+        
+        // Handle command input
+        commandInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const command = commandInput.value.trim().toLowerCase();
+                
+                // Clear the input
+                commandInput.value = '';
+                
+                // Hide command line while processing
+                hideCommandLine();
+                
+                // Add the command to terminal output
+                terminalOutput.innerHTML += `\nC:\\WIRED> ${command}`;
+                
+                // Process command
+                if (commands[command]) {
+                    commands[command]();
+                } else if (command !== '') {
+                    typeText(`Command not recognized: ${command}`, "system", () => {
+                        showCommandLine();
+                    });
+                } else {
+                    showCommandLine();
+                }
+            }
+        });
+        
+        // Focus input when clicking anywhere in terminal
+        document.addEventListener('click', () => {
+            if (commandLine.style.display !== 'none') {
+                commandInput.focus();
+            }
+        });
+        
+        // Start the terminal sequence with a slight delay
+        setTimeout(() => {
+            displaySystemMessages();
+        }, 1500);
     });
 </script>
 {% endblock content %}
