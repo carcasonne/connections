@@ -1,7 +1,7 @@
 +++
     title = "layer:01/books"
     sort_by = "date"
-    template = "laincore/book-section.html"
+    template = "active/book-section.html"
     page_template = "page.html"
     [extra]
     weight = 1

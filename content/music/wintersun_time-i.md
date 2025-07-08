@@ -5,7 +5,7 @@ date = 2024-02-05
 [extra]
 artist = "Wintersun"
 year = 2012
-category = "timeless"
+category = "2023"
 cover = "/images/albums/wintersun_time-i.jpg"
 favorites = [
     "Sons of Winter and Stars",

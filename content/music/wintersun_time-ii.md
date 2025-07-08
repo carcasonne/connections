@@ -5,7 +5,7 @@ date = 2024-02-05
 [extra]
 artist = "Wintersun"
 year = 2017
-category = "timeless"
+category = "2024"
 cover = "/images/albums/wintersun_time-ii.jpg"
 favorites = [
     "The Forest Seasons",

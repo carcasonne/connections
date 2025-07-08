@@ -1,7 +1,7 @@
 +++
 title = "layer:06/collections"
 sort_by = "date"
-template = "collection-section.html"
+template = "active/collection-section.html"
 page_template = "page.html"
 [extra]
 headerNavigation = true

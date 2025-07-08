@@ -1,7 +1,7 @@
 +++
 title = "layer:05/music"
-template = "laincore/music-section.html"
-page_template = "laincore/album-page.html"
+template = "active/music-section.html"
+page_template = "active/album-page.html"
 sort_by = "date"
 [extra]
 weight = 5

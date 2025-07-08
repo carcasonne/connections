@@ -1,0 +1,6 @@
+<img
+    src="{{ path }}"
+    alt="{{ alt | default(value="Image") }}"
+    {% if width %} width="{{ width }}"{% endif %}
+    {% if height %} height="{{ height }}"{% endif %}
+/>

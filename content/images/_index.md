@@ -1,6 +1,6 @@
 +++
 title = "layer:03/images"
-template = "laincore/gallery.html"
+template = "active/gallery.html"
 sort_by = "none"
 [extra]
 weight = 3

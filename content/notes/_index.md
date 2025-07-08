@@ -1,8 +1,8 @@
 +++
 title = "layer:07/notes"
 sort_by = "date"
-template = "common/note-section.html"
-page_template = "common/note.html"
+template = "active/note-section.html"
+page_template = "active/note.html"
 [extra]
 weight = 7
 +++

@@ -1,0 +1,48 @@
+:root {
+  /* parchment base */
+  --parchment: #f3efe3;
+  --vellum: #eae4d0;
+  --aged-parchment: #dcd6c0;
+
+  /* ink and type */
+  --ink-black: #2b2517;
+  --iron-gall: #3b3222;
+  --oak-charcoal: #564c3a;
+  --sepia: #76634d;
+  --faded-ink: #9c8872;
+
+  /* accents (based on medieval pigments) */
+  --gold-leaf: #c9a941;       /* flatter gold, less chrome */
+  --vermilion: #b03a2e;       /* burnt red */
+  --lapis: #355c7d;           /* deeper and dustier */
+  --malachite: #4e684e;       /* colder than forest green */
+  --woad-indigo: #2f3e5c;     /* alternative accent */
+  --wine-ink: #693144;        /* more subdued burgundy */
+
+  /* grays + structural tones */
+  --stone: #a59d8f;
+  --ash: #c7c3b7;
+  --dove: #ece9e0;
+
+  /* semantic mapping */
+  --background: var(--parchment);
+  --surface: var(--vellum);
+  --text: var(--ink-black);
+  --text-muted: var(--sepia);
+  --text-faded: var(--faded-ink);
+  --primary: var(--malachite);
+  --secondary: var(--wine-ink);
+  --accent: var(--gold-leaf);
+  --border: var(--stone);
+  --border-light: var(--ash);
+
+  /* states */
+  --hover: var(--aged-parchment);
+  --active: var(--dove);
+  --focus: var(--lapis);
+
+  /* shadows */
+  --shadow-light: rgba(43, 37, 23, 0.06);
+  --shadow-medium: rgba(43, 37, 23, 0.15);
+  --shadow-strong: rgba(43, 37, 23, 0.3);
+}

@@ -1,8 +1,8 @@
 +++
     title = "layer:04/movies"
     sort_by = "date"
-    template = "laincore/movie-section.html"
-    page_template = "page.html"
+    template = "active/movie-section.html"
+    page_template = "active/page.html"
     [extra]
     weight = 4
 +++

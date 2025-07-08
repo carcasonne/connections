@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %} Welcome {% endblock title %}
+
+{% block content %}
+<div class="page-container">
+  <header class="intro">
+    <h1 class="intro-title">connections</h1>
+    <p class="intro-subtitle">
+      a digital commonplace book, for when your thoughts need a place to sit and stretch their legs
+    </p>
+    <p class="intro-description">
+      this isn't a feed. it's a shelf. ideas filed away with care — books read, music heard, movies remembered,
+      links too good to lose, notes not yet ready to become something bigger.
+    </p>
+  </header>
+
+  <main>
+    <nav class="contents-list">
+      <ol class="illuminated-list">
+        <li class="content-entry">
+          <a href="/articles/" class="entry-link">
+            <span class="entry-title">articles</span>
+            <span class="entry-dots"></span>
+            <span class="entry-number">i</span>
+          </a>
+          <p class="entry-description">longform thinking, slow ideas, quiet writing</p>
+        </li>
+        <li class="content-entry">
+          <a href="/books/" class="entry-link">
+            <span class="entry-title">books</span>
+            <span class="entry-dots"></span>
+            <span class="entry-number">ii</span>
+          </a>
+          <p class="entry-description">a reading list scribbled in the margins of life</p>
+        </li>
+        <li class="content-entry">
+          <a href="/music/" class="entry-link">
+            <span class="entry-title">music</span>
+            <span class="entry-dots"></span>
+            <span class="entry-number">iii</span>
+          </a>
+          <p class="entry-description">albums that stuck around longer than they had to</p>
+        </li>
+        <li class="content-entry">
+          <a href="/movies/" class="entry-link">
+            <span class="entry-title">movies</span>
+            <span class="entry-dots"></span>
+            <span class="entry-number">iv</span>
+          </a>
+          <p class="entry-description">films that meant something, even if it's hard to say why</p>
+        </li>
+        <li class="content-entry">
+          <a href="/images/" class="entry-link">
+            <span class="entry-title">images</span>
+            <span class="entry-dots"></span>
+            <span class="entry-number">v</span>
+          </a>
+          <p class="entry-description">visual fragments — fun, curious, or quietly beautiful</p>
+        </li>
+        <li class="content-entry">
+          <a href="/link-collections/" class="entry-link">
+            <span class="entry-title">links</span>
+            <span class="entry-dots"></span>
+            <span class="entry-number">vi</span>
+          </a>
+          <p class="entry-description">bookmarks with better taste than memory</p>
+        </li>
+        <li class="content-entry">
+          <a href="/notes/" class="entry-link">
+            <span class="entry-title">notes</span>
+            <span class="entry-dots"></span>
+            <span class="entry-number">vii</span>
+          </a>
+          <p class="entry-description">unfinished, uncertain, but worth keeping anyway</p>
+        </li>
+      </ol>
+    </nav>
+  </main>
+</div>
+{% endblock content %}
