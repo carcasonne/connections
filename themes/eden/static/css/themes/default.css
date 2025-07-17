@@ -1,48 +1,56 @@
 :root {
-  /* parchment base */
-  --parchment: #f3efe3;
-  --vellum: #eae4d0;
-  --aged-parchment: #dcd6c0;
+  /* parchment base - warmed up slightly */
+  --parchment: #f4f0e6;
+  --vellum: #ebe5d2;
+  --aged-parchment: #ddd7c2;
 
-  /* ink and type */
-  --ink-black: #2b2517;
-  --iron-gall: #3b3222;
-  --oak-charcoal: #564c3a;
+  /* ink and type - deeper contrast, warmer tones */
+  --ink-black: #2a2415;
+  --iron-gall: #3a3020;
+  --oak-charcoal: #534a38;
   --sepia: #76634d;
   --faded-ink: #9c8872;
 
-  /* accents (based on medieval pigments) */
-  --gold-leaf: #c9a941;       /* flatter gold, less chrome */
-  --vermilion: #b03a2e;       /* burnt red */
-  --lapis: #355c7d;           /* deeper and dustier */
-  --malachite: #4e684e;       /* colder than forest green */
+  /* accents (based on medieval pigments) - refined saturation */
+  --gold-leaf: #b8954a;       /* more muted, authentic gold */
+  --vermilion: #a8342a;       /* slightly less saturated, more earthy */
+  --lapis: #2f4a5c;           /* warmer blue-gray */
+  --malachite: #003300;       /* colder than forest green */
   --woad-indigo: #2f3e5c;     /* alternative accent */
-  --wine-ink: #693144;        /* more subdued burgundy */
+  --wine-ink: #6b2f42;        /* richer, less muddy burgundy */
 
   /* grays + structural tones */
   --stone: #a59d8f;
   --ash: #c7c3b7;
   --dove: #ece9e0;
 
-  /* semantic mapping */
+  /* new utility colors */
+  --parchment-shadow: #e8e2d4;  /* for subtle depth */
+  --quill-brown: #5d4f3a;       /* for pen/writing metaphors */
+  --monastery-blue: #3d4a5a;    /* alternative to lapis for variety */
+
+  /* semantic mapping - enhanced hierarchy */
   --background: var(--parchment);
   --surface: var(--vellum);
+  --surface-raised: var(--dove);
   --text: var(--ink-black);
+  --text-subtitle: var(--oak-charcoal);
   --text-muted: var(--sepia);
   --text-faded: var(--faded-ink);
   --primary: var(--malachite);
   --secondary: var(--wine-ink);
   --accent: var(--gold-leaf);
+  --accent-secondary: var(--vermilion);
   --border: var(--stone);
   --border-light: var(--ash);
 
   /* states */
   --hover: var(--aged-parchment);
-  --active: var(--dove);
+  --active: var(--parchment-shadow);
   --focus: var(--lapis);
 
-  /* shadows */
-  --shadow-light: rgba(43, 37, 23, 0.06);
-  --shadow-medium: rgba(43, 37, 23, 0.15);
-  --shadow-strong: rgba(43, 37, 23, 0.3);
+  /* shadows - using refined ink base */
+  --shadow-light: rgba(42, 36, 21, 0.06);
+  --shadow-medium: rgba(42, 36, 21, 0.15);
+  --shadow-strong: rgba(42, 36, 21, 0.3);
 }

@@ -1,0 +1,128 @@
+/* Article-specific section styling */
+
+/* Article Index Styling */
+.article-index {
+    max-width: 100%;
+    width: 100%;
+}
+
+.index-header {
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+}
+
+.index-header h2 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-header);
+    font-family: var(--font-header);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.index-count {
+    font-size: 0.8rem;
+    color: var(--accent-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+/* Article Grid */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    max-width: 100%;
+}
+
+/* Individual Article Cards */
+.article-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-header {
+    margin-bottom: 1rem;
+}
+
+.card-header h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+.card-header h3 a {
+    color: var(--text-header);
+    text-decoration: none;
+}
+
+.card-header h3 a:hover {
+    color: var(--accent-primary);
+}
+
+.card-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.article-date {
+    color: var(--accent-secondary);
+}
+
+.connection-level {
+    padding: 0.2rem 0.5rem;
+    background: rgba(var(--accent-secondary-rgb, 64, 160, 136), 0.1);
+    border: 1px solid var(--accent-secondary);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+/* Article Preview Content */
+.article-summary,
+.article-preview {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.read-more {
+    margin-top: auto;
+    text-align: right;
+}
+
+.read-more a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.read-more a:hover {
+    color: var(--accent-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .article-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .article-card {
+        padding: 1rem;
+    }
+}

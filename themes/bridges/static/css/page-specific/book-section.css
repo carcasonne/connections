@@ -74,117 +74,56 @@
     }
 }
 
-/* Book database styling */
+/* Book database styling - compact version */
 .book-database {
     position: relative;
-    margin-top: 3rem;
+    margin-top: 2rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 }
 
-/* Database header styling */
+/* Database header styling - more compact */
 .database-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 1rem;
+    padding: 0.5rem 0.8rem;
     background: var(--bg-primary);
     border-bottom: 1px solid var(--border-color);
 }
 
 .database-title {
     font-family: var(--font-main);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--accent-secondary);
     letter-spacing: 0.05rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .status-indicator {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-secondary);
-    animation: status-pulse 2s infinite;
-}
-
-@keyframes status-pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(64, 160, 136, 0.7);
-    }
-
-    70% {
-        box-shadow: 0 0 0 4px rgba(64, 160, 136, 0);
-    }
-
-    100% {
-        box-shadow: 0 0 0 0 rgba(64, 160, 136, 0);
-    }
-}
-
-.cursor {
-    display: inline-block;
     width: 6px;
-    height: 15px;
+    height: 6px;
     background-color: var(--accent-secondary);
-    margin-left: 4px;
-    animation: cursor-blink 1s infinite;
-    vertical-align: middle;
-}
-
-@keyframes cursor-blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
+    border-radius: 50%;
 }
 
 .database-info {
     font-family: var(--font-main);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--text-muted);
 }
 
 .record-count {
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 0.4rem;
     background: rgba(0, 174, 255, 0.1);
     border-left: 1px solid var(--accent-primary);
 }
 
-/* Scan line effect - simplified */
-.scan-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--accent-secondary);
-    opacity: 0.4;
-    z-index: 10;
-    pointer-events: none;
-    animation: scan-line 8s linear infinite;
-}
-
-@keyframes scan-line {
-    0% {
-        transform: translateY(0);
-    }
-
-    100% {
-        transform: translateY(100vh);
-    }
-}
-
-/* Table styling - simplified */
+/* Balanced table styling - not too chunky, not too small */
 .book-table {
     width: 100%;
     border-collapse: collapse;
@@ -205,33 +144,35 @@
     text-transform: uppercase;
     font-weight: normal;
     letter-spacing: 0.1rem;
-    padding: 0.7rem 1rem;
+    padding: 0.5rem 0.7rem;
     text-align: left;
     font-family: var(--font-main);
     border-bottom: 1px solid var(--border-color);
 }
 
 .book-table tbody tr {
-    transition: background-color 0.3s ease;
-    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(40, 53, 53, 0.3);
 }
 
 .book-table tbody tr:nth-child(even) {
-    background-color: rgba(19, 26, 26, 0.3);
+    background-color: rgba(19, 26, 26, 0.2);
 }
 
 .book-table tbody tr:hover {
     background-color: var(--accent-highlight);
+    border-left: 2px solid var(--wired-green);
 }
 
 .book-table td {
-    padding: 0.7rem 1rem;
+    padding: 0.45rem 0.7rem;
     color: var(--text-muted);
     font-size: 0.85rem;
     position: relative;
+    vertical-align: middle;
 }
 
-/* Book title styling - simplified */
+/* Book title styling */
 .book-title {
     color: var(--text-primary);
     text-decoration: none;
@@ -240,10 +181,10 @@
 }
 
 .book-title:hover {
-    color: var(--accent-primary);
+    color: var(--wired-blue);
 }
 
-/* Rating display styling - simplified */
+/* Rating display - readable size */
 .rating-display {
     display: flex;
     gap: 2px;
@@ -251,7 +192,7 @@
 }
 
 .rating-bar {
-    width: 14px;
+    width: 12px;
     height: 3px;
     background-color: rgba(64, 160, 136, 0.2);
 }
@@ -260,89 +201,98 @@
     background-color: var(--accent-secondary);
 }
 
-/* Book status styling - simplified */
+/* Status styling - readable but compact */
 .book-status {
     font-size: 0.7rem;
-    padding: 0.15rem 0.4rem;
+    padding: 0.15rem 0.35rem;
     border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
 }
 
 .status-completed {
-    color: #d4ffde;
-    background: rgba(64, 160, 136, 0.2);
+    color: var(--wired-green);
+    background: rgba(64, 160, 136, 0.15);
 }
 
 .status-reading {
-    color: #fff2cc;
-    background: rgba(255, 200, 0, 0.2);
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.15);
 }
 
 .status-planned {
-    color: #cce2ff;
-    background: rgba(0, 174, 255, 0.2);
+    color: var(--wired-blue);
+    background: rgba(0, 174, 255, 0.15);
 }
 
 .status-dropped {
-    color: #ffcccc;
-    background: rgba(255, 0, 0, 0.2);
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.15);
 }
 
-/* Animation - fade in */
+/* Language and author styling - readable */
+.book-table td:nth-child(2),
+.book-table td:nth-child(3) {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Simple fade in effect */
+.book-database {
+    opacity: 0;
+    animation: fade-in 0.3s ease forwards;
+}
+
 @keyframes fade-in {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(5px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-.book-database {
-    animation: fade-in 0.5s ease forwards;
-}
-
-/* Glitch effect - simplified */
-@keyframes glitch-effect {
-    0% {
-        clip-path: inset(40% 0 60% 0);
-        transform: translate(-2px);
-    }
-
-    20% {
-        clip-path: inset(20% 0 40% 0);
-        transform: translate(2px);
-    }
-
-    100% {
-        clip-path: inset(0% 0 0% 0);
-        transform: translate(0);
-    }
-}
-
-/* Table responsiveness */
+/* Responsive adjustments - more aggressive hiding */
 @media (max-width: 992px) {
-
     .book-table th:nth-child(3),
     .book-table td:nth-child(3) {
         display: none;
     }
+    
+    .book-table th:nth-child(2),
+    .book-table td:nth-child(2) {
+        width: 15%;
+    }
 }
 
 @media (max-width: 768px) {
-
     .book-table th:nth-child(4),
     .book-table td:nth-child(4) {
         display: none;
     }
+    
+    .book-table th:nth-child(1),
+    .book-table td:nth-child(1) {
+        width: 60%;
+    }
 }
 
 @media (max-width: 576px) {
-
     .book-table th:nth-child(2),
     .book-table td:nth-child(2) {
         display: none;
+    }
+    
+    .book-table th:nth-child(1),
+    .book-table td:nth-child(1) {
+        width: 70%;
+    }
+    
+    .book-table th,
+    .book-table td {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.75rem;
     }
 }

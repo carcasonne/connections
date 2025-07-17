@@ -1,3 +1,7 @@
+body {
+  background-color: var(--background);
+}
+
 .page-container {
   max-width: 700px;
   margin: 0 auto;
