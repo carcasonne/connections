@@ -25,7 +25,7 @@
     font-size: 1.8rem;
     letter-spacing: 0.15rem;
     text-transform: uppercase;
-    color: var(--text-header);
+    /* color: var(--text-header); */
     margin-bottom: 0.7rem;
     position: relative;
     padding-left: 1.5rem;

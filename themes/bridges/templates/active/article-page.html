@@ -4,57 +4,36 @@
 
 {% block extra_head %}
 <link rel="stylesheet" href="/css/page.css">
-<link rel="stylesheet" href="/css/page-specific/article-page.css">
+<link rel="stylesheet" href="/css/section.css">
+<link rel="stylesheet" href="/css/lain-theme.css">
+<link rel="stylesheet" href="/css/components/terminal-header.css">
+<link rel="stylesheet" href="/css/page-specific/book-section.css">
 {% endblock extra_head %}
 
 {% block content %}
-<article class="article-page">
-    <!-- Back to articles link -->
-    <div class="article-navigation">
-        <a href="/articles" class="back-link">← Back to Articles</a>
+<div class="terminal-header">
+    <div class="terminal-id">
+        <div class="terminal-status"></div>
+        <span>{{ page.title | upper }}</span>
     </div>
+    <div class="connection-indicator">
+        <div class="connection-percent" id="connection-percent">87%</div>
+    </div>
+</div>
 
-    <div class="article-header">
-        <h1>{{ page.title }}</h1>
-        
-        <div class="article-meta">
-            <span class="article-date">{{ page.date | date(format="%Y-%m-%d") }}</span>
-            
-            {% if page.extra.author %}
-            <span class="article-author">by {{ page.extra.author }}</span>
-            {% endif %}
-            
-            {% if page.extra.connection_level %}
-            <span class="connection-level">Connection level: {{ page.extra.connection_level }}</span>
-            {% endif %}
-            
-            {% if page.extra.log_date %}
-            <span class="log-date">{{ page.extra.log_date }}</span>
+<section id="section-overview" class="section">
+    <div class="section-header">
+        <div class="section-content">
+            <h1>{{ page.title }}</h1>
+            <div class="layer-indicator">PROTOCOL://WIRED.RECORDS/{{ page.title | upper }}/INDEX</div>
+
+            {% if page.content %}
+            <div class="multi-column">
+                {{ page.content | safe }}
+            </div>
             {% endif %}
         </div>
     </div>
 
-    <!-- Content in multi-column layout -->
-    <div class="multi-column">
-        {{ page.content | safe }}
-    </div>
-
-    {% if page.extra.show_card %}
-    <div class="cufflink-card">
-        <div class="card-header">
-            <span class="bridges-id">{{ page.extra.card_header | default(value="PORTER NOTES") }}</span>
-        </div>
-        <div class="card-content">
-            {{ page.extra.card_content | markdown | safe }}
-        </div>
-    </div>
-    {% endif %}
-
-    <!-- Article footer -->
-    <div class="article-footer">
-        <div class="article-navigation">
-            <a href="/articles" class="back-link">← Back to Articles</a>
-        </div>
-    </div>
-</article>
+</section>
 {% endblock content %}

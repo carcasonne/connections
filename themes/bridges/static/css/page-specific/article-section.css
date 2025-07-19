@@ -1,128 +1,291 @@
-/* Article-specific section styling */
+/* articles page w/ proper terminal header */
 
-/* Article Index Styling */
-.article-index {
-    max-width: 100%;
-    width: 100%;
+.articles-section {
+    position: relative;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--bg-primary) 0%, var(--primary-dark) 100%);
 }
 
-.index-header {
-    margin-bottom: 2rem;
-    text-align: center;
-    padding: 1rem;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    backdrop-filter: blur(5px);
-}
-
-.index-header h2 {
-    margin: 0 0 0.5rem 0;
-    color: var(--text-header);
-    font-family: var(--font-header);
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-}
-
-.index-count {
+/* terminal header matching layer:00 exactly */
+.terminal-header {
+    padding: 0.7rem 1rem;
+    background-color: var(--bg-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--wired-green);
+    font-family: monospace;
     font-size: 0.8rem;
-    color: var(--accent-secondary);
-    text-transform: uppercase;
+    color: var(--wired-green);
     letter-spacing: 0.05rem;
 }
 
-/* Article Grid */
-.article-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 1.5rem;
-    max-width: 100%;
+.terminal-id {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Individual Article Cards */
-.article-card {
+.terminal-status {
+    width: 8px;
+    height: 8px;
+    background-color: var(--wired-green);
+}
+
+.connection-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.connection-bar {
+    width: 60px;
+    height: 8px;
+    background-color: rgba(64, 160, 136, 0.2);
+    border: 1px solid var(--wired-green);
+}
+
+.connection-fill {
+    height: 100%;
+    width: 75%;
+    background-color: var(--wired-green);
+    animation: pulse 2s infinite;
+}
+
+.connection-percent {
+    font-size: 0.7rem;
+    color: var(--wired-green);
+}
+
+/* atmospheric intro */
+.intro-block {
+    position: relative;
+    max-width: 1000px;
+    margin: 4rem auto 6rem;
+    padding: 3rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    padding: 1.5rem;
-    backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-secondary), transparent);
+    animation: scan 3s infinite;
+}
+
+.intro-text {
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 1rem;
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.data-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+}
+
+/* staggered articles flow */
+.articles-flow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    gap: 3rem;
 }
 
-.card-header {
+.article-entry {
+    position: relative;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in-up 0.6s ease-out forwards;
+    animation-delay: var(--delay);
+    transition: all 0.3s ease;
+}
+
+.article-entry:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-secondary);
+}
+
+.entry-glow {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.article-entry:hover .entry-glow {
+    opacity: 0.1;
+}
+
+.article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
+    font-size: 0.8rem;
 }
 
-.card-header h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.1rem;
+.timestamp {
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    letter-spacing: 0.05rem;
+}
+
+.security-badge {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    border-radius: 2px;
+}
+
+.security-high {
+    background: linear-gradient(135deg, var(--glitch-red), #ff3366);
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 0, 89, 0.3);
+}
+
+.security-medium {
+    background: linear-gradient(135deg, var(--accent-tertiary), #cc44ff);
+    color: white;
+    box-shadow: 0 0 10px rgba(189, 0, 255, 0.3);
+}
+
+.security-low {
+    background: linear-gradient(135deg, var(--accent-secondary), #55bb88);
+    color: var(--bg-primary);
+    box-shadow: 0 0 10px rgba(64, 160, 136, 0.3);
+}
+
+.article-title {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.4rem;
     text-align: left;
 }
 
-.card-header h3 a {
+.title-link {
     color: var(--text-header);
     text-decoration: none;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--text-header), var(--accent-secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
 }
 
-.card-header h3 a:hover {
-    color: var(--accent-primary);
+.title-link:hover {
+    background-position: 100% 100%;
 }
 
-.card-meta {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    font-size: 0.8rem;
+.preview-text {
     color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
 }
 
-.article-date {
-    color: var(--accent-secondary);
+.access-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.connection-level {
-    padding: 0.2rem 0.5rem;
-    background: rgba(var(--accent-secondary-rgb, 64, 160, 136), 0.1);
-    border: 1px solid var(--accent-secondary);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-}
-
-/* Article Preview Content */
-.article-summary,
-.article-preview {
-    flex-grow: 1;
-    margin-bottom: 1rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    font-size: 0.9rem;
-}
-
-.read-more {
-    margin-top: auto;
-    text-align: right;
-}
-
-.read-more a {
+.access-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--accent-primary);
     text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-primary);
+    background: rgba(0, 174, 255, 0.05);
+    transition: all 0.3s ease;
     font-size: 0.9rem;
-    font-weight: bold;
 }
 
-.read-more a:hover {
-    color: var(--accent-secondary);
+.access-btn:hover {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    transform: translateX(5px);
 }
 
-/* Responsive adjustments */
+.btn-arrow {
+    transition: transform 0.3s ease;
+}
+
+.access-btn:hover .btn-arrow {
+    transform: translateX(3px);
+}
+
+.byte-count {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-family: var(--font-main);
+}
+
+/* animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.05); }
+}
+
+@keyframes scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes fade-in-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+}
+
+/* responsive */
 @media (max-width: 768px) {
-    .article-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .intro-text {
+        column-count: 1;
     }
     
-    .article-card {
-        padding: 1rem;
+    .article-entry {
+        padding: 1.5rem;
+    }
+    
+    .access-controls {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
     }
 }
