@@ -72,11 +72,6 @@
     
     <div class="crt-background"></div>
     <div class="grid-overlay"></div>
-    
-    <div class="terminal-footer">
-        <div>ID:LAIN/PROTOCOL_7</div>
-        <div>█ █ █ ▓ ▒ ░</div>
-    </div>
 </div>
 
 <script>
@@ -88,15 +83,10 @@
         function updateConnection() {
             // Random percentage between 68-93
             const percentage = Math.floor(Math.random() * 21) + 70;
-            connectionFill.style.width = percentage + '%';
             connectionPercent.textContent = percentage + '%';
-            
-            // Update every 2-5 seconds
             const nextUpdate = Math.random() * 2000 + 500;
             setTimeout(updateConnection, nextUpdate);
         }
-        
-        // Start connection updates
         updateConnection();
         
         // Message reveal sequence using data attributes
@@ -108,7 +98,7 @@
             messages.forEach(message => {
                 message.style.opacity = 0;
             });
-            
+          
             // Reveal each message according to its delay attribute
             messages.forEach(message => {
                 const delay = parseInt(message.getAttribute('data-delay'), 10);
