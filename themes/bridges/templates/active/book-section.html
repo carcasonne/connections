@@ -3,41 +3,32 @@
 {% block title %}{{ section.title }}{% endblock title %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="/css/page.css">
-<link rel="stylesheet" href="/css/section.css">
-<link rel="stylesheet" href="/css/lain-theme.css">
-<link rel="stylesheet" href="/css/components/terminal-header.css">
 <link rel="stylesheet" href="/css/page-specific/book-section.css">
 {% endblock extra_head %}
 
 {% block content %}
-<section id="section-overview" class="section">
+<section class="section">
     <div class="section-header">
-        <div class="section-content">
-            <h1>{{ section.title }}</h1>
-            <div class="layer-indicator">PROTOCOL://WIRED.RECORDS/{{ section.title | upper }}/INDEX</div>
+        <div class="layer-indicator">PROTOCOL://WIRED.RECORDS/{{ section.title | upper }}/INDEX</div>
 
-            {% if section.content %}
-            <div class="multi-column">
-                {{ section.content | safe }}
-            </div>
-            {% endif %}
+        {% if section.content %}
+        <div class="multi-column">
+            {{ section.content | safe }}
         </div>
+        {% endif %}
     </div>
 
     {% if section.pages %}
-    <div class="book-database">
-        <div class="database-header">
-            <div class="database-title">
+    <div class="table-wrapper">
+        <div class="table-header">
+            <div class="table-title">
                 <span class="status-indicator"></span>
-                DATABASE://{{ section.title | upper }}
+                TABLE://{{ section.title | upper }}
             </div>
-            <div class="database-info">
-                <div class="record-count">{{ section.pages | length }} ENTRIES INDEXED</div>
-            </div>
+            <div class="table-meta">{{ section.pages | length }} ENTRIES</div>
         </div>
         
-        <table class="book-table">
+        <table class="styled-table">
             <thead>
                 <tr>
                     <th style="width:40%;">Title</th>
@@ -68,7 +59,7 @@
                     </td>
                     <td>
                         {% if page.extra.status %}
-                            <span class="book-status status-{{ page.extra.status | lower }}">
+                            <span class="status-badge status-{{ page.extra.status | lower }}">
                                 {{ page.extra.status }}
                             </span>
                         {% else %}

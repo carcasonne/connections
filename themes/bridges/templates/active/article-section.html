@@ -3,81 +3,29 @@
 {% block title %}{{ section.title }}{% endblock title %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="/css/page.css">
-<link rel="stylesheet" href="/css/section.css">
-<link rel="stylesheet" href="/css/lain-style.css">
-<link rel="stylesheet" href="/css/components/terminal-header.css">
 <link rel="stylesheet" href="/css/page-specific/article-section.css">
 {% endblock extra_head %}
 
 {% block content %}
-<div class="terminal-header">
-    <div class="terminal-id">
-        <div class="terminal-status"></div>
-        <span>{{ section.title | upper }}</span>
-    </div>
-    <div class="connection-indicator">
-        <div class="connection-percent" id="connection-percent">87%</div>
-    </div>
-</div>
-
-<section class="articles-section">
-    {% if section.pages %}
-    <!-- staggered article layout -->
-    <div class="articles-flow">
-        {% for page in section.pages | sort(attribute="date") | reverse %}
-        <article class="article-entry" style="--delay: {{ loop.index0 * 0.1 }}s">
-            <div class="entry-glow"></div>
-            
-            <div class="article-header">
-                <div class="timestamp">{{ page.date | date(format="%Y.%m.%d.%H%M") }}</div>
-                {% if page.extra.connection_level %}
-                <div class="security-badge security-{{ page.extra.connection_level | lower }}">
-                    {{ page.extra.connection_level }}
-                </div>
-                {% endif %}
-            </div>
-
-            <h2 class="article-title">
-                <a href="{{ page.permalink }}" class="title-link">
-                    {{ page.title }}
-                </a>
-            </h2>
-
-            <div class="preview-text">
-                {% if page.summary %}
-                {{ page.summary }}
-                {% else %}
-                {{ page.content | striptags | truncate(length=180) }}
-                {% endif %}
-            </div>
-
-            <div class="access-controls">
-                <a href="{{ page.permalink }}" class="access-btn">
-                    <span class="btn-text">access</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <div class="byte-count">{{ page.content | length }}b</div>
-            </div>
-        </article>
-        {% endfor %}
+<div class="content-wrapper">
+    <div class="layer-indicator">{{ section.title }}.log — {{ section.pages | length }} entries</div>
+    
+    {% if section.content %}
+    <div class="prose">
+        {{ section.content | safe }}
     </div>
     {% endif %}
-</section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const connectionPercent = document.getElementById('connection-percent');
-            
-        function updateConnection() {
-            const percentage = Math.floor(Math.random() * 21) + 70;
-            connectionPercent.textContent = percentage + '%';
-            const nextUpdate = Math.random() * 2000 + 500;
-            setTimeout(updateConnection, nextUpdate);
-        }
-        
-        updateConnection();
-    })
-</script>
-
+        {% if section.pages %}
+        <div class="articles-list">
+            {% for page in section.pages | sort(attribute="date") | reverse %}
+            <div class="article-item">
+                <a href="{{ page.permalink }}" class="article-title">{{ page.title }}</a>
+                <span class="article-date">{{ page.date | date(format="%Y.%m.%d") }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+</div>
 {% endblock content %}

@@ -1,0 +1,63 @@
+/* page-specific/pape-section.css */
+
+.pape-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.pape-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.pape-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 5/3;
+}
+
+.pape-info {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-primary);
+}
+
+.filename {
+  font-family: 'courier new', monospace;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.filename::before {
+  content: "$ cat ";
+  color: var(--text-muted);
+}
+
+.filesize {
+  font-family: 'courier new', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-left: 0.5rem;
+}
+
+.filesize::before {
+  content: "// ";
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .pape-grid {
+    gap: 1rem;
+  }
+}

@@ -14,6 +14,16 @@
     <div class="page-wrapper">
         {% include "partials/navigation.html" %}
         <div class="container">
+            <div class="terminal-header">
+                <div class="terminal-id">
+                    <div class="terminal-status"></div>
+                    <span>{% block terminal_title %}
+                        {% if section %}{{ section.title | upper }}
+                        {% elif page %}{{ page.title | upper }}
+                        {% else %}SYSTEM{% endif %}
+                    {% endblock %}</span>
+                </div>
+            </div>
             <main class="main">
                 {% block content %}{% endblock content %}
             </main>

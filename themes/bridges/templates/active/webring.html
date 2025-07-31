@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/css/page-specific/webring.css">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="content-wrapper">
+    <section class="section">
+        <div class="section-header">
+            <h1>{{ section.title }}</h1>
+            <div class="layer-indicator">{{ section.title }}.nodes — {{ section.extra.sites | length }} connected</div>
+        </div>
+
+        {% if section.content %}
+        <div class="prose">
+            {{ section.content | safe }}
+        </div>
+        {% endif %}
+
+        <div class="network-status">
+            <button id="random-site" class="action-btn">
+                <span>random_node()</span>
+                <span class="btn-arrow">→</span>
+            </button>
+            <div class="peer-count">
+                <span class="status-indicator"></span>
+                <span>{{ section.extra.sites | length }} peers online</span>
+            </div>
+        </div>
+
+        <div class="banner-matrix">
+            {% for site in section.extra.sites %}
+            <div class="node-entry" data-url="{{ site.url }}">
+                <div class="banner-container">
+                    <img src="/images/banners/{{ site.img }}" 
+                         alt="{{ site.title }}"
+                         class="banner-gif"
+                         loading="lazy">
+                    <div class="node-overlay">
+                        <span class="node-id">#{{ loop.index }}</span>
+                    </div>
+                </div>
+                <div class="node-info">
+                    <div class="node-title">{{ site.title }}</div>
+                    <div class="protocol-links">
+                        <a href="{{ site.url }}" class="protocol-link clearnet" target="_blank">http</a>
+                        {% if site.tor %}
+                        <a href="{{ site.tor }}" class="protocol-link onion" target="_blank">tor</a>
+                        {% endif %}
+                        {% if site.i2p %}
+                        <a href="{{ site.i2p }}" class="protocol-link i2p" target="_blank">i2p</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="network-footer">
+            {% if section.extra.updated %}
+            <div class="sync-status">
+                last_sync: {{ section.extra.updated | date(format="%Y.%m.%d.%H%M") }}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+</div>
+
+<script>
+const randomBtn = document.getElementById('random-site');
+
+randomBtn.addEventListener('click', () => {
+    const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
+    window.open(randomNode.url, '_blank');
+});
+
+// banner click handling
+document.querySelectorAll('.node-entry').forEach(entry => {
+    entry.addEventListener('click', (e) => {
+        if (!e.target.closest('.protocol-links')) {
+            window.open(entry.dataset.url, '_blank');
+        }
+    });
+});
+
+// occasional banner glitch bc why not
+setInterval(() => {
+    const banners = document.querySelectorAll('.banner-gif');
+    if (banners.length > 0 && Math.random() < 0.3) {
+        const randomBanner = banners[Math.floor(Math.random() * banners.length)];
+        randomBanner.style.filter = 'contrast(1.5) hue-rotate(90deg)';
+        setTimeout(() => {
+            randomBanner.style.filter = 'none';
+        }, 200);
+    }
+}, 5000);
+</script>
+{% endblock content %}

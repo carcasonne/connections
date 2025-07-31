@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/css/page-specific/pape-section.css">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="content-wrapper">
+    <section class="section">
+        <div class="section-header">
+            <h1>{{ section.title }}</h1>
+            <div class="layer-indicator">{{ section.title }}.archive — {{ section.assets | length }} files</div>
+            
+            {% if section.content %}
+            <div class="prose">
+                {{ section.content | safe }}
+            </div>
+            {% endif %}
+        </div>
+
+        {% if section.assets %}
+        <div class="pape-grid">
+            {% for asset in section.assets %}
+            {% if asset is matching("[.](jpg|jpeg|png|gif|webp|svg)$") %}
+            <div class="pape-item">
+                <img src="{{ asset | safe }}" 
+                    alt="{{ asset | split(pat='/') | last }}"
+                    class="pape-image"
+                    loading="lazy">
+                <div class="pape-info">
+                    <span class="filename">{{ asset | split(pat='/') | last }}</span>
+                    <span class="filesize">{{ loop.index }}</span>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+</div>
+{% endblock content %}

@@ -3,102 +3,95 @@
 {% block title %} layer:00/ego {% endblock title %}
 
 {% block extra_head %}
-<!-- <link rel="stylesheet" href="/css/lain-theme.css"> -->
-<link rel="stylesheet" href="/css/page-specific/index.css">
+    <link rel="stylesheet" href="/css/page-specific/index.css">
 {% endblock extra_head %}
 
 {% block content %}
-<div class="terminal-chat">
-    <div class="chat-container">
-        <div class="message" data-delay="1000">
-            <div class="message-icon">L</div>
-            <div class="message-content">
-                <div class="message-text">Hello.</div>
-            </div>
+<div class="content-wrapper">
+    <section class="intro-section">       
+        <div class="prose">
+            <p>welcome to my corner of the wired. this is where i archive the fragments that matter - books that shaped my thinking, articles worth preserving, links to signal among the noise.</p>
+            
+            <p>the internet feels increasingly ephemeral. platforms disappear, links rot, algorithms decide what survives. this site is my small act of resistance against that entropy. everything here persists as long as i choose to maintain it.</p>
         </div>
-        
-        <div class="message" data-delay="1500">
-            <div class="message-icon">L</div>
-            <div class="message-content">
-                <div class="message-text">Who are you?</div>
+    </section>
+
+    <section class="content-grid">
+        <div class="nav-item hover-panel">
+            <div class="nav-header">
+                <span class="nav-icon">[01]</span>
+                <h3><a href="/books/">books</a></h3>
             </div>
-        </div>
-        
-        <div class="message" data-delay="6500">
-            <div class="message-icon">L</div>
-            <div class="message-content">
-                <div class="message-text">In the real world, it didn't matter if I was there or not. When I realized that, I was no longer afraid of losing my body.</div>
-            </div>
-        </div>
-        
-        <div class="message" data-delay="7500">
-            <div class="message-icon">L</div>
-            <div class="message-content">
-                <div class="message-text">At least now you're free to become anything you want. </div>
-            </div>
+            <p>personal reading log. tracking what i've consumed, what i'm working through, what got abandoned. no social aspects, no algorithmic recommendations - just honest accounting of my literary wanderings.</p>
         </div>
 
-        <div class="message" data-delay="1500">
-            <div class="message-icon">L</div>
-            <div class="message-content">
-                <div class="message-text">No, I guess you were actually free all along. </div>
+        <div class="nav-item hover-panel">
+            <div class="nav-header">
+                <span class="nav-icon">[02]</span>
+                <h3><a href="/articles/">articles</a></h3>
             </div>
+            <p>longer-form thoughts on digital ownership, personal archiving, and reclaiming agency in an increasingly platform-mediated world.</p>
         </div>
 
-        <div class="message" data-delay="7000">
-            <div class="message-icon">L</div>
-            <div class="message-content">
-                <div class="message-text">Join me in the Wired. Browse through my fragments.
-                    Close your eyes and you can see it too...
-                </div>
+        <div class="nav-item hover-panel">
+            <div class="nav-header">
+                <span class="nav-icon">[03]</span>
+                <h3><a href="/link-collections/">links</a></h3>
             </div>
+            <p>curated collections of forums, blogs, and corners of the internet worth preserving. the good stuff that search engines can't find.</p>
         </div>
-        
-    </div>
-    
-    <div class="crt-background"></div>
-    <div class="grid-overlay"></div>
+
+        <div class="nav-item hover-panel">
+            <div class="nav-header">
+                <span class="nav-icon">[04]</span>
+                <h3><a href="/notes/">notes</a></h3>
+            </div>
+            <p>shorter fragments. work-in-progress thoughts, observations, things that don't warrant full articles but deserve preservation.</p>
+        </div>
+    </section>
+
+    <section class="philosophy-section">
+        <h2>on digital collecting</h2>
+        <div class="prose">
+            <p>this site exists because i believe in digital ownership. not the artificial scarcity of NFTs or the gamification of streaming platforms, but actual possession of files, control over access, independence from corporate whims.</p>
+            
+            <p>everything here is self-hosted, self-maintained, deliberately small-scale. it's not optimized for growth or engagement metrics. it's optimized for persistence and personal utility.</p>
+            
+            <p>take what you like, discard the rest, move on. same philosophy applies to the books, the links, the ideas. nothing here claims to be definitive or complete.</p>
+        </div>
+    </section>
+
+    <footer class="terminal-footer">
+        <div class="status-line">
+            <span class="cursor">█</span>
+            <span class="timestamp" id="timestamp"></span>
+        </div>
+    </footer>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Connection percentage updater
-        const connectionFill = document.getElementById('connection-fill');
-        const connectionPercent = document.getElementById('connection-percent');
-        
-        function updateConnection() {
-            // Random percentage between 68-93
-            const percentage = Math.floor(Math.random() * 21) + 70;
-            connectionPercent.textContent = percentage + '%';
-            const nextUpdate = Math.random() * 2000 + 500;
-            setTimeout(updateConnection, nextUpdate);
+function updateTimestamp() {
+    const now = new Date();
+    const timestamp = now.toISOString().slice(0, 19).replace('T', ' ');
+    const element = document.getElementById('timestamp');
+    if (element) {
+        element.textContent = `uptime: ${timestamp}`;
+    }
+}
+
+updateTimestamp();
+setInterval(updateTimestamp, 1000);
+
+// Add subtle glitch effect to nav items
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        if (Math.random() < 0.1) { // 10% chance
+            item.style.transform = 'translateX(2px)';
+            setTimeout(() => {
+                item.style.transform = 'translateX(0)';
+            }, 100);
         }
-        updateConnection();
-        
-        // Message reveal sequence using data attributes
-        function revealMessages() {
-            const messages = document.querySelectorAll('.message');
-            let cumulativeDelay = 0;
-            
-            // Set initial state for all messages
-            messages.forEach(message => {
-                message.style.opacity = 0;
-            });
-          
-            // Reveal each message according to its delay attribute
-            messages.forEach(message => {
-                const delay = parseInt(message.getAttribute('data-delay'), 10);
-                cumulativeDelay += delay;
-                
-                setTimeout(() => {
-                    message.style.opacity = 1;
-                    message.style.transition = 'opacity 0.5s ease';
-                }, cumulativeDelay);
-            });
-        }
-        
-        // Start the message sequence
-        revealMessages();
     });
+});
 </script>
 {% endblock content %}
