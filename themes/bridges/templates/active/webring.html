@@ -20,38 +20,21 @@
         </div>
         {% endif %}
 
-        <div class="network-status">
-            <button id="random-site" class="action-btn">
-                <span>random_node()</span>
-                <span class="btn-arrow">→</span>
-            </button>
-            <div class="peer-count">
-                <span class="status-indicator"></span>
-                <span>{{ section.extra.sites | length }} peers online</span>
-            </div>
-        </div>
-
-        <div class="banner-matrix">
+        <div class="webring-grid">
             {% for site in section.extra.sites %}
             <div class="node-entry" data-url="{{ site.url }}">
-                <div class="banner-container">
-                    <img src="/images/banners/{{ site.img }}" 
-                         alt="{{ site.title }}"
-                         class="banner-gif"
-                         loading="lazy">
-                    <div class="node-overlay">
-                        <span class="node-id">#{{ loop.index }}</span>
-                    </div>
-                </div>
+                <img src="/images/banner/{{ site.img }}" 
+                     alt="{{ site.title }}"
+                     class="banner-gif">
                 <div class="node-info">
                     <div class="node-title">{{ site.title }}</div>
                     <div class="protocol-links">
-                        <a href="{{ site.url }}" class="protocol-link clearnet" target="_blank">http</a>
+                        <a href="{{ site.url }}" class="protocol-link">http</a>
                         {% if site.tor %}
-                        <a href="{{ site.tor }}" class="protocol-link onion" target="_blank">tor</a>
+                        <a href="{{ site.tor }}" class="protocol-link">tor</a>
                         {% endif %}
                         {% if site.i2p %}
-                        <a href="{{ site.i2p }}" class="protocol-link i2p" target="_blank">i2p</a>
+                        <a href="{{ site.i2p }}" class="protocol-link">i2p</a>
                         {% endif %}
                     </div>
                 </div>
@@ -59,25 +42,20 @@
             {% endfor %}
         </div>
 
-        <div class="network-footer">
-            {% if section.extra.updated %}
-            <div class="sync-status">
-                last_sync: {{ section.extra.updated | date(format="%Y.%m.%d.%H%M") }}
-            </div>
-            {% endif %}
+        <div class="webring-footer">
+            <button class="action-btn" onclick="randomNode()">random_node()</button>
+            <div class="peer-count">{{ section.extra.sites | length }} peers</div>
         </div>
     </section>
 </div>
 
 <script>
-const randomBtn = document.getElementById('random-site');
+function randomNode() {
+    const entries = document.querySelectorAll('.node-entry');
+    const randomEntry = entries[Math.floor(Math.random() * entries.length)];
+    window.open(randomEntry.dataset.url, '_blank');
+}
 
-randomBtn.addEventListener('click', () => {
-    const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
-    window.open(randomNode.url, '_blank');
-});
-
-// banner click handling
 document.querySelectorAll('.node-entry').forEach(entry => {
     entry.addEventListener('click', (e) => {
         if (!e.target.closest('.protocol-links')) {
@@ -85,17 +63,5 @@ document.querySelectorAll('.node-entry').forEach(entry => {
         }
     });
 });
-
-// occasional banner glitch bc why not
-setInterval(() => {
-    const banners = document.querySelectorAll('.banner-gif');
-    if (banners.length > 0 && Math.random() < 0.3) {
-        const randomBanner = banners[Math.floor(Math.random() * banners.length)];
-        randomBanner.style.filter = 'contrast(1.5) hue-rotate(90deg)';
-        setTimeout(() => {
-            randomBanner.style.filter = 'none';
-        }, 200);
-    }
-}, 5000);
 </script>
 {% endblock content %}

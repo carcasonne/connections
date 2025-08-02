@@ -3,288 +3,41 @@
 {% block title %}{{ section.title }}{% endblock title %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="/css/section.css">
-<link rel="stylesheet" href="/css/lain-theme.css">
-<link rel="stylesheet" href="/css/components/terminal-header.css">
 <link rel="stylesheet" href="/css/page-specific/music-section.css">
 {% endblock extra_head %}
 
 {% block content %}
-<section id="section-overview" class="section">
-    <div class="music-archive">
-        {% if section.pages %}
-            {% set categories = [] %}
-            {% for page in section.pages %}
-                {% if page.extra.category %}
-                    {% if page.extra.category not in categories %}
-                        {% set_global categories = categories | concat(with=page.extra.category) %}
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-            
-            {% set categories = categories | sort | reverse %}
-            
-            {# First display the "timeless" category if it exists #}
-            {% if "timeless" in categories %}
-            {% set timeless_count = section.pages | filter(attribute="extra.category", value="timeless") | length %}
-            <div class="music-era">
-                <div class="era-title" data-count="({{ timeless_count }})">Timeless</div>
-                <div class="album-collection">
-                    {% for page in section.pages %}
-                        {% if page.extra.category and page.extra.category == "timeless" %}
-                        <div class="album-node">
-                            <div class="year-label">{{ page.extra.year | default(value="∞") }}</div>
-                            <div class="node-header">
-                                <div class="node-id">
-                                    <div class="node-status"></div>
-                                    <span>ALBUM://{{ loop.index0 }}</span>
-                                </div>
-                            </div>
-                            <a href="{{ page.permalink | safe }}">
-                                <div class="album-cover">
-                                    <img src="{{ page.extra.cover | safe }}" alt="Cover for {{ page.title }}">
-                                </div>
-                            </a>
-                            <div class="album-data">
-                                <div class="album-title">{{ page.title }}</div>
-                                <div class="album-artist">{{ page.extra.artist }}</div>
-                                
-                                <div class="extended-info">
-                                    {% if page.extra.favorites %}
-                                    <div class="meta-header">TRACKS://</div>
-                                    <ul class="track-list">
-                                        {% for track in page.extra.favorites %}
-                                        <li>{{ track }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %}
-                                    
-                                    {% if page.extra.best_for %}
-                                    <div class="meta-header">CONTEXT://</div>
-                                    <div class="track-list">
-                                        <li>{{ page.extra.best_for }}</li>
-                                    </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
-            
-            {# Then display the numeric year categories in reverse chronological order (newest first) #}
-            {% set year_categories = [] %}
-            {% for category in categories %}
-                {% if category != "timeless" and category != "earlier" %}
-                    {% if category is matching("[0-9]+") %}
-                        {% set_global year_categories = year_categories | concat(with=category) %}
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-            
-            {# Sort year categories in reverse chronological order (newest first) #}
-            {% set year_categories = year_categories | sort | reverse %}
-            
-            {# Display year categories #}
-            {% for category in year_categories %}
-                {% set category_count = section.pages | filter(attribute="extra.category", value=category) | length %}
-                <div class="music-era">
-                    <div class="era-title" data-count="({{ category_count }})">{{ category }}</div>
-                    <div class="album-collection">
-                        {% for page in section.pages %}
-                            {% if page.extra.category and page.extra.category == category %}
-                            <div class="album-node">
-                                <div class="year-label">{{ page.extra.year | default(value="∞") }}</div>
-                                <div class="node-header">
-                                    <div class="node-id">
-                                        <div class="node-status"></div>
-                                        <span>ALBUM://{{ loop.index0 }}</span>
-                                    </div>
-                                </div>
-                                <a href="{{ page.permalink | safe }}">
-                                    <div class="album-cover">
-                                        <img src="{{ page.extra.cover | safe }}" alt="Cover for {{ page.title }}">
-                                    </div>
-                                </a>
-                                <div class="album-data">
-                                    <div class="album-title">{{ page.title }}</div>
-                                    <div class="album-artist">{{ page.extra.artist }}</div>
-                                    
-                                    <div class="extended-info">
-                                        {% if page.extra.favorites %}
-                                        <div class="meta-header">TRACKS://</div>
-                                        <ul class="track-list">
-                                            {% for track in page.extra.favorites %}
-                                            <li>{{ track }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
-                                        
-                                        {% if page.extra.best_for %}
-                                        <div class="meta-header">CONTEXT://</div>
-                                        <div class="track-list">
-                                            <li>{{ page.extra.best_for }}</li>
-                                        </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endfor %}
+<div class="content-wrapper">
+    <section class="section">
+        <div class="section-header">
+            <h1>{{ section.title }}</h1>
+            <div class="layer-indicator">{{ section.title }}.collection — {{ section.pages | length }} albums</div>
+        </div>
 
-            {# Finally display the "earlier" category if it exists #}
-            {% if "earlier" in categories %}
-            {% set earlier_count = section.pages | filter(attribute="extra.category", value="earlier") | length %}
-            <div class="music-era">
-                <div class="era-title" data-count="({{ earlier_count }})">Earlier</div>
-                <div class="album-collection">
-                    {% for page in section.pages %}
-                        {% if page.extra.category and page.extra.category == "earlier" %}
-                        <div class="album-node">
-                            <div class="year-label">{{ page.extra.year | default(value="∞") }}</div>
-                            <a href="{{ page.permalink | safe }}">
-                                <div class="album-cover">
-                                    <img src="{{ page.extra.cover | safe }}" alt="Cover for {{ page.title }}">
-                                </div>
-                            </a>
-                            <div class="album-data">
-                                <div class="album-title">{{ page.title }}</div>
-                                <div class="album-artist">{{ page.extra.artist }}</div>
-                                
-                                <div class="extended-info">
-                                    {% if page.extra.favorites %}
-                                    <div class="meta-header">Top Tracks</div>
-                                    <ul class="track-list">
-                                        {% for track in page.extra.favorites %}
-                                        <li>{{ track }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %}
-                                    
-                                    {% if page.extra.best_for %}
-                                    <div class="meta-header">Best When</div>
-                                    <div class="track-list">
-                                        <li>{{ page.extra.best_for }}</li>
-                                    </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
+        {% if section.content %}
+        <div class="prose">
+            {{ section.content | safe }}
+        </div>
         {% endif %}
-    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-        // View toggle functionality
-        const viewToggles = document.querySelectorAll('.toggle-btn');
-        const musicArchive = document.querySelector('.music-archive');
-        
-        viewToggles.forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                // Remove active class from all toggles
-                viewToggles.forEach(t => t.classList.remove('active'));
-                // Add active class to clicked toggle
-                this.classList.add('active');
+        {% if section.pages %}
+        <div class="albums-grid">
+            {% for album in section.pages | sort(attribute="extra.year") | reverse %}
+            <a href="{{ album.permalink }}" class="album-card">
+                {% if album.extra.cover %}
+                <div class="album-cover-container">
+                    <img src="{{ album.extra.cover }}" alt="{{ album.title }} cover" class="album-cover">
+                </div>
+                {% endif %}
                 
-                // Apply view class
-                if (this.dataset.view === 'grid') {
-                    musicArchive.classList.add('grid-view');
-                } else {
-                    musicArchive.classList.remove('grid-view');
-                }
-                
-                // Add glitch effect to all albums during transition
-                document.querySelectorAll('.album-node').forEach(node => {
-                    node.classList.add('glitching');
-                    setTimeout(() => {
-                        node.classList.remove('glitching');
-                    }, 300);
-                });
-            });
-        });
-        
-        // Search functionality
-        const searchInput = document.querySelector('.search-input');
-        const albumNodes = document.querySelectorAll('.album-node');
-        
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            
-            albumNodes.forEach(node => {
-                const title = node.querySelector('.album-title').textContent.toLowerCase();
-                const artist = node.querySelector('.album-artist').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || artist.includes(searchTerm)) {
-                    node.style.display = '';
-                } else {
-                    node.style.display = 'none';
-                }
-            });
-            
-            // Check if each section has visible items
-            document.querySelectorAll('.music-era').forEach(era => {
-                const visibleCount = era.querySelectorAll('.album-node:not([style="display: none;"])').length;
-                const totalCount = era.querySelectorAll('.album-node').length;
-                
-                if (visibleCount === 0) {
-                    era.style.display = 'none';
-                } else {
-                    era.style.display = '';
-                    // Update count
-                    const titleEl = era.querySelector('.era-title');
-                    if (titleEl) {
-                        titleEl.setAttribute('data-count', `(${visibleCount}/${totalCount})`);
-                    }
-                }
-            });
-            
-            // Add digital interference effect to show search is processing
-            if (searchTerm.length > 0) {
-                document.querySelectorAll('.album-node:not([style="display: none;"])').forEach(node => {
-                    const statusLight = node.querySelector('.node-status');
-                    if (statusLight) {
-                        statusLight.style.backgroundColor = 'var(--glitch-color)';
-                        setTimeout(() => {
-                            statusLight.style.backgroundColor = '';
-                        }, 300);
-                    }
-                });
-            }
-        });
-        
-        // Random digital interference effect
-        function randomInterference() {
-            const randomIndex = Math.floor(Math.random() * albumNodes.length);
-            const randomNode = albumNodes[randomIndex];
-            
-            if (randomNode) {
-                // Add brief glitch to a random album
-                const coverImg = randomNode.querySelector('.album-cover img');
-                if (coverImg) {
-                    coverImg.style.filter = 'hue-rotate(90deg) contrast(1.5)';
-                    setTimeout(() => {
-                        coverImg.style.filter = '';
-                    }, 150);
-                }
-            }
-            
-            // Schedule next random interference
-            setTimeout(randomInterference, Math.random() * 8000 + 5000);
-        }
-        
-        // Start random interference
-        setTimeout(randomInterference, 4000);
-    });
-    </script>
-</section>
+                <div class="album-info">
+                    <div class="album-title">{{ album.title }}</div>
+                    <div class="artist">{{ album.extra.artist }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+</div>
 {% endblock content %}

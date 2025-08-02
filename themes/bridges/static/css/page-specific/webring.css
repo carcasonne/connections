@@ -1,22 +1,6 @@
-/* page-specific/webring.css */
+/* webring-specific styles - everything else inherited from style.css */
 
-.network-status {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 2rem 0;
-  padding: 1rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-}
-
-.peer-count {
-  font-family: 'courier new', monospace;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.banner-matrix {
+.webring-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
@@ -27,11 +11,12 @@
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: var(--card-transition);
 }
 
 .node-entry:hover {
   border-color: var(--wired-green);
+  box-shadow: var(--layer-glow);
 }
 
 .banner-gif {
@@ -46,7 +31,7 @@
 }
 
 .node-title {
-  font-family: 'courier new', monospace;
+  font-family: var(--font-main);
   font-size: 0.75rem;
   color: var(--text-primary);
   margin-bottom: 0.3rem;
@@ -58,7 +43,7 @@
 }
 
 .protocol-link {
-  font-family: 'courier new', monospace;
+  font-family: var(--font-main);
   font-size: 0.7rem;
   color: var(--wired-green);
   text-decoration: none;
@@ -68,31 +53,44 @@
   color: var(--accent-primary);
 }
 
-.node-overlay {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 2px 6px;
-  font-family: 'courier new', monospace;
-  font-size: 0.7rem;
-  color: var(--wired-green);
+.webring-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
 }
 
-.sync-status {
-  font-family: 'courier new', monospace;
+.action-btn {
+  background: none;
+  border: 1px solid var(--wired-green);
+  color: var(--wired-green);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.peer-count {
+  font-family: var(--font-main);
   font-size: 0.8rem;
   color: var(--text-muted);
-  text-align: center;
-  margin-top: 2rem;
 }
 
 @media (max-width: 768px) {
-  .banner-matrix {
+  .webring-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
   
-  .network-status {
+  .webring-footer {
     flex-direction: column;
     gap: 1rem;
   }

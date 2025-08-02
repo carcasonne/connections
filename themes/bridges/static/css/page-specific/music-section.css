@@ -1,0 +1,86 @@
+.album-info {
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.album-title {
+  font-family: var(--font-header);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  text-transform: lowercase;
+}
+
+.artist {
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  text-transform: lowercase;
+}
+
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.album-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  transition: var(--card-transition);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.album-card:hover {
+  border-color: var(--wired-green);
+  box-shadow: var(--layer-glow);
+}
+
+.album-cover-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.album-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.category {
+  top: 0.5rem;
+  left: 0.5rem;
+  font-family: var(--font-main);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  padding: 0.2rem 0.4rem;
+  z-index: 2;
+  background: rgba(0, 174, 255, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.category-timeless {
+  background: rgba(189, 0, 255, 0.2);
+  color: var(--accent-tertiary);
+  border: 1px solid var(--accent-tertiary);
+}
+
+.category:not(.category-timeless) {
+  background: rgba(64, 160, 136, 0.2);
+  color: var(--wired-green);
+  border: 1px solid var(--wired-green);
+}
+
+@media (max-width: 768px) {
+  .albums-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}

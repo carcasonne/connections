@@ -7,30 +7,31 @@ headerNavigation = true
 weight = 6
 
 [[extra.sites]]
-url = "https://ophanim.neocities.org"
-img = "ophanim.gif"
-title = "Ophanim"
+url = "https://articexploit.xyz/"
+img = "The_Arcade.gif"
+title = "The Arcade"
 
 [[extra.sites]]
-url = "https://getimiskon.neocities.org"
-tor = "http://6dpjae254fbchoa53e2ypxh6noqjgjkz5iadwy6hlar6egb76m3uihid.onion"
-i2p = "http://wjh66n7sdq4drpvs6qlucsmohc33eix2japrcwyhpxyanywdgy4q.b32.i2p"
-img = "getimiskon.png"
-title = "getimiskon's space"
-
-[[extra.sites]]
-url = "https://yukinu.com"
-img = "yukinu.gif"
-title = "Yukinu"
+url = "https://grafo.zone/en/"
+img = "grafo.gif"
+title = "grafo zone"
 
 [[extra.sites]]
 url = "https://sizeof.cat"
-tor = "http://sizeofaex6zgovemvemn2g3jfmgujievmxxxbcgnbrnmgcjcjpiiprqd.onion"
-img = "sizeofcat.jpg"
-title = "sizeof(cat)"
+tor = "sizeofaex6zgovemvemn2g3jfmgujievmxxxbcgnbrnmgcjcjpiiprqd.onion"
+img = "sizeofcat.jpeg"
+title = "sizeof(cat) »onion edition«"
 
 [[extra.sites]]
 url = "https://godcock.neocities.org"
 img = "godcock.jpg"
-title = "Godcock"
+title = "godcock"
+
+[[extra.sites]]
+url = "https://cabbagesorter.neocities.org/"
+img = "cabbagesorter_new.jpg"
+title = "cabbagesorter"
+
 +++
+
+I am actively trying to add more websites here. Most archives or centralized ways of organizing the webring seem to be outdated.

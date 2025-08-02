@@ -6,5 +6,3 @@ sort_by = "date"
 [extra]
 weight = 4
 +++
-
-A digital archive of albums that have shaped my musical journey, organized by era and personal significance.

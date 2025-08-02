@@ -2,379 +2,58 @@
 
 {% block title %}{{ page.title }} - {{ page.extra.artist }}{% endblock title %}
 
+{% block terminal_title %}{{ page.title | upper }} - {{ page.extra.artist | upper }}{% endblock %}
+
 {% block extra_head %}
-<link rel="stylesheet" href="/css/section.css">
-<link rel="stylesheet" href="/css/lain-theme.css">
-<style>
-    /* Album detail page styling */
-    .album-detail {
-        position: relative;
-        max-width: 1200px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-    }
-
-    /* Digital frame */
-    .digital-frame {
-        position: relative;
-        background-color: rgba(19, 26, 26, 0.8);
-        border: 1px solid var(--wired-green);
-        padding: 2rem;
-        backdrop-filter: blur(5px);
-        overflow: hidden;
-    }
-
-    /* Wired corner decorations */
-    .digital-frame::before,
-    .digital-frame::after {
-        content: "";
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        border: 1px solid var(--wired-green);
-        z-index: 2;
-    }
-
-    .digital-frame::before {
-        top: -1px;
-        left: -1px;
-        border-right: none;
-        border-bottom: none;
-    }
-
-    .digital-frame::after {
-        bottom: -1px;
-        right: -1px;
-        border-left: none;
-        border-top: none;
-    }
-
-    /* Header section */
-    .album-header {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        margin-bottom: 2rem;
-        position: relative;
-    }
-
-    /* Terminal header */
-    .terminal-bar {
-        position: absolute;
-        top: -2rem;
-        left: 0;
-        width: 100%;
-        padding: 0.6rem 1rem;
-        background-color: rgba(64, 160, 136, 0.15);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px dashed rgba(64, 160, 136, 0.3);
-        font-family: monospace;
-        font-size: 0.8rem;
-        color: var(--wired-green);
-    }
-
-    .terminal-status {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .terminal-led {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: var(--wired-green);
-        animation: status-pulse 2s infinite;
-    }
-
-    /* Album cover styling */
-    .album-cover-container {
-        flex: 0 0 300px;
-        position: relative;
-        border: 1px solid rgba(64, 160, 136, 0.3);
-        overflow: hidden;
-    }
-
-    .album-cover-container img {
-        width: 100%;
-        height: auto;
-        display: block;
-        filter: contrast(1.1) saturate(0.9);
-    }
-
-    /* Scan line effect */
-    .scan-line {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background-color: rgba(64, 160, 136, 0.4);
-        opacity: 0.6;
-        mix-blend-mode: overlay;
-        pointer-events: none;
-        animation: scan-animation 2s linear infinite;
-    }
-
-    @keyframes scan-animation {
-        0% { transform: translateY(-100%); }
-        100% { transform: translateY(300px); }
-    }
-
-    /* Digital fingerprint effect */
-    .digital-fingerprint {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        font-family: monospace;
-        font-size: 0.7rem;
-        color: var(--wired-green);
-        opacity: 0.5;
-    }
-
-    /* Album info styling */
-    .album-info {
-        flex: 1;
-        min-width: 300px;
-    }
-
-    .album-title {
-        font-family: var(--font-header);
-        color: var(--accent-primary);
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-        position: relative;
-    }
-
-    .album-artist {
-        font-size: 1.2rem;
-        color: var(--wired-blue);
-        margin-bottom: 1.5rem;
-    }
-
-    .album-year {
-        font-family: monospace;
-        font-size: 0.9rem;
-        color: var(--text-muted);
-        margin-bottom: 2rem;
-    }
-
-    /* Data sections */
-    .data-section {
-        margin-bottom: 2rem;
-    }
-
-    .data-header {
-        font-family: monospace;
-        color: var(--wired-green);
-        font-size: 0.9rem;
-        margin-bottom: 0.8rem;
-        border-bottom: 1px dashed rgba(64, 160, 136, 0.3);
-        padding-bottom: 0.4rem;
-        display: flex;
-        align-items: center;
-    }
-
-    .data-header::before {
-        content: ">";
-        margin-right: 0.5rem;
-        color: var(--accent-secondary);
-    }
-
-    /* Track list styling */
-    .track-list {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .track-item {
-        display: flex;
-        align-items: center;
-        padding: 0.6rem 0;
-        border-bottom: 1px solid rgba(40, 53, 53, 0.5);
-        font-size: 0.9rem;
-    }
-
-    .track-number {
-        flex: 0 0 2rem;
-        font-family: monospace;
-        color: var(--wired-green);
-    }
-
-    .track-title {
-        flex: 1;
-        color: var(--text-primary);
-    }
-
-    .track-duration {
-        flex: 0 0 4rem;
-        text-align: right;
-        font-family: monospace;
-        color: var(--text-muted);
-    }
-
-    /* Favorite indicator */
-    .favorite-track .track-title {
-        color: var(--accent-primary);
-    }
-
-    .favorite-track .track-title::after {
-        content: "★";
-        color: var(--wired-green);
-        margin-left: 0.5rem;
-        font-size: 0.8rem;
-    }
-
-    /* Content sections */
-    .content-section {
-        margin: 1.5rem 0;
-        line-height: 1.6;
-    }
-
-    /* Back button */
-    .back-link {
-        display: inline-block;
-        margin-top: 2rem;
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--wired-green);
-        color: var(--wired-green);
-        font-family: monospace;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .back-link:hover {
-        background-color: rgba(64, 160, 136, 0.1);
-        color: var(--accent-primary);
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .album-header {
-            flex-direction: column;
-        }
-        
-        .album-cover-container {
-            flex: none;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        
-        .album-title {
-            font-size: 1.5rem;
-        }
-    }
-</style>
+<link rel="stylesheet" href="/css/page-specific/album-page.css">
 {% endblock extra_head %}
 
 {% block content %}
-<div class="album-detail">
-    <div class="digital-frame">
-        <div class="terminal-bar">
-            <div class="terminal-status">
-                <div class="terminal-led"></div>
-                <span>SYSTEM://MUSIC/{{ page.extra.category | default(value="ARCHIVE") }}</span>
-            </div>
-            <div class="terminal-time">{{ page.date | date(format="%Y.%m.%d") }}</div>
-        </div>
-        
-        <div class="album-header">
-            <div class="album-cover-container">
-                <img src="{{ page.extra.cover | safe }}" alt="{{ page.title }} by {{ page.extra.artist }}">
-                <div class="scan-line"></div>
-                <div class="digital-fingerprint">ID:{{ page.extra.year | default(value="????") }}/{{ page.slug }}</div>
-            </div>
-            
-            <div class="album-info">
-                <div class="album-title">{{ page.title }}</div>
-                <div class="album-artist">{{ page.extra.artist }}</div>
-                <div class="album-year">RELEASED: {{ page.extra.year | default(value="Unknown") }}</div>
-                
-                {% if page.extra.favorites %}
-                <div class="data-section">
-                    <div class="data-header">FAVORITE TRACKS</div>
-                    <ul class="track-list">
-                        {% for track in page.extra.favorites %}
-                        <li class="track-item favorite-track">
-                            <div class="track-title">{{ track }}</div>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+<div class="content-wrapper">
+    <article class="section">
+        <header class="section-header">
+            <div class="album-header">
+                {% if page.extra.cover %}
+                <img src="{{ page.extra.cover }}" alt="{{ page.title }} cover" class="album-cover-large">
                 {% endif %}
                 
-                {% if page.extra.best_for %}
-                <div class="data-section">
-                    <div class="data-header">MEMORY ASSOCIATION</div>
-                    <div class="content-section">
-                        {{ page.extra.best_for }}
+                <div class="album-details">
+                    <h1>{{ page.title }}</h1>
+                    <div class="album-meta">
+                        <span class="artist">{{ page.extra.artist }}</span>
+                        <span class="year">{{ page.extra.year }}</span>
                     </div>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-        
-        {% if page.extra.tracklist %}
-        <div class="data-section">
-            <div class="data-header">COMPLETE TRACKLIST</div>
-            <ul class="track-list">
-                {% for track in page.extra.tracklist %}
-                <li class="track-item{% if track.title in page.extra.favorites %} favorite-track{% endif %}">
-                    <div class="track-number">{{ track.number | default(value=loop.index) }}</div>
-                    <div class="track-title">{{ track.title }}</div>
-                    {% if track.duration %}
-                    <div class="track-duration">{{ track.duration }}</div>
+                    
+                    {% if page.extra.best_for %}
+                    <div class="best-for">{{ page.extra.best_for }}</div>
                     {% endif %}
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
-        
-        {% if page.content %}
-        <div class="data-section">
-            <div class="data-header">PERSONAL NOTES</div>
-            <div class="content-section">
-                {{ page.content | safe }}
+                </div>
+            </div>
+        </header>
+
+        <div class="album-content">
+            {% if page.extra.tracklist %}
+            <div class="tracklist-section">
+                <h3>tracklist</h3>
+                <ol class="tracklist">
+                    {% for track in page.extra.tracklist %}
+                    <li class="track-item{% if track.title in page.extra.favorites %} track-favorite{% endif %}">
+                        <span class="track-number">{{ track.number }}</span>
+                        <span class="track-title">{{ track.title }}</span>
+                        {% if track.title in page.extra.favorites %}<span class="fav-indicator">★</span>{% endif %}
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+            {% endif %}
+
+            <div class="review-section">
+                <h3>review</h3>
+                <div class="multi-column">
+                    {{ page.content | safe }}
+                </div>
             </div>
         </div>
-        {% endif %}
-        
-        <a href="/music/" class="back-link">RETURN:://ARCHIVE</a>
-    </div>
+    </article>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Add random digital glitch effects
-        function randomGlitch() {
-            const elements = [
-                document.querySelector('.album-title'),
-                document.querySelector('.album-artist'),
-                document.querySelector('.data-header')
-            ].filter(el => el); // Filter out any null elements
-            
-            if (elements.length > 0) {
-                const randomElement = elements[Math.floor(Math.random() * elements.length)];
-                
-                randomElement.style.textShadow = '2px 0 rgba(255, 0, 89, 0.7), -2px 0 rgba(0, 174, 255, 0.7)';
-                randomElement.style.transition = 'none';
-                
-                setTimeout(() => {
-                    randomElement.style.textShadow = '';
-                    randomElement.style.transition = 'all 0.3s ease';
-                }, 150);
-                
-                // Schedule next glitch
-                setTimeout(randomGlitch, Math.random() * 10000 + 5000);
-            }
-        }
-        
-        // Start random glitch effects
-        setTimeout(randomGlitch, 3000);
-    });
-</script>
 {% endblock content %}
