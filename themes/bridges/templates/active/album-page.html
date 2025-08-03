@@ -12,16 +12,17 @@
 <div class="content-wrapper">
     <article class="section">
         <header class="section-header">
-            <div class="album-header">
+            <div class="media-header">
                 {% if page.extra.cover %}
-                <img src="{{ page.extra.cover }}" alt="{{ page.title }} cover" class="album-cover-large">
+                <img src="{{ page.extra.cover }}" alt="{{ page.title }} cover" class="cover-large">
                 {% endif %}
                 
-                <div class="album-details">
+                <div class="media-details">
                     <h1>{{ page.title }}</h1>
-                    <div class="album-meta">
+                    <div class="media-meta">
                         <span class="artist">{{ page.extra.artist }}</span>
                         <span class="year">{{ page.extra.year }}</span>
+                        <span class="status-badge status-{{ page.extra.category }}">{{ page.extra.category }}</span>
                     </div>
                     
                     {% if page.extra.best_for %}
@@ -31,24 +32,26 @@
             </div>
         </header>
 
-        <div class="album-content">
+        <div class="content-sidebar">
             {% if page.extra.tracklist %}
-            <div class="tracklist-section">
-                <h3>tracklist</h3>
-                <ol class="tracklist">
-                    {% for track in page.extra.tracklist %}
-                    <li class="track-item{% if track.title in page.extra.favorites %} track-favorite{% endif %}">
-                        <span class="track-number">{{ track.number }}</span>
-                        <span class="track-title">{{ track.title }}</span>
-                        {% if track.title in page.extra.favorites %}<span class="fav-indicator">★</span>{% endif %}
-                    </li>
-                    {% endfor %}
-                </ol>
+            <div class="sidebar-column">
+                <div class="content-section">
+                    <h3 class="section-title">tracklist</h3>
+                    <ol class="tracklist">
+                        {% for track in page.extra.tracklist %}
+                        <li class="track-item{% if track.title in page.extra.favorites %} track-favorite{% endif %}">
+                            <span class="track-number">{{ track.number }}</span>
+                            <span class="track-title">{{ track.title }}</span>
+                            {% if track.title in page.extra.favorites %}<span class="fav-indicator">★</span>{% endif %}
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </div>
             </div>
             {% endif %}
 
-            <div class="review-section">
-                <h3>review</h3>
+            <div class="main-column">
+                <h3 class="section-title">review</h3>
                 <div class="multi-column">
                     {{ page.content | safe }}
                 </div>

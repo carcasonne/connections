@@ -2,7 +2,7 @@
     title = "layer:02/books"
     sort_by = "date"
     template = "active/book-section.html"
-    page_template = "page.html"
+    page_template = "active/book-page.html"
     [extra]
     weight = 2
 +++

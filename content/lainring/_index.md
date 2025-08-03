@@ -29,9 +29,29 @@ title = "godcock"
 
 [[extra.sites]]
 url = "https://cabbagesorter.neocities.org/"
-img = "cabbagesorter_new.jpg"
+img = "cabbagesorter.jpg"
 title = "cabbagesorter"
+
+[[extra.sites]]
+tor = "uptime.nowherejezfoltodf4jiyl6r56jnzintap5vyjlia7fkirfsnfizflqd.onion"
+img = "nowhere.png"
+title = "nowhere"
+
+[[extra.sites]]
+url = "https://geartoward.jp.net/main.html"
+img = "geartowardjp.png"
+title = "geartowardjp"
+
+[[extra.sites]]
+url = "https://cult.ist/"
+img = "cultist.png"
+title = "cult.ist"
+
+[[extra.sites]]
+url = "https://crystal.tilde.institute/"
+img = "crystal-tilde.gif"
+title = "crystal"
 
 +++
 
-I am actively trying to add more websites here. Most archives or centralized ways of organizing the webring seem to be outdated.
+I am actively trying to add more websites here. I realize it is bad manners to not just add everyone, but **1)** the thread is old and sites die, and **2)** it's more fun to go through the webring pages manually and adding the ones I personally like. 

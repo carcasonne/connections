@@ -1,64 +1,5 @@
 /* album page specific styles */
 
-.album-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.album-cover-large {
-  width: 600px;
-  height: 600px;
-  object-fit: cover;
-  border: 1px solid var(--border-color);
-  margin-bottom: 1.5rem;
-}
-
-.album-details h1 {
-  margin: 0 0 1rem 0;
-}
-
-.album-meta {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  font-family: var(--font-main);
-}
-
-.artist {
-  font-size: 1rem;
-  color: var(--accent-primary);
-  text-shadow: 0 0 2px var(--accent-primary);
-}
-
-.year {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.category {
-  padding: 0.3rem 0.6rem;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-}
-
-.category-timeless {
-  background: rgba(189, 0, 255, 0.2);
-  color: var(--accent-tertiary);
-  border: 1px solid var(--accent-tertiary);
-}
-
-.category:not(.category-timeless) {
-  background: rgba(0, 174, 255, 0.2);
-  color: var(--accent-primary);
-  border: 1px solid var(--accent-primary);
-}
-
 .best-for {
   font-family: var(--font-main);
   font-size: 0.9rem;
@@ -66,31 +7,6 @@
   font-style: italic;
   line-height: 1.5;
   max-width: 600px;
-}
-
-.album-content {
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 2rem;
-  align-items: start;
-}
-
-.tracklist-section {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  padding: 1.5rem;
-}
-
-.tracklist-section h3,
-.review-section h3 {
-  font-family: var(--font-main);
-  font-size: 0.8rem;
-  color: var(--accent-blue);
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  margin: 0 0 1rem 0;
-  text-align: left;
-  text-shadow: 0 0 2px var(--accent-blue);
 }
 
 .tracklist {
@@ -133,15 +49,4 @@
   color: var(--glitch-red);
   font-size: 0.8rem;
   text-shadow: 0 0 2px var(--glitch-red);
-}
-
-@media (max-width: 768px) {
-  .album-cover-large {
-    width: 250px;
-    height: 250px;
-  }
-  
-  .album-content {
-    grid-template-columns: 1fr;
-  }
 }

@@ -1,0 +1,6 @@
+/* book page specific styles - most styling now in style.css */
+
+.section-header h1 {
+  text-align: center;
+  color: var(--accent-secondary);
+}

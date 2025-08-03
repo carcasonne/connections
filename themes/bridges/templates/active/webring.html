@@ -22,14 +22,16 @@
 
         <div class="webring-grid">
             {% for site in section.extra.sites %}
-            <div class="node-entry" data-url="{{ site.url }}">
+            <div class="node-entry" {% if site.url %} data-url="{{ site.url }}" {% endif %}>
                 <img src="/images/banner/{{ site.img }}" 
-                     alt="{{ site.title }}"
+                     alt="Banner for {{ site.title }}"
                      class="banner-gif">
                 <div class="node-info">
                     <div class="node-title">{{ site.title }}</div>
                     <div class="protocol-links">
+                        {% if site.url %}
                         <a href="{{ site.url }}" class="protocol-link">http</a>
+                        {% endif %}
                         {% if site.tor %}
                         <a href="{{ site.tor }}" class="protocol-link">tor</a>
                         {% endif %}

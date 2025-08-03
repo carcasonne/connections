@@ -6,4 +6,7 @@
    language = "Dansk"
    status = "Reading"
    rating = "asdsad"
+   cover = "/images/books/horla.jpg"
 +++
+
+Reading rn.
