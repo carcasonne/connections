@@ -52,6 +52,16 @@ url = "https://crystal.tilde.institute/"
 img = "crystal-tilde.gif"
 title = "crystal"
 
+[[extra.sites]]
+url = "https://ebinetwarez.club/index.html"
+img = "ebinetwarez.png"
+title = "Ebin Netwarez"
+
+[[extra.sites]]
+url = "https://aleph-0.neocities.org/"
+img = "aleph-0.gif"
+title = "aleph-0"
+
 +++
 
 I am actively trying to add more websites here. I realize it is bad manners to not just add everyone, but **1)** the thread is old and sites die, and **2)** it's more fun to go through the webring pages manually and adding the ones I personally like. 
