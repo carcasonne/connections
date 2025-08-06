@@ -62,6 +62,42 @@ url = "https://aleph-0.neocities.org/"
 img = "aleph-0.gif"
 title = "aleph-0"
 
+[[extra.sites]]
+url = "https://www.deletia.digital/"
+img = "deletia.gif"
+title = "deletia"
+
+[[extra.sites]]
+url = "https://otherdemons.com/"
+img = "otherdemons.png"
+title = "otherdemons"
+
+[[extra.sites]]
+url = "dotto.neocities.org"
+img = "dotto.gif"
+title = "The Mind of Dots"
+
+
+[[extra.sites]]
+url = "https://cliace.neocities.org/"
+img = "cliace.png"
+title = "CLI ace"
+
+[[extra.sites]]
+url = "https://cy-x.net/index.php"
+img = "cy-x.png"
+title = "cy-x"
+
+[[extra.sites]]
+url = "https://dalem.foo"
+img = "dalem.png"
+title = "dalem"
+
+[[extra.sites]]
+url = "https://drfaust.ddns.net/"
+img = "defaust.png"
+title = "La página de Faust"
+
 +++
 
 I am actively trying to add more websites here. I realize it is bad manners to not just add everyone, but **1)** the thread is old and sites die, and **2)** it's more fun to go through the webring pages manually and adding the ones I personally like. 
