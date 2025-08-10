@@ -61,7 +61,7 @@ function randomNode() {
 document.querySelectorAll('.node-entry').forEach(entry => {
     entry.addEventListener('click', (e) => {
         if (!e.target.closest('.protocol-links')) {
-            window.open(entry.dataset.url, '_blank');
+            window.location.href = entry.dataset.url;
         }
     });
 });

@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "todo.md",
+                "file": "lainring/_index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "todo"
+              "title": "_index"
             }
           }
         ],
@@ -213,12 +213,15 @@
   },
   "active": "2c05396fce5b3be1",
   "lastOpenFiles": [
-    "citater/Untitled.md",
-    "lainring/_index.md",
-    "todo.md",
-    "_index.md",
+    "books/great-god-pan.md",
+    "books/stålstormen.md",
+    "books/sulpicia-en-romersk-digter.md",
     "books/horla.md",
     "books/1974.md",
+    "todo.md",
+    "citater/Untitled.md",
+    "lainring/_index.md",
+    "_index.md",
     "music/ensiferum_iron.md",
     "music/nightwish_oceanborn.md",
     "music/wintersun_time-i.md",
@@ -232,7 +235,6 @@
     "movies/a-complete-unknown-2024.md",
     "articles/bringing-music-home.md",
     "articles/test1.md",
-    "books/great-god-pan.md",
     "books/_index.md",
     "articles/_index.md",
     "citater",
@@ -243,8 +245,6 @@
     "music/staging/warbringer_wrath-and-ruin.md",
     "music/staging/warbringer_weapons-of-tomorrow.md",
     "papes/_index.md",
-    "music/_index.md",
-    "music/staging/blondie_eat-to-the-beat.md",
     "images/GxIVruNaAAA41BS.jpg"
   ]
 }

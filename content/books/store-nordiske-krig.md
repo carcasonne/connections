@@ -1,6 +1,7 @@
 +++
    title = "Store Nordiske Krig"
    date = 2022-04-01
+   updated = 2022-04-01
    [extra]
    author = " Dan H. Andersen"
    language = "Danish"

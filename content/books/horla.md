@@ -1,12 +1,13 @@
 +++
    title = "Horla"
    date = 2025-08-03
+   updated = 2025-08-03
    [extra]
    author = "Guy de Maupassant"
    language = "Dansk"
    status = "Read"
    rating = "asdsad"
-   cover = "/images/books/horla.jpg"
+   cover = "/images/journal/horla.jpg"
 +++
 
 > Han svarede: "Ser vi en hundrede tusindedel af, hvad der eksisterer? Hør blot vinden, naturens største kraft, der blæser mennesker omkuld, vælter bygninger, rykker træer op med rode, pisker havet op i bølgebjerge, ødelægger klinter, og kaster store skibe op på blinde skær, vinden der dræber, suser, hyler, tuder - har De måske set den, *kan* De se den? Ikke desto mindre eksisterer den." 

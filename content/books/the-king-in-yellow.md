@@ -1,6 +1,7 @@
 +++
    title = "The King In Yellow"
    date = 2024-07-20
+   updated = 2024-07-20
    [extra]
    author = "Robert William Chambers"
    language = "English"
