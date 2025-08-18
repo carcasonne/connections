@@ -103,6 +103,11 @@ url = "https://353cloud.neocities.org/webring"
 img = "353cloud.png"
 title = "353Cloud"
 
+[[extra.sites]]
+url = "https://353cloud.neocities.org/webring"
+img = "nosleep.png"
+title = "no sleep"
+
 +++
 
 I am actively trying to add more websites here. I realize it is bad manners to not just add everyone, but **1)** the thread is old and sites die, and **2)** it's more fun to venture through the webring pages manually and add them as I discover them.

@@ -55,7 +55,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lainring/_index.md",
+                "file": "_index.md",
                 "mode": "source",
                 "source": false
               },
@@ -213,14 +213,15 @@
   },
   "active": "2c05396fce5b3be1",
   "lastOpenFiles": [
+    "books/bel-ami.md",
+    "books/1974.md",
+    "lainring/_index.md",
     "books/great-god-pan.md",
     "books/stålstormen.md",
     "books/sulpicia-en-romersk-digter.md",
     "books/horla.md",
-    "books/1974.md",
     "todo.md",
     "citater/Untitled.md",
-    "lainring/_index.md",
     "_index.md",
     "music/ensiferum_iron.md",
     "music/nightwish_oceanborn.md",
@@ -244,7 +245,6 @@
     "papes/16.breakpoint.bb603f4a1b28fd8a09b4.png",
     "music/staging/warbringer_wrath-and-ruin.md",
     "music/staging/warbringer_weapons-of-tomorrow.md",
-    "papes/_index.md",
     "images/GxIVruNaAAA41BS.jpg"
   ]
 }
