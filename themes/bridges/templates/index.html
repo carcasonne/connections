@@ -3,87 +3,89 @@
 {% block title %} layer:00/ego {% endblock title %}
 
 {% block extra_head %}
-    <link rel="stylesheet" href="/css/page-specific/index.css">
+<link rel="stylesheet" href="/css/page-specific/index.css">
 {% endblock extra_head %}
 
 {% block content %}
 <div class="content-wrapper">
-    <section class="intro-section">       
-        <div class="prose">
-            <p>
-                Welcome to my few hidden, unkown, forgotten pages of the Wired. 
-                Some strange combinations of choices, a divergence every few steps and clicks, have led you to this branch.
-                So please climb up further. Links rot and algorithms decides what survives. Here you will find my attempt to provide something small to a big world.
-                Take what you like, discard the rest, and drift on.
-            </p>
-        </div>
-    </section>
-
-    
-
-    <section class="content-grid">
-        <div class="nav-item hover-panel">
-            <div class="nav-header">
-                <span class="nav-icon">[01]</span>
-                <h3><a href="/books/">books</a></h3>
-            </div>
-            <p>Personal reading log. My effort to better understand what I »consume« and motivation to spend more time on less.</p>
-        </div>
-
-        <div class="nav-item hover-panel">
-            <div class="nav-header">
-                <span class="nav-icon">[02]</span>
-                <h3><a href="/articles/">articles</a></h3>
-            </div>
-            <p>Longer form thoughts, which are a mix of practical guides and whatever-nonsense.</p>
-        </div>
-
-        <div class="nav-item hover-panel">
-            <div class="nav-header">
-                <span class="nav-icon">[03]</span>
-                <h3><a href="/notes/">notes</a></h3>
-            </div>
-            <p>Does not exist yet. Like so much else.</p>
-        </div>
-    </section>
-
-    <blockquote>
-        <p>"People seldom do what they believe in. They do what is convenient, then repent."</p>
-        <p>― Does it matter? How badly do you want to »google it«?</p>
-    </blockquote>
+  <section class="intro-section">
+    <div class="prose">
+      <p>
+        Welcome to my few hidden, unkown, forgotten pages of the Wired.
+        Some strange combinations of choices, a divergence every few steps and clicks, have led you to this branch.
+        So please climb up further. Links rot and algorithms decides what survives. Here you will find my attempt to
+        provide something small to a big world.
+        Take what you like, discard the rest, and drift on.
+      </p>
+    </div>
+  </section>
 
 
-    <footer class="terminal-footer">
-        <div class="status-line">
-            <span class="cursor">█</span>
-            <span class="timestamp" id="timestamp"></span>
-        </div>
-    </footer>
+
+  <section class="content-grid">
+    <div class="nav-item hover-panel">
+      <div class="nav-header">
+        <span class="nav-icon">[01]</span>
+        <h3><a href="/books/">books</a></h3>
+      </div>
+      <p>Personal reading log. My effort to better understand what I »consume« and motivation to spend more time on
+        less.</p>
+    </div>
+
+    <div class="nav-item hover-panel">
+      <div class="nav-header">
+        <span class="nav-icon">[02]</span>
+        <h3><a href="/articles/">articles</a></h3>
+      </div>
+      <p>Longer form thoughts, which are a mix of practical guides and whatever-nonsense.</p>
+    </div>
+
+    <div class="nav-item hover-panel">
+      <div class="nav-header">
+        <span class="nav-icon">[03]</span>
+        <h3><a href="/notes/">notes</a></h3>
+      </div>
+      <p>Does not exist yet. Like so much else.</p>
+    </div>
+  </section>
+
+  <blockquote>
+    <p>"People seldom do what they believe in. They do what is convenient, then repent."</p>
+    <p>― Does it matter?</p>
+  </blockquote>
+
+
+  <footer class="terminal-footer">
+    <div class="status-line">
+      <span class="cursor">█</span>
+      <span class="timestamp" id="timestamp"></span>
+    </div>
+  </footer>
 </div>
 
 <script>
-function updateTimestamp() {
+  function updateTimestamp() {
     const now = new Date();
     const timestamp = now.toISOString().slice(0, 19).replace('T', ' ');
     const element = document.getElementById('timestamp');
     if (element) {
-        element.textContent = `uptime: ${timestamp}`;
+      element.textContent = `uptime: ${timestamp}`;
     }
-}
+  }
 
-updateTimestamp();
-setInterval(updateTimestamp, 1000);
+  updateTimestamp();
+  setInterval(updateTimestamp, 1000);
 
-// Add subtle glitch effect to nav items
-document.querySelectorAll('.nav-item').forEach(item => {
+  // Add subtle glitch effect to nav items
+  document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('mouseenter', () => {
-        if (Math.random() < 0.1) { // 10% chance
-            item.style.transform = 'translateX(2px)';
-            setTimeout(() => {
-                item.style.transform = 'translateX(0)';
-            }, 100);
-        }
+      if (Math.random() < 0.1) { // 10% chance
+        item.style.transform = 'translateX(2px)';
+        setTimeout(() => {
+          item.style.transform = 'translateX(0)';
+        }, 100);
+      }
     });
-});
+  });
 </script>
 {% endblock content %}

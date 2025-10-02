@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_index.md",
+                "file": "games/clair-obscur.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "_index"
+              "title": "clair-obscur"
             }
           }
         ],
@@ -213,16 +213,20 @@
   },
   "active": "2c05396fce5b3be1",
   "lastOpenFiles": [
+    "music/_index.md",
+    "images/0a389b67d488ab4d23934391b1bba369.gif",
+    "lainring/_index.md",
+    "games/clair-obscur.md",
+    "todo.md",
+    "games",
+    "_index.md",
     "books/bel-ami.md",
     "books/1974.md",
-    "lainring/_index.md",
     "books/great-god-pan.md",
     "books/stålstormen.md",
     "books/sulpicia-en-romersk-digter.md",
     "books/horla.md",
-    "todo.md",
     "citater/Untitled.md",
-    "_index.md",
     "music/ensiferum_iron.md",
     "music/nightwish_oceanborn.md",
     "music/wintersun_time-i.md",
@@ -243,8 +247,6 @@
     "papes/16.ego_death.5dbe0377005e128e8c78.png",
     "papes/breakpoint.bb603f4a1b28fd8a09b4.png",
     "papes/16.breakpoint.bb603f4a1b28fd8a09b4.png",
-    "music/staging/warbringer_wrath-and-ruin.md",
-    "music/staging/warbringer_weapons-of-tomorrow.md",
     "images/GxIVruNaAAA41BS.jpg"
   ]
 }

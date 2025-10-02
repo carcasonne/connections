@@ -182,8 +182,9 @@ body::before {
   border-color: var(--accent-primary);
   background: rgba(64, 160, 136, 0.05);
   cursor: pointer;
-  background: url("/images/dazed.gif");
-  background-size: cover;
+  /* Cool idea, but need more gifs or something to make it really work */
+  /* background: url("/images/dazed.gif");
+  background-size: cover; */
 }
 
 /* terminal footer with status */
