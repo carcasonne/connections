@@ -60,5 +60,6 @@
     /* Layout */
     --width-sidebar: 240px;
     --medium: 2rem;
+    --terminal-header-height: 36px;
 }
 

@@ -1,91 +1,279 @@
 {% extends "base.html" %}
 
-{% block title %} layer:00/ego {% endblock title %}
+{% block title %}layer:00/ego{% endblock title %}
 
 {% block extra_head %}
-<link rel="stylesheet" href="/css/page-specific/index.css">
+<link rel="stylesheet" href="/css/terminal-index.css">
 {% endblock extra_head %}
 
 {% block content %}
-<div class="content-wrapper">
-  <section class="intro-section">
-    <div class="prose">
-      <p>
-        Welcome to my few hidden, unkown, forgotten pages of the Wired.
-        Some strange combinations of choices, a divergence every few steps and clicks, have led you to this branch.
-        So please climb up further. Links rot and algorithms decides what survives. Here you will find my attempt to
-        provide something small to a big world.
-        Take what you like, discard the rest, and drift on.
-      </p>
-    </div>
-  </section>
-
-
-
-  <section class="content-grid">
-    <div class="nav-item hover-panel">
-      <div class="nav-header">
-        <span class="nav-icon">[01]</span>
-        <h3><a href="/books/">books</a></h3>
-      </div>
-      <p>Personal reading log. My effort to better understand what I »consume« and motivation to spend more time on
-        less.</p>
-    </div>
-
-    <div class="nav-item hover-panel">
-      <div class="nav-header">
-        <span class="nav-icon">[02]</span>
-        <h3><a href="/articles/">articles</a></h3>
-      </div>
-      <p>Longer form thoughts, which are a mix of practical guides and whatever-nonsense.</p>
+<div class="terminal-grid">
+    <!-- System Status -->
+    <div class="panel system-status">
+        <div class="panel-header">
+            <span>SYSTEM.STATUS</span>
+            <span class="panel-meta" id="current-time"></span>
+        </div>
+        <div class="panel-content">
+            <div class="status-grid">
+                <div class="metric">
+                    <span class="metric-label">UPTIME</span>
+                    <span class="metric-value" id="uptime">0D 00H</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">LOCATION</span>
+                    <span class="metric-value">CPH/DK</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">PROTOCOL</span>
+                    <span class="metric-value">HTTP/2</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">STATUS</span>
+                    <span class="metric-value">ACTIVE</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="nav-item hover-panel">
-      <div class="nav-header">
-        <span class="nav-icon">[03]</span>
-        <h3><a href="/notes/">notes</a></h3>
-      </div>
-      <p>Does not exist yet. Like so much else.</p>
+    <!-- Activity Feed -->
+    <div class="panel activity-feed">
+        <div class="panel-header">
+            <span>RECENT.ACTIVITY</span>
+            <span class="panel-meta">LAST 7D</span>
+        </div>
+        <div class="panel-content">
+            {% set books = get_section(path="books/_index.md") %}
+            {% set articles = get_section(path="articles/_index.md") %}
+            {% set all_pages = articles.pages | concat(with=books.pages) %}
+            {% for page in all_pages | sort(attribute="date") | reverse | slice(end=3) %}
+            <div class="activity-item">
+                <span class="activity-time">{{ page.date | date(format="%Y.%m.%d") }}</span>
+                <span class="activity-text">{{ page.title }}</span>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-  </section>
 
-  <blockquote>
-    <p>"People seldom do what they believe in. They do what is convenient, then repent."</p>
-    <p>― Does it matter?</p>
-  </blockquote>
-
-
-  <footer class="terminal-footer">
-    <div class="status-line">
-      <span class="cursor">█</span>
-      <span class="timestamp" id="timestamp"></span>
+    <!-- Navigation Matrix -->
+    <div class="panel nav-matrix">
+        <div class="panel-header">
+            <span>NAVIGATION.MATRIX</span>
+            <span class="panel-meta">6 NODES</span>
+        </div>
+        <div class="panel-content">
+            
+            <a href="/books/" style="text-decoration: none; color: inherit;">
+                <div class="nav-item">
+                    <div>
+                        <span class="nav-index">[01]</span>
+                        <span class="nav-title">BOOKS</span>
+                    </div>
+                    <div class="nav-desc">Personal reading log and literary analysis</div>
+                    <div class="nav-stats">
+                        <span>{{ books.pages | length }} ENTRIES</span>
+                        <span>UPDATED: {{ books.pages | sort(attribute="date") | last | get(key="date") | date(format="%Y.%m.%d") }}</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/articles/" style="text-decoration: none; color: inherit;">
+                <div class="nav-item">
+                    <div>
+                        <span class="nav-index">[02]</span>
+                        <span class="nav-title">ARTICLES</span>
+                    </div>
+                    <div class="nav-desc">Technical guides and thoughts</div>
+                    <div class="nav-stats">
+                        <span>{{ articles.pages | length }} ENTRIES</span>
+                        <span>UPDATED: {{ articles.pages | sort(attribute="date") | last | get(key="date") | date(format="%Y.%m.%d") }}</span>
+                    </div>
+                </div>
+            </a>
+            
+            <div class="nav-item" style="opacity: 0.5;">
+                <div>
+                    <span class="nav-index">[03]</span>
+                    <span class="nav-title">NOTES</span>
+                </div>
+                <div class="nav-desc">Quick thoughts and observations</div>
+                <div class="nav-stats">
+                    <span>STATUS: OFFLINE</span>
+                </div>
+            </div>
+            
+            {% set papes = get_section(path="papes/_index.md") %}
+            <a href="/papes/" style="text-decoration: none; color: inherit;">
+                <div class="nav-item">
+                    <div>
+                        <span class="nav-index">[04]</span>
+                        <span class="nav-title">WALLPAPERS</span>
+                    </div>
+                    <div class="nav-desc">Curated visual archive</div>
+                    <div class="nav-stats">
+                        <span>{{ papes.assets | length }} FILES</span>
+                    </div>
+                </div>
+            </a>
+            
+            {% set webring = get_section(path="lainring/_index.md") %}
+            <a href="/lainring/" style="text-decoration: none; color: inherit;">
+                <div class="nav-item">
+                    <div>
+                        <span class="nav-index">[05]</span>
+                        <span class="nav-title">WEBRING</span>
+                    </div>
+                    <div class="nav-desc">Connected nodes and peers</div>
+                    <div class="nav-stats">
+                        <span>{{ webring.extra.sites | length }} PEERS</span>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
-  </footer>
+
+    <!-- Recent Content -->
+    <div class="panel recent-content">
+        <div class="panel-header">
+            <span>RECENT.ENTRIES</span>
+            <span class="panel-meta">ALL SOURCES</span>
+        </div>
+        <div class="panel-content">
+            <div class="content-list">
+                {% set all_content = articles.pages | concat(with=books.pages) %}
+                {% for page in all_content | sort(attribute="date") | reverse | slice(end=8) %}
+                <div class="content-item">
+                    <a href="{{ page.permalink }}" class="content-title">{{ page.title }}</a>
+                    <span class="content-date">{{ page.date | date(format="%Y.%m.%d") }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Panel -->
+    <div class="panel stats-panel">
+        <div class="panel-header">
+            <span>METRICS</span>
+        </div>
+        <div class="panel-content">
+            {% set total_entries = books.pages | length + articles.pages | length %}
+            <div class="stat-block">
+                <div class="stat-label">TOTAL ENTRIES</div>
+                <div class="stat-value">{{ total_entries }}</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 68%"></div>
+                </div>
+            </div>
+            
+            {% set total_words = 0 %}
+            {% for page in all_content %}
+                {% set_global total_words = total_words + page.word_count %}
+            {% endfor %}
+            <div class="stat-block">
+                <div class="stat-label">WORDS WRITTEN</div>
+                <div class="stat-value">{{ total_words / 1000 | round(method="ceil", precision=1) }}K</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 45%"></div>
+                </div>
+            </div>
+            
+            <div class="stat-block">
+                <div class="stat-label">SECTIONS ACTIVE</div>
+                <div class="stat-value">5</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 82%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Console Output -->
+    <div class="panel console-output">
+        <div class="panel-header">
+            <span>CONSOLE.OUTPUT</span>
+            <span class="panel-meta">SYSTEM LOG</span>
+        </div>
+        <div class="panel-content">
+            <div class="console-line">
+                <span class="console-prompt">></span>
+                <span class="console-text"> Welcome to layer:00/ego</span>
+            </div>
+            <div class="console-line">
+                <span class="console-prompt">></span>
+                <span class="console-text"> Navigation matrix loaded successfully</span>
+            </div>
+            <div class="console-line">
+                <span class="console-prompt">></span>
+                <span class="console-text"> "People seldom do what they believe in.</span>
+            </div>
+            <div class="console-line">
+                <span class="console-prompt">></span>
+                <span class="console-text"> They do what is convenient, then repent."</span>
+            </div>
+            <div class="console-line">
+                <span class="console-prompt">></span>
+                <span class="console-text"> Links rot and algorithms decide what survives.</span>
+            </div>
+            <div class="console-line">
+                <span class="console-prompt">></span>
+                <span class="console-text"> Take what you like, discard the rest, drift on.</span>
+            </div>
+            <div class="console-line">
+                <span class="console-prompt">$</span>
+                <span class="console-text cursor-blink">█</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="panel status-bar">
+        <div class="panel-content">
+            <div class="status-left">
+                <div class="status-item">
+                    <div class="status-indicator"></div>
+                    <span>SYSTEM ONLINE</span>
+                </div>
+                <div class="status-item">
+                    <span id="timestamp"></span>
+                </div>
+            </div>
+            <div class="status-right">
+                <div class="status-item">
+                    <span>NODES: {{ config.extra.menu | length }}</span>
+                </div>
+                <div class="status-item">
+                    <span>ENTRIES: {{ total_entries }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-  function updateTimestamp() {
-    const now = new Date();
-    const timestamp = now.toISOString().slice(0, 19).replace('T', ' ');
-    const element = document.getElementById('timestamp');
-    if (element) {
-      element.textContent = `uptime: ${timestamp}`;
+    function updateTime() {
+        const now = new Date();
+        const timeStr = now.toISOString().slice(0, 19).replace('T', ' ');
+        const el = document.getElementById('timestamp');
+        if (el) el.textContent = timeStr;
+        
+        const currentEl = document.getElementById('current-time');
+        if (currentEl) currentEl.textContent = now.toISOString().slice(11, 19);
     }
-  }
-
-  updateTimestamp();
-  setInterval(updateTimestamp, 1000);
-
-  // Add subtle glitch effect to nav items
-  document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      if (Math.random() < 0.1) { // 10% chance
-        item.style.transform = 'translateX(2px)';
-        setTimeout(() => {
-          item.style.transform = 'translateX(0)';
-        }, 100);
-      }
-    });
-  });
+    
+    function updateUptime() {
+        const start = new Date('2025-01-01');
+        const now = new Date();
+        const diff = now - start;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const el = document.getElementById('uptime');
+        if (el) el.textContent = `${days}D ${hours.toString().padStart(2, '0')}H`;
+    }
+    
+    updateTime();
+    updateUptime();
+    setInterval(updateTime, 1000);
+    setInterval(updateUptime, 60000);
 </script>
 {% endblock content %}
